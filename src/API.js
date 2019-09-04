@@ -1,7 +1,7 @@
-import axios from './axios';
+import axios from 'axios';
 
-//var url = ''
-//var server = ''
+var url = 'http://localhost:4001/api'
+var server = 'http://localhost:4001'
 var api = {
 
 

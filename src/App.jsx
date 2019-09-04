@@ -2,12 +2,17 @@ import React, {Component} from 'react';
 import axios from 'axios'
 import {Router, Link, navigate} from '@reach/router'
 
+
 import './App.css';
-import api from './api'
+import api from './API'
+import RegisterUser from './RegisterUser';
+
+
+
 
 class App extends Component{
-  constructor(props)
-  super(props){
+  constructor(props){
+  super(props)
     this.state ={
       currentUser:{},
     }
@@ -21,6 +26,9 @@ componentDidMount=()=>{
   render(){
     return(
       
+      <Router>
+        <RegisterUser path="/users/create"/>
+      </Router>
     )
   }
 }
