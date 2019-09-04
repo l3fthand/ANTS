@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Product from './Product';
-// import {Router, Link, navigate} from '@reach/router';
+import {Router, Link, navigate} from '@reach/router';
 
 import './App.css';
 
@@ -34,7 +34,7 @@ class Products extends Component{
       
       <div className="container">
         <h1>Products</h1>
-        <button>Add</button>
+        <Link to="/product/new"><button>Add</button></Link>
         {
           products.map((item) => {
             var props = {

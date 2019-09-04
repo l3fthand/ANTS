@@ -23,3 +23,24 @@ button{
   background-color: lightblue;
   font-size: 0.8em;
 }
+
+form{
+  width: 50%;
+  margin: auto;
+}
+
+.form-group{
+  display: flex;
+  margin: 0.5em;
+}
+
+label{
+  flex: 0 0 20%;
+}
+
+input{
+  padding: 0.5em;
+  outline: none;
+  flex: 1 0 70%;
+  font-size: 0.9em;
+}
