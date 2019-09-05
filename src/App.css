@@ -44,3 +44,7 @@ input{
   flex: 1 0 70%;
   font-size: 0.9em;
 }
+
+img{
+  width: 20em;
+}

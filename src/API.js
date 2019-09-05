@@ -1,25 +1,25 @@
 import axios from 'axios';
 
 var url = 'http://localhost:4001/api';
-var server = 'http://localhost:4001';
+var server = 'http://localhost:4001/';
 
 var api = {
 
 
     addProduct : (data) => {
-        return axios.post(url+'/product',data)
+        return axios.post(url+'/products',data)
     },
     
     updateProduct : (id,data) => {
-        return axios.get(url+'/product'+id,data)
+        return axios.get(url+'/products/'+id,data)
     },
     
     deleteProduct : (id) => {
-        return axios.delete(url+'/product'+id)
+        return axios.delete(url+'/products/'+id)
     },
     
-    getProduct : (id, data) => {
-        return axios.get(url+'/products'+id,data)
+    getProduct : () => {
+        return axios.get(url+'/products')
     },
 
     addReview : (data) => {
@@ -27,11 +27,11 @@ var api = {
     },
     
     updateReview : (id,data) => {
-        return axios.get(url+'/review'+id,data)
+        return axios.get(url+'/review/'+id,data)
     },
     
     deleteReview : (id) => {
-        return axios.delete(url+'/review'+id)
+        return axios.delete(url+'/review/'+id)
     },
     
     uploadPhoto : (data) => {
@@ -43,7 +43,7 @@ var api = {
     },
 
     getUser : (id) => {
-        return axios.get(url+'/user'+id)
+        return axios.get(url+'/user/'+id)
     },
 
 

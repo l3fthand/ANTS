@@ -1,12 +1,40 @@
 import React, {Component} from 'react';
 import {Router, Link, navigate} from '@reach/router';
+import {api} from './API';
 
 import './App.css';
 
 class AddProduct extends Component{
   constructor(props){
     super(props)
-  }
+	}
+
+	
+	
+	submitForm = (e) => {
+
+		e.preventDefault();
+
+		// var {} = this.props;
+
+		var form = new FormData(this.form);
+
+		api.uploadPhoto(form).then(res => {
+			var file = res.data;
+			console.log(file);
+
+			var data = {
+				name: form.get('name-input'),
+				description: form.get('description-input'),
+				price: form.get('price-input'),
+				photo: file,
+			}
+
+			api.addProduct(data).then(navigate('/products'))
+		})
+
+		
+	}
 
 
   render(){
@@ -34,7 +62,7 @@ class AddProduct extends Component{
 
 	        <div className="form-group">
 	          <label htmlFor="name-input">Photo</label>
-	          <input type="text" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo"/>
+	          <input type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo"/>
 	        </div>
 
 	        <button type="submit" className="btn btn-primary">Add</button>

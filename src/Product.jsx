@@ -1,17 +1,17 @@
 import React, {Component} from 'react';
 // import {Router, Link, navigate} from '@reach/router';
+import {api, server} from './API';
 
 import './App.css';
 
 class Product extends Component{
   constructor(props){
-    super(props)
-      this.state = {}
+    super(props);
   }
 
 
   render(){
-    var {name, description, price, photo} = this.props;
+    var {name, description, price,photo} = this.props;
 
     return(
       
@@ -19,7 +19,7 @@ class Product extends Component{
         <h2 className="name text">{name}</h2>
         <p className="description text">{description}</p>
         <p className="price text">{price}</p>
-        <p className="photo text">{photo}</p>
+        <img className="photo" src={server+photo}/>
         <div className="buttons">
           <button className="edit">Edit</button>
           <button className="delete">Delete</button>
