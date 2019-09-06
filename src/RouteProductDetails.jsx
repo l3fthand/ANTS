@@ -22,22 +22,22 @@ class RouteProductDetails extends Component{
   }
 
   render(){
-    var {name, description, price, photo} = this.props;
+    var {product} = this.state;
 
-    return(
+    return product ? (
       
       <div className="product">
-        <h2 className="name text">{name}</h2>
-        <p className="description text">{description}</p>
-        <p className="price text">{price}</p>
-        <img className="photo" src={server+photo}/>
+        <h2 className="name text">{product.name}</h2>
+        <p className="description text">{product.description}</p>
+        <p className="price text">{product.price}</p>
+        <img className="photo" src={server+product.photo}/>
         <div className="buttons">
           <button className="edit">Edit</button>
           <button className="delete">Delete</button>
           
         </div>
       </div>
-    );
+    ) : null;
   }
 }
 

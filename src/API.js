@@ -22,7 +22,7 @@ var api = {
         return axios.get(url+'/products')
     },
     getProduct : (id) => {
-        return axios.get(url+'/products'+id)
+        return axios.get(url+'/products/'+id)
     },
 
     addReview : (data) => {

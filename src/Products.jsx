@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Product from './Product';
+import RouteProductDetails from './RouteProductDetails';
 import {Router, Link, navigate} from '@reach/router';
 import {api} from './API';
 
@@ -40,6 +41,7 @@ class Products extends Component{
               key: item.id
             }
             return <Product {...props}/>
+            
           })
         }
         
