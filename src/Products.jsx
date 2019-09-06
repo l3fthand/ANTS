@@ -33,6 +33,7 @@ class Products extends Component{
     return(
       
       <div className="container">
+        <h1>hi</h1>
         <h1>Products</h1>
         <button>Add</button>
         {
