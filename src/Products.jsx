@@ -14,7 +14,7 @@ class Products extends Component{
   }
 
   getProducts = () => {
-    api.getProduct().then(res => {
+    api.getProducts().then(res => {
       this.setState({products: res.data})
     })
   }

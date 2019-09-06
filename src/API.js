@@ -18,8 +18,11 @@ var api = {
         return axios.delete(url+'/products/'+id)
     },
     
-    getProduct : () => {
+    getProducts : () => {
         return axios.get(url+'/products')
+    },
+    getProduct : (id) => {
+        return axios.get(url+'/products'+id)
     },
 
     addReview : (data) => {

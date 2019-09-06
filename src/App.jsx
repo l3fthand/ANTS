@@ -3,6 +3,8 @@ import axios from 'axios';
 import {Router, Link, navigate} from '@reach/router';
 import Products from './Products';
 import AddProduct from './AddProduct';
+import Product from './Product';
+import RouteProductDetails from './RouteProductDetails';
 
 import './App.css';
 import api from './API'
@@ -27,6 +29,7 @@ componentDidMount=()=>{
       <Router>
         <Products path="/products"/>
         <AddProduct path="/products/new"/>
+        <RouteProductDetails path="/detail/:id"/>
       </Router>
 
     );
