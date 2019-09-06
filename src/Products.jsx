@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Product from './Product';
-// import {Router, Link, navigate} from '@reach/router';
+import {Router, Link, navigate} from '@reach/router';
+import {api} from './API';
 
 import './App.css';
 
@@ -8,25 +9,22 @@ class Products extends Component{
   constructor(props){
     super(props)
     this.state = {
-      products: [
-        {
-          id: 1,
-          name: 'product1',
-          description: 'bla',
-          price: '100',
-          photo: 'photo',
-        },
-        {
-          id: 2,
-          name: 'product2',
-          description: 'bla',
-          price: '150',
-          photo: 'photo',
-          },
-        ]
+      products: []
     }
   }
 
+  getProducts = () => {
+    api.getProduct().then(res => {
+      this.setState({products: res.data})
+    })
+  }
+
+  componentDidMount(){
+    this.getProducts()
+  }
+
+
+  
 
   render(){
     var {products} = this.state;
@@ -34,7 +32,7 @@ class Products extends Component{
       
       <div className="container">
         <h1>Products</h1>
-        <button>Add</button>
+        <Link to="/products/new"><button>Add</button></Link>
         {
           products.map((item) => {
             var props = {
