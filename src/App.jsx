@@ -24,7 +24,7 @@ componentDidMount=()=>{
     return(
       
       <Router>
-        <Products path="/product"/>
+        <Products path="/products"/>
       </Router>
 
     );
