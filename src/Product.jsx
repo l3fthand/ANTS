@@ -9,9 +9,14 @@ class Product extends Component{
     super(props);
   }
 
+  // deleteProduct = () => {
+  //   var {id} = this.props;
+  //   api.deleteProduct(id)
+  // }
+
 
   render(){
-    var {name, description, price,photo} = this.props;
+    var {name, description, price, photo} = this.props;
 
     return(
       
