@@ -11,6 +11,7 @@ class RouteProductDetails extends Component{
       product:null
     }
   }
+  
   routeGetProduct = (id) => {
     api.getProduct(id).then(res => this.setState({product:res.data}))
   }

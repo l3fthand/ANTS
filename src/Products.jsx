@@ -37,7 +37,8 @@ class Products extends Component{
           products.map((item) => {
             var props = {
               ...item,
-              key: item.id
+              key: item.id,
+              refreshData: this.getProducts,
             }
             return <Product {...props}/>
           })

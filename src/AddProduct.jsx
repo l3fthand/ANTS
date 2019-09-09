@@ -30,10 +30,10 @@ class AddProduct extends Component{
 				photo: file,
 			}
 
-			api.addProduct(data).then(navigate('/products'))
-		})
+			api.addProduct(data).then(navigate('/products'));
 
-		
+			console.log(data);
+		});
 	}
 
 
