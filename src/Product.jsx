@@ -27,7 +27,7 @@ class Product extends Component{
         <h2 className="name text"><Link to={'/detail/'+id}>{name}</Link></h2>
         <p className="description text">{description}</p>
         <p className="price text">{price}</p>
-        <img className="photo" src={server+photo}/>
+        {/* <img className="photo" src={server+photo}/> */}
         <div className="buttons">
           <Link to={'/products/'+id+'/edit'}><button className="edit">Edit</button></Link>
           <button onClick={this.deleteProduct} className="delete">Delete</button>

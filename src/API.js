@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-var url = 'http://10.2.24.12:4001/api';
-var server = 'http://10.2.24.12:4001/';
+var url = 'http://localhost:4001/api';
+var server = 'http://localhost:4001/';
 
 var api = {
 
@@ -23,7 +23,7 @@ var api = {
     },
 
     getProduct : (id) => {
-        return axios.get(url+'/products'+id)
+        return axios.get(url+'/products/'+id)
     },
 
     addReview : (data) => {

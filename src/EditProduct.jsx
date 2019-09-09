@@ -4,11 +4,25 @@ import {api} from './API';
 
 import './App.css';
 
-class AddProduct extends Component{
+class EditProduct extends Component{
   constructor(props){
-    super(props)
+		super(props)
+		this.state = {
+			product: {},
+		}
 	}
 
+	
+
+	componentDidMount(){
+		var {id} = this.props;  
+
+		api.getProduct(id).then(res => {
+			this.setState({product: res.data})
+		})
+
+		console.log(id)
+	}
 	
 	
 	submitForm = (e) => {
@@ -30,7 +44,8 @@ class AddProduct extends Component{
 				// photo: file,
 			}
 
-			api.addProduct(data).then(navigate('/products'));
+			var {id} = this.props;
+			api.updateProduct(id, data).then(navigate('/products'));
 
 			console.log(data);
 		// });
@@ -38,6 +53,8 @@ class AddProduct extends Component{
 
 
   render(){
+
+		var {name,description,price} = this.state.product;
 
     return(
       
@@ -47,17 +64,17 @@ class AddProduct extends Component{
 
 	        <div className="form-group">
 	          <label htmlFor="name-input">Name</label>
-	          <input type="text" className="form-control" name="name-input" id="name-input" placeholder="Enter project name"/>
+	          <input type="text" className="form-control" name="name-input" id="name-input" defaultValue={name}/>
 	        </div>
 
 	        <div className="form-group">
 	          <label htmlFor="name-input">Description</label>
-	          <input type="text" className="form-control" name="description-input" id="description-input" placeholder="Enter project description"/>
+	          <input type="text" className="form-control" name="description-input" id="description-input" defaultValue={description}/>
 	        </div>
 
           <div className="form-group">
 	          <label htmlFor="name-input">Price</label>
-	          <input type="text" className="form-control" name="price-input" id="price-input" placeholder="Enter price"/>
+	          <input type="text" className="form-control" name="price-input" id="price-input" defaultValue={price}/>
 	        </div>
 
 	        <div className="form-group">
@@ -65,11 +82,11 @@ class AddProduct extends Component{
 	          <input type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo"/>
 	        </div>
 
-	        <button type="submit" className="btn btn-primary">Add</button>
+	        <button type="submit" className="btn btn-primary">Update</button>
 	    </form>
       </div>
     );
   }
 }
 
-export default AddProduct;
+export default EditProduct;
