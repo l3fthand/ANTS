@@ -26,7 +26,7 @@ var api = {
     },
 
     addReview : (data) => {
-        return axios.post(url+'/review',data)
+        return axios.post(url+'/reviews',data)
     },
     
     updateReview : (id,data) => {
