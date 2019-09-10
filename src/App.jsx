@@ -32,7 +32,8 @@ componentDidMount=()=>{
         <Products path="/products"/>
         <AddProduct path="/products/new"/>
         <EditProduct path="/products/:id/edit"/>
-        <RouteProductDetails path="/detail/:id"/>
+        {/* <RouteProductDetails path="/detail/:id"/> */}
+        <RouteProductDetails path="/products/:id"/>
       </Router>
 
     );

@@ -27,15 +27,15 @@ var api = {
     },
 
     addReview : (data) => {
-        return axios.post(url+'/review',data)
+        return axios.post(url+'/reviews',data)
     },
     
-    updateReview : (id,data) => {
-        return axios.get(url+'/review/'+id,data)
-    },
+    // updateReview : (id,data) => {
+    //     return axios.get(url+'/review/'+id,data)
+    // },
     
     deleteReview : (id) => {
-        return axios.delete(url+'/review/'+id)
+        return axios.delete(url+'/reviews/'+id)
     },
     
     uploadPhoto : (data) => {

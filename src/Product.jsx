@@ -24,7 +24,7 @@ class Product extends Component{
     return(
       
       <div className="product">
-        <h2 className="name text"><Link to={'/detail/'+id}>{name}</Link></h2>
+        <h2 className="name text"><Link to={'/products/'+id}>{name}</Link></h2>
         <p className="description text">{description}</p>
         <p className="price text">{price}</p>
         {/* <img className="photo" src={server+photo}/> */}
