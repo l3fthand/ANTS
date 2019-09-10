@@ -8,7 +8,7 @@ class  Review extends Component {
 		var {refreshData} = this.props
 
 		var reviewId = e.target.dataset.reviewid
-		api.deleteReviews(reviewId).then(res => refreshData())
+		api.deleteReview(reviewId).then(res => refreshData())
 	}
 
   	render(){
@@ -21,13 +21,16 @@ class  Review extends Component {
                   	<p className="card-text">{review.comment}</p>
                   	<p className="card-text">Rating: {review.rating}</p>
                   	<p className="card-text">Review by: {review.user ? review.user.name : 'anonymous'}</p>
-                  	<p>
+										<div className="buttons">
+											<button className="delete" data-reviewid={review.id} onClick={this.handleTrashClick}>Delete</button>
+										</div>
+                  	{/* <p>	
 		            {	
 		             	(currentUser && currentUser.id == review.user_id) ? (
 		                	<i data-reviewid={review.id} onClick={this.handleTrashClick} className="fas fa-trash"></i>
 		              	) : null
 	    			}
-		            </p>
+		            </p> */}
                 </div>
             </div>
 	    );
