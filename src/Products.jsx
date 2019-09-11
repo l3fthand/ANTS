@@ -3,8 +3,13 @@ import Product from './Product';
 import RouteProductDetails from './RouteProductDetails';
 import {Router, Link, navigate} from '@reach/router';
 import {api} from './API';
+import {
+  Card,
+  Button,
+} from 'react-bootstrap';
 
 import './App.css';
+
 
 class Products extends Component{
   constructor(props){
@@ -31,9 +36,9 @@ class Products extends Component{
     var {products} = this.state;
     return(
       
-      <div className="container">
-        <h1>Products</h1>
-        <Link to="/products/new"><button>Add</button></Link>
+      <div className="listings">
+        <h1>My Products</h1>
+          <div className="listProduct"><Link to="/products/new"><Button className="AddButton" variant="primary" type="submit">List a product</Button></Link></div>
         {
           products.map((item) => {
             var props = {

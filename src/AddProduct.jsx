@@ -2,6 +2,15 @@ import React, {Component} from 'react';
 import {Router, Link, navigate} from '@reach/router';
 import {api} from './API';
 
+
+import {
+	Col,
+	Button,
+	Form,
+	ToggleButton,
+	ToggleButtonGroup,
+  } from 'react-bootstrap';
+
 import './App.css';
 
 class AddProduct extends Component{
@@ -40,24 +49,18 @@ class AddProduct extends Component{
   render(){
 
     return(
-      
-      <div className="add-product">
-        <h2 className="name text">New Product</h2>
-        <form onSubmit={this.submitForm} ref={(el) => {this.form = el}}>
 
+     
+        <form className="productForm" onSubmit={this.submitForm} ref={(el) => {this.form = el}}>
+		<h3>List your product</h3>
 	        <div className="form-group">
-	          <label htmlFor="name-input">Name</label>
-	          <input type="text" className="form-control" name="name-input" id="name-input" placeholder="Enter project name"/>
+	          <input type="text" className="form-control" name="name-input" id="name-input" placeholder="Enter name of your product"/>
 	        </div>
-
 	        <div className="form-group">
-	          <label htmlFor="name-input">Description</label>
-	          <input type="text" className="form-control" name="description-input" id="description-input" placeholder="Enter project description"/>
+	          <input type="text" className="form-control" name="description-input" id="description-input" placeholder="Enter product description"/>
 	        </div>
-
           <div className="form-group">
-	          <label htmlFor="name-input">Price</label>
-	          <input type="text" className="form-control" name="price-input" id="price-input" placeholder="Enter price"/>
+		  		<div className="priceInput"><span>$</span><input type="number" className="form-control" name="price-input" id="price-input" placeholder="Enter price"/></div>
 	        </div>
 
 	        <div className="form-group">
@@ -65,9 +68,9 @@ class AddProduct extends Component{
 	          <input type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo"/>
 	        </div>
 
-	        <button type="submit" className="btn btn-primary">Add</button>
+	        <button type="submit" className="btn btn-primary">Add Product</button>
 	    </form>
-      </div>
+
     );
   }
 }
