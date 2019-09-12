@@ -50,6 +50,9 @@ closeModal() {
 handleLogOut=()=>{
 
 }
+updateCurrentUser=(user)=>{
+    this.setState({currentUser:user})
+}
 componentDidMount=()=>{
 
 }
@@ -73,7 +76,7 @@ componentDidMount=()=>{
                       <i className="far fa-window-close"></i>
                   </a>
               </span>
-          <Login/>
+          <Login updateCurrentUser={this.updateCurrentUser}/>
 
           </div>
       </Modal>

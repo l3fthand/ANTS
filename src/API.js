@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-var url = 'http://10.2.24.12:4001/api';
-var server = 'http://10.2.24.12:4001/home';
+// var url = 'http://10.2.24.12:4001/api';
+// var server = 'http://10.2.24.12:4001/home';
 
-// var url = 'http://localhost:4001/api';
-// var server = 'http://localhost:4001/home';
+var url = 'http://localhost:4001/api';
+var server = 'http://localhost:4001/home';
 
 var api = {
 
@@ -46,12 +46,16 @@ var api = {
     },
 
     authenticate : (data) => {
-        return axios.post(url+'/user',data)
+        return axios.post(url+'/users',data)
     },
 
     getUser : (id) => {
-        return axios.get(url+'/user/'+id)
+        return axios.get(url+'/users/'+id)
     },
+
+    addUser: (data) => {
+       return axios.post(url+'/users/',data)
+    }
 
 
 }

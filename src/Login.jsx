@@ -14,15 +14,49 @@ class Login extends Component {
 
   constructor(props){
     super(props);
+    this.state = {
+        currentUser: null
+    }
     
   }
-  handleSubmitForm=()=>{
-
+  handleSubmitForm=(e)=>{
+    e.preventDefault()
     var form = new FormData(this.form);
     var data = {
-        name: form.get("name-input")
+        name: form.get("name-input"),
+        username: form.get("userName-input"),
+        password: form.get("password-input"),
+        email: form.get("email-input"),
+
     }
+    api.addUser(data).then(res => {
+        var user = res.data
+
+        var data = {
+            username: user.username,
+            password: user.password,
+        }
+
+        api.authenticate(data).then(res =>{
+            this.props.updateCurrentUser(res.data)
+        })
+      })
   }
+  
+  handleSubmitLogin=(e)=>{
+    e.preventDefault()
+    var form = new FormData(this.loginForm);
+    var data = {
+        username: form.get("userName-input"),
+        password: form.get("password-input"),
+    }
+    api.authenticate(data).then(res =>{
+        this.props.updateCurrentUser(res.data)
+    })
+  }
+  
+ 
+  
   
 
   render(){
@@ -35,7 +69,7 @@ class Login extends Component {
               </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="0">
-              <Form className="loginForm">
+              <Form className="loginForm" onSubmit={this.handleSubmitLogin} ref={(el) => {this.loginForm = el}} >
 
                   <Form.Group controlId="formBasicEmail">
                       <Form.Control type="text" className="form-control" name="username-input" id="username-input" placeholder="Username"/>
@@ -63,24 +97,24 @@ class Login extends Component {
 
               <Form.Group  controlId="formGridName">
 
-                <Form.Control type="text" placeholder="Name" id="name-input"/>
+                <Form.Control type="text" placeholder="Name" name="name-input"/>
                 </Form.Group>
                   <Form.Row>
                     
                       <Form.Group as={Col} controlId="formGridUsername">
 
-                          <Form.Control type="text" placeholder="Username"/>
+                          <Form.Control type="text" placeholder="Username" name="userName-input"/>
                       </Form.Group>
 
                       <Form.Group as={Col} controlId="formGridPassword">
 
-                          <Form.Control type="password" placeholder="Password"/>
+                          <Form.Control type="password" placeholder="Password" name="password-input"/>
                       </Form.Group>
                   </Form.Row>
 
                   <Form.Group controlId="formGridEmail">
 
-                      <Form.Control type="email" placeholder="Email"/>
+                      <Form.Control type="email" placeholder="Email" name="email-input"/>
                   </Form.Group>
 
 
