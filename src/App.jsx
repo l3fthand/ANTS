@@ -8,6 +8,7 @@ import EditProduct from './EditProduct';
 import Login from './Login';
 import Product from './Product';
 import RouteProductDetails from './RouteProductDetails';
+import PurchaseProductListings from './PurchaseProductListings';
 import {
   Accordion,
   Card,
@@ -26,7 +27,8 @@ import Modal from 'react-awesome-modal';
 import 'react-multi-carousel/lib/styles.css';
 
 import './App.css';
-import api from './API'
+import {api} from './API';
+
 
 
 class App extends Component{
@@ -50,7 +52,10 @@ handleLogOut=()=>{
 
 }
 componentDidMount=()=>{
-
+    api.getUser(1).then(res=>{
+        console.log(res)
+        this.setState({currentUser:res.data})
+    })
 }
   render(){
     return(
@@ -115,6 +120,7 @@ componentDidMount=()=>{
                               <Nav.Link href="/products">My Products</Nav.Link>
                               <Nav.Link href="#watchlist">Watch List</Nav.Link>
                               <Nav.Link href="/my-reviews">My Reviews</Nav.Link>
+                              <Nav.Link href="/purchases">Purchase Products</Nav.Link>
                           </Nav>
                       </Navbar.Collapse>
                      
@@ -214,8 +220,8 @@ componentDidMount=()=>{
             <Products path="/products"/>
             <AddProduct path="/products/new"/>
             <EditProduct path="/products/:id/edit"/>
-            {/* <RouteProductDetails path="/detail/:id"/> */}
             <RouteProductDetails path="/products/:id"/>
+            <PurchaseProductListings user={this.state.currentUser}path="/purchases"/>
           </Router>
  
           </div>
