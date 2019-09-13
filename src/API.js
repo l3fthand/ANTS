@@ -40,7 +40,11 @@ var api = {
     uploadPhoto : (data) => {
         return axios.post(url+'/upload',data)
     },
-    
+
+    getUser : (id) => {
+        return axios.get(url+'/users/'+id)
+    },
+
     authenticate : (data) => {
         return axios.post(url+'/user',data)
     },
@@ -48,7 +52,6 @@ var api = {
     getUser : (id) => {
         return axios.get(url+'/users/'+id)
     },
-
     addReview : (data) => {
         return axios.post(url+'/reviews',data)
     },
