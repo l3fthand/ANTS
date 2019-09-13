@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import FeaturedItem from './FeaturedItem';
 import Item from './Item';
-import RouteProductDetails from './RouteProductDetails';
+import RouteCat from './RouteCategory'
 import {Router, Link, navigate} from '@reach/router';
 import {api} from './API';
 import Carousel from 'react-multi-carousel';
@@ -32,7 +31,7 @@ const responsive = {
             min: 0
         },
         items: 1,
-        partialVisibilityGutter: 80 // this is needed to tell the amount of px that should be visible.
+        partialVisibilityGutter: 100 // this is needed to tell the amount of px that should be visible.
     }
 }
 
@@ -40,26 +39,23 @@ class ProductListings extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            categories: [],
             products: []
         }
     }
 
     getProducts = () => {
-        api
-            .getProducts()
-            .then(res => {
-                this.setState({products: res.data})
-            })
-    }
+        api.getProducts().then(res => {
+          this.setState({products: res.data})
+        })
+      }
 
     componentDidMount() {
         this.getProducts()
     }
 
     render() {
-        var {
-            products
-        } = this.state;
+        var {products} = this.state;
         return (
 
         <div className="Item carousel-container">
@@ -186,16 +182,16 @@ class ProductListings extends Component {
                     <Row className="productsListing">
                     {
                         products.map((item) => {
-                            var props = {
+                            var itemProps = {
                                 ...item,
                                 key: item.id,
                                 refreshData: this.getProducts
                             }
-                            return <Item {...props}/>
+                            return <Item {...itemProps}/>
 
                         })
                     }
-                    </Row>
+                </Row>
                 </Container>
                 <Container className="imageGrid">
                     <Row>

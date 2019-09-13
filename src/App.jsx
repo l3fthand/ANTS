@@ -6,6 +6,7 @@ import Products from './Products';
 import AddProduct from './AddProduct';
 import EditProduct from './EditProduct';
 import Login from './Login';
+import RouteCat from './RouteCategory'
 import Product from './Product';
 import RouteProductDetails from './RouteProductDetails';
 import {
@@ -26,7 +27,7 @@ import Modal from 'react-awesome-modal';
 import 'react-multi-carousel/lib/styles.css';
 
 import './App.css';
-import api from './API'
+import {api} from './API';
 
 
 class App extends Component{
@@ -34,25 +35,38 @@ class App extends Component{
   super(props)
     this.state = {
       visible: false,
-      currentUser:{},
+      categories:[],
+      currentUser:null,
     }
   }
 
-openModal() {
+  openModal = () => {
     this.setState({visible: true});
 }
 
-closeModal() {
+closeModal = () => {
     this.setState({visible: false});
 }
 
 handleLogOut=()=>{
-
+    localStorage.removeItem('userID')
+    this.setState({currentUser:null})
+}
+updateCurrentUser=(user)=>{
+    this.setState({currentUser:user})
 }
 componentDidMount=()=>{
+    api.
+    getCategories().then(res => this.setState({categories:res.data}))
 
+    var userLocal = localStorage.getItem('userID')
+    
+    if(userLocal){
+        api.getUser(userLocal).then(res=>this.setState({currentUser:res.data}))
+    }
 }
   render(){
+    var {categories} = this.state;
     return(
 
 
@@ -72,7 +86,7 @@ componentDidMount=()=>{
                       <i className="far fa-window-close"></i>
                   </a>
               </span>
-          <Login/>
+            <Login closeModal={this.closeModal} updateCurrentUser={this.updateCurrentUser}/>
 
           </div>
       </Modal>
@@ -81,7 +95,7 @@ componentDidMount=()=>{
       {/* {
     currentUser? (<span>Welcome {currentUser.name}</span>) : null
   } */}
-          <Navbar
+            <Navbar
               className="Navbar"
               collapseOnSelect="collapseOnSelect"
               expand="lg"
@@ -89,7 +103,6 @@ componentDidMount=()=>{
               variant="dark">
               <Link to="/home"><Image className="Logo" src={require('./logo.png')} fluid="fluid"/></Link>
               <div className="navBarbot">
-
                   <InputGroup className="searchBar">
                       <InputGroup.Append>
                           <Button variant="outline-secondary">
@@ -101,55 +114,43 @@ componentDidMount=()=>{
                           aria-label="Search"
                           aria-describedby="basic-addon2"/>
                        </InputGroup>
-                       <input
-                                                                              className="loginButton"
-                                                                              type="button"
-                                                                              value="Login"
-                                                                              onClick={() => this.openModal()}/>
-                       <Navbar.Toggle className="userControl" aria-controls="responsive-navbar-nav"/>
-
-                      <Navbar.Collapse id="responsive-navbar-nav">
-                          <Nav className="mr-auto">
-                              <Nav.Link href="/products/new">+ Sell an Item</Nav.Link>
-                              <Nav.Link href="/user-profile">User Profile</Nav.Link>
-                              <Nav.Link href="/products">My Products</Nav.Link>
-                              <Nav.Link href="#watchlist">Watch List</Nav.Link>
-                              <Nav.Link href="/my-reviews">My Reviews</Nav.Link>
-                          </Nav>
-                      </Navbar.Collapse>
+                       {
+                           this.state.currentUser ? <> <input
+                            className="loginButton"
+                            type="button"
+                            value="Logout"
+                            onClick={this.handleLogOut}/>
+                        </>:
+                       <><input
+                            className="loginButton"
+                            type="button"
+                            value="Login"
+                            onClick={() => this.openModal()}/>
+                       
+                        </>}
                      
-                      {/* {
-                          currentUser ? (
+                      {
+                          this.state.currentUser ? (
                           <>
                           
                           <Navbar.Toggle className="userControl" aria-controls="responsive-navbar-nav"/>
 
                           <Navbar.Collapse id="responsive-navbar-nav">
                               <Nav className="mr-auto">
-                                  <Nav.Link href="#sell">+ Sell an Item</Nav.Link>
-                                  <Nav.Link href="#userprofile">User Profile</Nav.Link>
-                                  <Nav.Link href="#watchlist">Watch List</Nav.Link>
-                                  <Nav.Link href="#reviews">My Reviews</Nav.Link>
+                                <Nav.Link href="/products/new">+ Sell an Item</Nav.Link>
+                                <Nav.Link href="/user-profile">User Profile</Nav.Link>
+                                <Nav.Link href="/products">My Products</Nav.Link>
+                                <Nav.Link href="#watchlist">Watch List</Nav.Link>
+                                <Nav.Link href="/my-reviews">My Reviews</Nav.Link>
                               </Nav>
                           </Navbar.Collapse>
                           </>
-                          ) : (
-                          <>
-          <input
-                                              className="loginButton"
-                                              type="button"
-                                              value="Login"
-                                              onClick={() => this.openModal()}/>
-                          </>
-                          )
-                      } */}
-
-
+                          ) : null
+                      }
               </div>
           </Navbar>
       </div>
       <div className="section">
-
           <div className="catagories">
               <Accordion className="FilterCat">
                   <Card>
@@ -159,23 +160,15 @@ componentDidMount=()=>{
                           </Accordion.Toggle>
                       </Card.Header>
                       <Accordion.Collapse eventKey="0">
-                          <Nav variant="pills" defaultActiveKey="/home">
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-1">Suits</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-2">Footwear</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-3">Clothing</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-4">Accessories</Nav.Link>
-                              </Nav.Item>
+                          <Nav className="browseNav" variant="pills" defaultActiveKey="/home">
+                            {
+                                categories.map(categories =>  <Link className="browseNavButton" to={'/categories/'+categories.id}>{categories.name}</Link>)
+                            }
                           </Nav>
                       </Accordion.Collapse>
                   </Card>
               </Accordion>
+
           </div>
          
       
@@ -184,6 +177,7 @@ componentDidMount=()=>{
             <Products path="/products"/>
             <AddProduct path="/products/new"/>
             <EditProduct path="/products/:id/edit"/>
+            <RouteCat path="/categories/:id"/>
             {/* <RouteProductDetails path="/detail/:id"/> */}
             <RouteProductDetails path="/products/:id"/>
           </Router>
