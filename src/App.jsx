@@ -7,6 +7,7 @@ import AddProduct from './AddProduct';
 import EditProduct from './EditProduct';
 import Login from './Login';
 import Product from './Product';
+import PurchaseProductDetail from './PurchaseProductDetail';
 import RouteProductDetails from './RouteProductDetails';
 import PurchaseProductListings from './PurchaseProductListings';
 import {
@@ -26,7 +27,7 @@ import './App.css';
 import Modal from 'react-awesome-modal';
 import 'react-multi-carousel/lib/styles.css';
 
-import './App.css';
+import './App.scss';
 import {api} from './API';
 
 
