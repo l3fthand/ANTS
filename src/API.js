@@ -36,6 +36,18 @@ var api = {
     getProduct : (id) => {
         return axios.get(url+'/products/'+id)
     },
+    
+    uploadPhoto : (data) => {
+        return axios.post(url+'/upload',data)
+    },
+    
+    authenticate : (data) => {
+        return axios.post(url+'/user',data)
+    },
+
+    getUser : (id) => {
+        return axios.get(url+'/users/'+id)
+    },
 
     addReview : (data) => {
         return axios.post(url+'/reviews',data)
@@ -48,22 +60,10 @@ var api = {
     deleteReview : (id) => {
         return axios.delete(url+'/reviews/'+id)
     },
-    
-    uploadPhoto : (data) => {
-        return axios.post(url+'/upload',data)
-    },
-
-    authenticate : (data) => {
-        return axios.post(url+'/users',data)
-    },
-
-    getUser : (id) => {
-        return axios.get(url+'/users/'+id)
-    },
 
     addUser: (data) => {
        return axios.post(url+'/users/',data)
-    }
+    },
 
 
 }

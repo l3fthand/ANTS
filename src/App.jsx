@@ -8,7 +8,9 @@ import EditProduct from './EditProduct';
 import Login from './Login';
 import RouteCat from './RouteCategory'
 import Product from './Product';
+import PurchaseProductDetail from './PurchaseProductDetail';
 import RouteProductDetails from './RouteProductDetails';
+import PurchaseProductListings from './PurchaseProductListings';
 import {
   Accordion,
   Card,
@@ -26,8 +28,10 @@ import './App.css';
 import Modal from 'react-awesome-modal';
 import 'react-multi-carousel/lib/styles.css';
 
+
 import './App.css';
 import {api} from './API';
+
 
 
 class App extends Component{
@@ -180,6 +184,7 @@ componentDidMount=()=>{
             <RouteCat path="/categories/:id"/>
             {/* <RouteProductDetails path="/detail/:id"/> */}
             <RouteProductDetails path="/products/:id"/>
+            <PurchaseProductListings user={this.state.currentUser}path="/purchases"/>
           </Router>
  
           </div>
