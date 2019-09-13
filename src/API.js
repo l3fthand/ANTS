@@ -46,8 +46,9 @@ var api = {
     },
 
     authenticate : (data) => {
-        return axios.post(url+'/users',data)
+        return axios.post(url+'/authenticate',data)
     },
+   
 
     getUser : (id) => {
         return axios.get(url+'/users/'+id)
