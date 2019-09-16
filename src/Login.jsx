@@ -42,6 +42,7 @@ class Login extends Component {
             this.props.updateCurrentUser(res.data)
             localStorage.setItem('userID',user.id)
             this.props.closeModal()
+            console.log(localStorage)
         })
       })
   }

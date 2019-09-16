@@ -13,13 +13,13 @@ import {
 class PurchaseProductListings extends Component{
   constructor(props){
     super(props)
-   
+    
   }
 
   render(){
     var {user} = this.props;
     var products = user.purchases;
-    //console.log(products)
+    // console.log(products)
     return products ? (
       
       <div className="listings">
@@ -40,7 +40,7 @@ class PurchaseProductListings extends Component{
         
       </div>
 
-    ):null;
+    ):(<h1>not working</h1>);
   }
 
 

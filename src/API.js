@@ -20,6 +20,14 @@ var api = {
     deleteProduct : (id) => {
         return axios.delete(url+'/products/'+id)
     },
+
+    getCategories : () => {
+        return axios.get(url+'/categories')
+    },
+
+    getCategory : (id) => {
+        return axios.get(url+'/categories/'+id)
+    },
     
     getProducts : () => {
         return axios.get(url+'/products')
@@ -31,6 +39,10 @@ var api = {
     
     uploadPhoto : (data) => {
         return axios.post(url+'/upload',data)
+    },
+
+    getUser : (id) => {
+        return axios.get(url+'/users/'+id)
     },
 
     authenticate : (data) => {
@@ -67,13 +79,10 @@ var api = {
 
     addUser: (data) => {
        return axios.post(url+'/users/',data)
-    }
+    },
+
 
 
 }
-
-
-
-
 
 export {server, api}

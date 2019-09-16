@@ -27,26 +27,6 @@ a {
   color: #A68B3C;
 }
 
-.react-multi-carousel-item {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.carousel-container {
-  background-color: #f2f2f2;
-  width: 100vw;
-}
-
-.carousel-container2 {
-  background-color: #fcfcfc;
-}
-
-.ProductList {
-  padding-top: 5em;
-  background-color: #f2f2f2;
-}
-
 .form-group .btn-primary {
   font-size: .9em;
 }
@@ -55,8 +35,52 @@ a {
   width: 100%;
 }
 
-.listings h1 {
-  text-align: center;
+.catSelect {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.catSelect .form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #3f3f3f;
+  border: none;
+  border-bottom: thin solid #3f3f3f;
+  border-radius: 0;
+  outline: 0;
+  -webkit-box-shadow: 0 0 0 0rem #3f3f3f;
+          box-shadow: 0 0 0 0rem #3f3f3f;
+  font-size: 1em;
+}
+
+.catSelect select {
+  width: 50%;
+}
+
+.catSelect select option {
+  font-size: 1em;
+}
+
+#cat-input {
+  width: 50%;
+}
+
+#cat-input option {
+  font-size: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .listProduct {
@@ -120,8 +144,9 @@ a {
   background-color: transparent;
 }
 
-.Item .card .card-img-top {
-  padding: 1em;
+.Item .card .card-img-featured {
+  padding: 0em;
+  width: 75vw;
 }
 
 .Item .card .card-body {
@@ -138,18 +163,20 @@ a {
   -webkit-box-flex: 0;
       -ms-flex: 0;
           flex: 0;
+  padding: 1em 0 0 0;
 }
 
 .Item .card .card-body .card-title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0;
 }
 
 .Item .card .AddButton {
@@ -192,6 +219,206 @@ a {
   color: #bfbfbf;
   background-color: #343a40;
   border-color: #343a40;
+}
+
+.react-multi-carousel-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.carousel-container {
+  background-color: #f2f2f2;
+  width: 100vw;
+}
+
+.carousel-container2 {
+  background-color: #fcfcfc;
+}
+
+.custom-dot-list-style {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.custom-dot-list-style .react-multi-carousel-dot {
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0px;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.custom-dot-list-style .react-multi-carousel-dot button {
+  display: inline-block;
+  width: 100%;
+  height: 2px;
+  border: none;
+  border-radius: 2em;
+  opacity: 1;
+  padding: 5px 5px 5px 5px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: background .5s;
+  transition: background .5s;
+  border-width: 0;
+  border-style: solid;
+  color: grey;
+  background-color: #f2f2f2;
+  padding: 0;
+  margin: 0;
+  margin-right: 0;
+  outline: 0;
+  cursor: pointer;
+}
+
+.custom-dot-list-style .react-multi-carousel-dot--active button {
+  background-color: #3f3f3f;
+  height: 2px;
+}
+
+.browseNav {
+  padding: 0em 2em 0em 2em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.browseNav .browseNavButton {
+  padding: .5em;
+}
+
+.browseNav a:hover {
+  color: #3f3f3f;
+  text-decoration: none;
+  background-color: #f2f2f2;
+}
+
+.ProductList {
+  padding-top: 5em;
+  background-color: #f2f2f2;
+}
+
+.productsListing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #fff;
+  padding-top: .2em;
+}
+
+.productsListing .col {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 49%;
+          flex: 1 0 49%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  max-width: 50%;
+  padding: 1em;
+}
+
+.listings h1 {
+  text-align: center;
+}
+
+.categoryContainer .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: none;
+}
+
+.categoryContainer .card .card-body {
+  padding: 0;
+}
+
+.categoryContainer .card .card-body .card-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 1em;
+  margin: 0;
+}
+
+.productsListing .col .card {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: none;
+}
+
+.productsListing .col .card .card-body {
+  padding: 0;
+}
+
+.productsListing .col .card .card-body .card-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding-top: 1em;
+  margin: 0;
+}
+
+.productsListing .col:nth-child(odd) {
+  border-right: solid thin #0c0c0c;
+  border-bottom: solid thin #0c0c0c;
+}
+
+.productsListing .col:nth-child(even) {
+  border-bottom: solid thin #0c0c0c;
 }
 
 .productForm {
@@ -295,7 +522,6 @@ a {
 
 .imageGrid {
   opacity: .95;
-  margin-top: 2em;
   background-color: #fcfcfc;
 }
 
@@ -556,14 +782,14 @@ a {
 }
 
 .section .catagories .nav.nav-pills {
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  padding-top: 1em;
+  padding-top: 0em;
+  border-radius: 0;
+  font-size: .95em;
 }
 
 .section .catagories .nav.nav-pills .nav-link {
   color: #8c8c8c;
+  padding: .5em;
 }
 
 .section .catagories .nav.nav-pills .nav-link.active {
