@@ -32,6 +32,7 @@ import 'react-multi-carousel/lib/styles.css';
 import './App.css';
 import {api} from './API';
 
+//delete incoming change
 
 
 class App extends Component{
