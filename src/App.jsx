@@ -37,26 +37,31 @@ class App extends Component{
   super(props)
     this.state = {
       visible: false,
-      currentUser:{},
+      currentUser:null,
     }
   }
 
-openModal() {
+openModal = () => {
     this.setState({visible: true});
 }
 
-closeModal() {
+closeModal = () => {
     this.setState({visible: false});
 }
 
 handleLogOut=()=>{
-
+    localStorage.removeItem('userID')
+    this.setState({currentUser:null})
+}
+updateCurrentUser=(user)=>{
+    this.setState({currentUser:user})
 }
 componentDidMount=()=>{
-    api.getUser(1).then(res=>{
-        console.log(res)
-        this.setState({currentUser:res.data})
-    })
+    var userLocal = localStorage.getItem('userID')
+    
+    if(userLocal){
+        api.getUser(userLocal).then(res=>this.setState({currentUser:res.data}))
+    }
 }
   render(){
     return(
@@ -78,7 +83,7 @@ componentDidMount=()=>{
                       <i className="far fa-window-close"></i>
                   </a>
               </span>
-          <Login/>
+          <Login closeModal={this.closeModal} updateCurrentUser={this.updateCurrentUser}/>
 
           </div>
       </Modal>
@@ -95,7 +100,6 @@ componentDidMount=()=>{
               variant="dark">
               <Link to="/home"><Image className="Logo" src={require('./logo.png')} fluid="fluid"/></Link>
               <div className="navBarbot">
-
                   <InputGroup className="searchBar">
                       <InputGroup.Append>
                           <Button variant="outline-secondary">
@@ -107,26 +111,23 @@ componentDidMount=()=>{
                           aria-label="Search"
                           aria-describedby="basic-addon2"/>
                        </InputGroup>
-                       <input
-                                                                              className="loginButton"
-                                                                              type="button"
-                                                                              value="Login"
-                                                                              onClick={() => this.openModal()}/>
-                       <Navbar.Toggle className="userControl" aria-controls="responsive-navbar-nav"/>
-
-                      <Navbar.Collapse id="responsive-navbar-nav">
-                          <Nav className="mr-auto">
-                              <Nav.Link href="/products/new">+ Sell an Item</Nav.Link>
-                              <Nav.Link href="/user-profile">User Profile</Nav.Link>
-                              <Nav.Link href="/products">My Products</Nav.Link>
-                              <Nav.Link href="#watchlist">Watch List</Nav.Link>
-                              <Nav.Link href="/my-reviews">My Reviews</Nav.Link>
-                              <Nav.Link href="/purchases">Purchase Products</Nav.Link>
-                          </Nav>
-                      </Navbar.Collapse>
+                       {
+                           this.state.currentUser ? <> <input
+                            className="loginButton"
+                            type="button"
+                            value="Logout"
+                            onClick={this.handleLogOut}/>
+                        </>:
+                       <><input
+                            className="loginButton"
+                            type="button"
+                            value="Login"
+                            onClick={() => this.openModal()}/>
+                       
+                        </>}
                      
-                      {/* {
-                          currentUser ? (
+                      {
+                          this.state.currentUser ? (
                           <>
                           
                           <Navbar.Toggle className="userControl" aria-controls="responsive-navbar-nav"/>
@@ -140,18 +141,8 @@ componentDidMount=()=>{
                               </Nav>
                           </Navbar.Collapse>
                           </>
-                          ) : (
-                          <>
-          <input
-                                              className="loginButton"
-                                              type="button"
-                                              value="Login"
-                                              onClick={() => this.openModal()}/>
-                          </>
-                          )
-                      } */}
-
-
+                          ) : null
+                      }
               </div>
           </Navbar>
       </div>
