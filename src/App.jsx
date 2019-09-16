@@ -135,10 +135,12 @@ componentDidMount=()=>{
 
                           <Navbar.Collapse id="responsive-navbar-nav">
                               <Nav className="mr-auto">
-                                  <Nav.Link href="#sell">+ Sell an Item</Nav.Link>
-                                  <Nav.Link href="#userprofile">User Profile</Nav.Link>
-                                  <Nav.Link href="#watchlist">Watch List</Nav.Link>
-                                  <Nav.Link href="#reviews">My Reviews</Nav.Link>
+                              <Nav.Link href="/products/new">+ Sell an Item</Nav.Link>
+                                <Nav.Link href="/user-profile">User Profile</Nav.Link>
+                                <Nav.Link href="/products">My Products</Nav.Link>
+                                <Nav.Link href="#watchlist">Watch List</Nav.Link>
+                                <Nav.Link href="/my-reviews">My Reviews</Nav.Link>
+                                <Nav.Link href="/purchases">Purchase Products</Nav.Link>
                               </Nav>
                           </Navbar.Collapse>
                           </>
@@ -214,7 +216,7 @@ componentDidMount=()=>{
             <AddProduct path="/products/new"/>
             <EditProduct path="/products/:id/edit"/>
             <RouteProductDetails path="/products/:id"/>
-            <PurchaseProductListings user={this.state.currentUser}path="/purchases"/>
+            <PurchaseProductListings path="/purchases"/>
           </Router>
  
           </div>
