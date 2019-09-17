@@ -21,10 +21,7 @@ class AddProduct extends Component{
 	
 	
 	submitForm = (e) => {
-
 		e.preventDefault();
-
-		var {} = this.props;
 
 		var form = new FormData(this.form);
 
