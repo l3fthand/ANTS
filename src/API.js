@@ -4,7 +4,7 @@ import axios from 'axios';
 // var server = 'http://10.2.24.12:4001/home/';
 
 var url = 'http://localhost:4001/api';
-var server = 'http://localhost:4001/';
+var server = 'http://localhost:4001/home';
 
 
 var api = {
@@ -28,6 +28,14 @@ var api = {
 
     getProduct : (id) => {
         return axios.get(url+'/products/'+id)
+    },
+    
+    getCategories : () => {
+        return axios.get(url+'/categories')
+    },
+
+    getCategory : (id) => {
+        return axios.get(url+'/categories/'+id)
     },
     
     uploadPhoto : (data) => {

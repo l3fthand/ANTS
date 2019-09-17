@@ -1,20 +1,5 @@
-.react-multi-carousel-item {
-    display: flex;
-}
 
-.carousel-container {
-    background-color: $color-1;
-    width:100vw;
- }
 
-.carousel-container2 {
-    background-color: $color-0;
- }
-
-.ProductList {
-    padding-top: 5em;
-    background-color:$color-1;
-}
 
 .form-group .btn-primary {
     font-size: .9em;
@@ -24,12 +9,38 @@
     width: 100%;
 }
 
-.listings { 
-    h1 {
-        text-align: center;
-    }
 
+.catSelect {
+    .form-control:focus {
+        color: #495057;
+        background-color: #fff;
+        border-color: $color-5;
+        border:none;
+        border-bottom:thin solid $color-5;
+        border-radius: 0;
+        outline: 0;
+        box-shadow: 0 0 0 0rem $color-5;
+        font-size:1em;
+    }
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+    select {
+        width:50%;
+        option {
+            font-size:1em;
+        }
+    }
 }
+#cat-input {
+    width:50%;
+    option {
+        font-size:1em;
+        display: flex;
+    }
+}
+
 .listProduct {
         justify-content: center;
         display: flex;
@@ -72,18 +83,21 @@ padding-top: 1em;
     justify-content: flex-end;
     background-color:transparent;
     // height: 21em;
-    .card-img-top {
-        padding: 1em;
+    .card-img-featured {
+        padding: 0em;
+        width: 75vw;
     }
     .card-body {
         display: flex;
         justify-content: flex-end;
         flex-direction: column;
         flex: 0;
-    .card-title {
-        display:flex;
-        justify-content: space-between;
-        align-items: center;
+        padding:1em 0 0 0;
+        .card-title {
+            display:flex;
+            justify-content:center;
+            align-items: center;
+            padding:0;
         }
     }
     .AddButton {

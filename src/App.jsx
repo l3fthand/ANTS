@@ -10,6 +10,7 @@ import Product from './Product';
 import PurchaseProductDetail from './PurchaseProductDetail';
 import RouteProductDetails from './RouteProductDetails';
 import PurchaseProductListings from './PurchaseProductListings';
+import RouteCat from './RouteCategory';
 import {
   Accordion,
   Card,
@@ -35,6 +36,7 @@ class App extends Component{
   super(props)
     this.state = {
       visible: false,
+      categories:[],
       currentUser:null,
     }
   }
@@ -56,6 +58,7 @@ updateCurrentUser=(user)=>{
 }
 componentDidMount=()=>
 {
+    api.getCategories().then(res => this.setState({categories:res.data}))
 
     var userLocal = localStorage.getItem('userID')
     
@@ -65,6 +68,7 @@ componentDidMount=()=>
 
 }
   render(){
+    var {categories} = this.state;
     return(
 
 
@@ -137,7 +141,7 @@ componentDidMount=()=>
 
                           <Navbar.Collapse id="responsive-navbar-nav">
                               <Nav className="mr-auto">
-                                  <Nav.Link href="/products/new">+ Sell an Item</Nav.Link>
+                              <Nav.Link href="/products/new">+ Sell an Item</Nav.Link>
                               <Nav.Link href="/user-profile">User Profile</Nav.Link>
                               <Nav.Link href="/products">My Products</Nav.Link>
                               <Nav.Link href="#watchlist">Watch List</Nav.Link>
@@ -162,50 +166,11 @@ componentDidMount=()=>
                           </Accordion.Toggle>
                       </Card.Header>
                       <Accordion.Collapse eventKey="0">
-                          <Nav variant="pills" defaultActiveKey="/home">
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-1">NEW ITEMS</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-2">Suits</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-3">Footwear</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-4">Clothing</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-5">Outdoors</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-6">Active Wear</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-7">Accessories</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-8">Mobile Phones</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-9">Toys</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-10">Books</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-11">Mobile Phones</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-12">Gaming</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-13">Music & Instruments</Nav.Link>
-                              </Nav.Item>
-                              <Nav.Item>
-                                  <Nav.Link eventKey="cat-14">Random</Nav.Link>
-                              </Nav.Item>
-                          </Nav>
+                        <Nav className="browseNav" variant="pills" defaultActiveKey="/home">
+                                {
+                                    categories.map(categories =>  <Link className="browseNavButton" to={'/categories/'+categories.id}>{categories.name}</Link>)
+                                }
+                        </Nav>
                       </Accordion.Collapse>
                   </Card>
               </Accordion>
@@ -214,6 +179,7 @@ componentDidMount=()=>
       
           <Router>
             <ProductListings path="/home"/>
+            <RouteCat path="/categories/:id"/>
             <Products path="/products"/>
             <AddProduct path="/products/new"/>
             <EditProduct path="/products/:id/edit"/>

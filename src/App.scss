@@ -68,6 +68,7 @@ a {
 
 
 @import "_products.scss";
+@import "_productListings.scss";
 @import "_userAdmin.scss";
 @import "_review.scss";
 @import "_imageGrid.scss";
@@ -236,11 +237,14 @@ a {
     .catagories {
         display:flex;
         flex-direction: column;
+
         .nav.nav-pills {
-            justify-content: space-evenly;
-            padding-top: 1em;
+            padding-top: 0em;
+            border-radius:0;
+            font-size:.95em;
             .nav-link {
                 color: $color-3;
+                padding:.5em;
             }
             .nav-link.active {
                 color: #fff;
@@ -280,6 +284,10 @@ a {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
+        text-align: center;
+        h3 {
+            padding-top:.5em;
+        }
     }
 
 
@@ -290,6 +298,15 @@ a {
     color:$color-3;
     font-size:.9em;
     padding:1em;
+}
+
+// misc
+
+.NoPad {
+    padding:0;
+    .container {
+        margin:0;
+    }
 }
 
 
