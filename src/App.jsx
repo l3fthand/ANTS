@@ -106,7 +106,7 @@ componentDidMount=()=>
               expand="lg"
               bg="dark"
               variant="dark">
-              <Link to="/home"><Image className="Logo" src={require('./logo.png')} fluid="fluid"/></Link>
+              <Link to="/"><Image className="Logo" src={require('./logo.png')} fluid="fluid"/></Link>
               <div className="navBarbot">
                   <InputGroup className="searchBar">
                       <InputGroup.Append>
@@ -171,7 +171,7 @@ componentDidMount=()=>
                       <Accordion.Collapse eventKey="0">
                         <Nav className="browseNav" variant="pills" defaultActiveKey="/home">
                                 {
-                                    categories.map(categories =>  <Link className="browseNavButton" to={'/categories/'+categories.id}>{categories.name}</Link>)
+                                    categories.map(categories =>  <Link className="browseNavButton" to={'/categories/'+categories.name}>{categories.name}</Link>)
                                 }
                         </Nav>
                       </Accordion.Collapse>
@@ -181,7 +181,7 @@ componentDidMount=()=>
          
       
           <Router>
-            <ProductListings path="/home"/>
+            <ProductListings path="/"/>
             <RouteCat path="/categories/:id"/>
             <Products path="/products"/>
             <AddProduct path="/products/new"/>
