@@ -4,7 +4,7 @@ import axios from 'axios';
 // var server = 'http://10.2.24.12:4001/home/';
 
 var url = 'http://localhost:4001/api';
-var server = 'http://localhost:4001/home';
+var server = 'http://localhost:4001/';
 
 
 var api = {
@@ -40,6 +40,10 @@ var api = {
     
     uploadPhoto : (data) => {
         return axios.post(url+'/upload',data)
+    },
+
+    uploadPhotos : (data) => {
+        return axios.post(url+'/uploads',data)
     },
 
     authenticate : (data) => {

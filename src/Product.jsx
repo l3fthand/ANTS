@@ -20,7 +20,7 @@ class Product extends Component{
 
 
   render(){
-    var {name, description, price, photo, id} = this.props;
+    var {name, description, price, photo, id,photos} = this.props;
 
     return(
       
@@ -30,7 +30,13 @@ class Product extends Component{
           style={{
               width: '18rem'
           }}>
-          <Card.Img variant="top" src={server+photo}/>
+
+          {
+            photos.map(photo=><Card.Img variant="top" src={server+photo}/>)
+          }
+          {/* <Card.Img variant="top" src={server+photo}/> */}
+
+
           <Card.Body>
               <Card.Title><Link to={'/products/'+id}>{name}</Link><Button variant="outline-dark">
                       <i className="far fa-heart"></i>

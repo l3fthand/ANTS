@@ -25,23 +25,39 @@ class AddProduct extends Component{
 
 		var form = new FormData(this.form);
 
-		api.uploadPhoto(form).then(res => {
-			var file = res.data;
-			console.log(file);
+		// api.uploadPhoto(form).then(res => {
+		// 	var file = res.data;
+		// 	console.log(file);
+
+		// 	var data = {
+		// 		name: form.get('name-input'),
+		// 		description: form.get('description-input'),
+		// 		price: form.get('price-input'),
+		// 		cat_id: form.get('cat-input'),
+		// 		photo: file,
+
+		// 	}
+
+		// 	api.addProduct(data).then(navigate('/products'));
+
+		// })
+
+
+		api.uploadPhotos(form).then(res => {
+			var files = res.data
+			console.log(files);
 
 			var data = {
 				name: form.get('name-input'),
 				description: form.get('description-input'),
 				price: form.get('price-input'),
 				cat_id: form.get('cat-input'),
-				photo: file,
-
+				photos: files,
 			}
-
 			api.addProduct(data).then(navigate('/products'));
+		})
 
-			console.log(data);
-		});
+
 	}
 
 
@@ -73,7 +89,8 @@ class AddProduct extends Component{
 				</Form.Group>
 
 				<Form.Group controlId="formBasicPhoto">
-					<Form.Control type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo"/>
+					{/* <Form.Control type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo"/> */}
+					<Form.Control type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo" multiple/>
 				</Form.Group>
 
 				<Button variant="primary" type="submit">
