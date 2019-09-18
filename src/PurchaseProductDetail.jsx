@@ -20,7 +20,7 @@ class PurchaseProductDetail extends Component {
 
 
   render(){
-    var {name, description, price, photo, id} = this.props;
+    var {name, description, price, photo, id,currentUser} = this.props;
 
     return(
       

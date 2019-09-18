@@ -14,9 +14,9 @@ class PurchaseProductListings extends Component{
   constructor(props){
     super(props)
     this.state={
-      user:{},
+      currentUser:{},
     }
-   
+    
   }
 
   componentDidMount=()=>{
@@ -24,15 +24,15 @@ class PurchaseProductListings extends Component{
     var userID = localStorage.getItem('userID')
     
     api.getUser(userID).then(res =>{
-      var user = res.data
-      this.setState({user})
+      var currentUser = res.data
+      this.setState({currentUser})
       
   })
   
 }
   render(){
-   
-    var products = this.state.user.purchases;
+    console.log("productlisting"+this.state.currentUser)
+    var products = this.state.currentUser.purchases;
     
     return products ? (
       
@@ -46,7 +46,7 @@ class PurchaseProductListings extends Component{
               key: item.id,
             //   refreshData: this.getProducts,
             }
-            return <PurchaseProductDetail {...props}/>
+            return <PurchaseProductDetail {...props} currentUser={this.props.currentUser}/>
          
             
           })

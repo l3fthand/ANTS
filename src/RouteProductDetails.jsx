@@ -41,13 +41,13 @@ class RouteProductDetails extends Component{
       this.reviewForm.reset()
       this.routeGetProduct(productId)
     })
-    var userID = localStorage.getItem('userID')
+  //   var userID = localStorage.getItem('userID')
     
-    api.getUser(userID).then(res =>{
-      var currentUser = res.data
-      this.setState({currentUser})
+  //   api.getUser(userID).then(res =>{
+  //     var currentUser = res.data
+  //     this.setState({currentUser})
       
-  })
+  // })
   
   }
 
@@ -63,10 +63,21 @@ class RouteProductDetails extends Component{
     api.updateProducts(id,data)
     // this.props.openModal()
   }
-
+  // componentDidMount=()=>{
+    
+  //   var userID = localStorage.getItem('userID')
+    
+  //   api.getUser(userID).then(res =>{
+  //     var currentUser = res.data
+  //     this.setState({currentUser})
+      
+  // })
+  
+//}
   
   render(){
-    var {product,currentUser} = this.state;
+    var {product} = this.state;
+    // var{currentUser} = product.purchaser_id;
 
 
 
@@ -89,10 +100,10 @@ class RouteProductDetails extends Component{
           product.reviews.map(review => {
             var reviewProps = {
               review:review,
-              currentUser:currentUser,
+              // currentUser:currentUser,
               refreshData: () => this.routeGetProduct(product.id)
             }
-            return <Review {...reviewProps} currentUser={this.props.currentUser}/>
+            return <Review {...reviewProps}/>
           })
         }
       {/* </div>  */}
@@ -116,10 +127,8 @@ class RouteProductDetails extends Component{
         </Card.Body>
     </Card>
   </div>
-
-      
-
-      <Form className="reviewForm addReview" onSubmit={this.handleReviewFormSubmit} ref={(el) => {this.reviewForm = el}}>
+  {product.reviews ? null : (
+    <Form className="reviewForm addReview" onSubmit={this.handleReviewFormSubmit} ref={(el) => {this.reviewForm = el}}>
 		<h3>Add a Review</h3>
 		{/* <Form.Group controlId="formGridDescription">
 			<Form.Control type="text" placeholder="Description"/>
@@ -144,6 +153,10 @@ class RouteProductDetails extends Component{
 			Add Review
 		</Button>
 	</Form>
+  )} 
+
+
+      
    </>) : null;
 
 

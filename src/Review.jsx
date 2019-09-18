@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 // import {Link, navigate} from '@reach/router'
-import {Form, Button, ListGroup} from 'react-bootstrap';
+import {Form, Button, ListGroup,ToggleButton} from 'react-bootstrap';
 import {api} from './API';
 
 class Review extends Component {
@@ -25,7 +25,7 @@ class Review extends Component {
             review,
             currentUser
         } = this.props
-        console.log(review)
+        console.log(currentUser)
         return (
 
 	<Form className="reviewForm">
@@ -36,11 +36,22 @@ class Review extends Component {
 					</Form.Label>
 			</Form.Group>
 			<Form.Group controlId="formGridFile">
-					<Form.Label>Rating: {review.rating} Star
+					<Form.Label>
+                    Rating:
+                        {(() => {
+                        switch (review.rating) {
+                        case 1:   return "★";
+                        case 2: return "★★";
+                        case 3:  return "★★★";
+                        case 4:  return "★★★★";
+                        case 5:  return "★★★★★";
+                        default:      return "#FFFFFF";
+                        }
+                    })()}
 					</Form.Label>
 			</Form.Group>
 			<Form.Group controlId="formGridFile">
-                    <Form.Label>Review by: {currentUser}
+                    <Form.Label>Review by: {}
                     {/* {
 								currentUser
 									? currentUser
