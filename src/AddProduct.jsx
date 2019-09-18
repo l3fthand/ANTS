@@ -38,6 +38,7 @@ class AddProduct extends Component{
 				price: form.get('price-input'),
 				cat_id: form.get('cat-input'),
 				photo: file,
+				user_id: this.props.user.id
 
 			}
 

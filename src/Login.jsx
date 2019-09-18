@@ -39,6 +39,8 @@ class Login extends Component {
         }
 
         api.authenticate(data).then(res =>{
+
+            console.log(res.data)
             this.props.updateCurrentUser(res.data)
             localStorage.setItem('userID',user.id)
             this.props.closeModal()

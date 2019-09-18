@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import Products from './Products';
+import UserProducts from './UserProducts';
 import PurchaseProductListings from './PurchaseProductListings';
 import {
     Tabs,
     Tab,
-    Sonnet,
     Container,
     Col,
     Image,
@@ -13,25 +13,26 @@ import {
 class UserProfile extends Component {
 
     render(){
+       
         return(
             <Container>
-                {/* <Row>
-                    <Col xs={6} md={4} className="user-photo">
+                <Row>
+                    {/* <Col xs={6} md={4} className="user-photo">
                     <Image src={require("./item1.png")} roundedCircle />
-                    </Col>
-                </Row> */}
+                    </Col> */}
+                </Row>
                
-            <Tabs defaultActiveKey="profile" id="uncontrolled-tab-example">
+            <Tabs defaultActiveKey="Products" id="uncontrolled-tab-example">
                 <Tab eventKey="Products" title="My Listings">
-                    {/* <Sonnet /> */}
-                    <Products/>
+                   
+                    <UserProducts user={this.props.user}/>/>
                 </Tab>
                 <Tab eventKey="Reviews" title="Reviews">
-                    {/* <Sonnet /> */}
+                    
                 </Tab>
                 <Tab eventKey="Purchases" title="Purchases" >
-                    {/* <Sonnet /> */}
-                    <PurchaseProductListings/>
+                    
+                    {/* <PurchaseProductListings/> */}
                 </Tab>
             </Tabs>
             </Container>

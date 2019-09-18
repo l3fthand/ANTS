@@ -4,7 +4,7 @@ import axios from 'axios';
 // var server = 'http://10.2.24.12:4001/home/';
 
 var url = 'http://localhost:4001/api';
-var server = 'http://localhost:4001/home';
+var server = 'http://localhost:4001/';
 
 
 var api = {
