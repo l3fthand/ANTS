@@ -33,7 +33,9 @@ class AddProduct extends Component{
 				name: form.get('name-input'),
 				description: form.get('description-input'),
 				price: form.get('price-input'),
+				cat_id: form.get('cat-input'),
 				photo: file,
+
 			}
 
 			api.addProduct(data).then(navigate('/products'));
@@ -48,25 +50,36 @@ class AddProduct extends Component{
     return(
 
      
-        <form className="productForm" onSubmit={this.submitForm} ref={(el) => {this.form = el}}>
-		<h3>List your product</h3>
-	        <div className="form-group">
-	          <input type="text" className="form-control" name="name-input" id="name-input" placeholder="Enter name of your product"/>
-	        </div>
-	        <div className="form-group">
-	          <input type="text" className="form-control" name="description-input" id="description-input" placeholder="Enter product description"/>
-	        </div>
-          <div className="form-group">
-		  		<div className="priceInput"><span>$</span><input type="number" className="form-control" name="price-input" id="price-input" placeholder="Enter price"/></div>
-	        </div>
 
-	        <div className="form-group">
-	          <label htmlFor="name-input">Photo</label>
-	          <input type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo"/>
-	        </div>
 
-	        <button type="submit" className="btn btn-primary">Add Product</button>
-	    </form>
+			<Form className="productForm" onSubmit={this.submitForm} ref={(el) => {this.form = el}}>
+				  <Form.Group className="catSelect" controlId="exampleForm.ControlSelect1">
+					<Form.Label>Select Category:</Form.Label>
+					<Form.Control id="cat-input" name="cat-input" as="select">
+					<option value="1">Suits</option>
+					<option value="2">Footwear</option>
+					<option value="3">Clothing</option>
+					<option value="4">Accessories</option>
+					</Form.Control>
+				</Form.Group>
+				<Form.Group controlId="formBnaasicName">
+					<Form.Control type="text" className="form-control" name="name-input" id="name-input" placeholder="Name of your product"/>
+				</Form.Group>
+				<Form.Group controlId="formBasicDesc">
+					<Form.Control type="text" className="form-control" name="description-input" id="description-input" placeholder="Product description"/>
+				</Form.Group>
+				<Form.Group controlId="formBasicPrice">
+				<div className="priceInput"><span>$</span><Form.Control type="number" className="form-control" name="price-input" id="price-input" placeholder="Enter price"/></div>
+				</Form.Group>
+
+				<Form.Group controlId="formBasicPhoto">
+					<Form.Control type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo"/>
+				</Form.Group>
+
+				<Button variant="primary" type="submit">
+				Add Product
+				</Button>
+			</Form>
 
     );
   }

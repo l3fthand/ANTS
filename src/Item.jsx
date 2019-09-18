@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import RouteProductDetails from './RouteProductDetails';
 import {Link, navigate} from '@reach/router';
 import {api, server} from './API';
-import {Card, Button, ListGroup} from 'react-bootstrap';
+import {Card, Button,Col, ListGroup} from 'react-bootstrap';
 
 import './App.css';
 
@@ -25,24 +25,33 @@ class Item extends Component{
     return(
       
 
-      <div className="Item">
-      <Card
-          style={{
-              width: '18rem'
-          }}>
-          <Card.Img variant="top" src={server+photo}/>
-          <Card.Body>
-               <Card.Title><Link to={'/products/'+id}>{name}</Link><Button variant="outline-dark">
-                      <i className="far fa-heart"></i>
-                  </Button>
-              </Card.Title>
-              <Card.Text><span className="itemDescription">{description}</span></Card.Text>
-              <Button className="AddButton" variant="primary">Add to Cart
-                  <span className="itemPrice">${price}</span>
-              </Button>
-          </Card.Body>
-      </Card>
-  </div>
+
+      <Col>
+        <Card>
+        <Link to={'/products/'+id}><Card.Img variant="top" src={server+photo}/></Link>
+            <Card.Body>
+                <Card.Title><Link to={'/products/'+id}>{name}</Link>
+                </Card.Title>
+
+            </Card.Body>
+        </Card>
+      </Col>
+
+  // <div className="Item">
+  //     <Card
+  //         style={{
+  //             width: '18rem'
+  //         }}>
+  //         <Card.Img variant="top" src={require('./item1.png')}/>
+  //         <Card.Body>
+  //              <Card.Title><Link to={'/products/'+id}>{name}</Link><Button variant="outline-dark">
+                      
+  //                 </Button>
+  //             </Card.Title>
+
+  //         </Card.Body>
+  //     </Card>
+  // </div>
 
    
     );
