@@ -12,6 +12,7 @@ class RouteProductDetails extends Component{
     super(props);
     this.state = {
       product:null,
+      currentUser:{},
     }
   }
   routeGetProduct = (id) => {
@@ -40,6 +41,14 @@ class RouteProductDetails extends Component{
       this.reviewForm.reset()
       this.routeGetProduct(productId)
     })
+    var userID = localStorage.getItem('userID')
+    
+    api.getUser(userID).then(res =>{
+      var currentUser = res.data
+      this.setState({currentUser})
+      
+  })
+  
   }
 
   handlePurchase = (e) => {
@@ -55,6 +64,7 @@ class RouteProductDetails extends Component{
     // this.props.openModal()
   }
 
+  
   render(){
     var {product,currentUser} = this.state;
 
@@ -82,7 +92,7 @@ class RouteProductDetails extends Component{
               currentUser:currentUser,
               refreshData: () => this.routeGetProduct(product.id)
             }
-            return <Review {...reviewProps} />
+            return <Review {...reviewProps} currentUser={this.props.currentUser}/>
           })
         }
       {/* </div>  */}
