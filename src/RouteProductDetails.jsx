@@ -72,7 +72,7 @@ class RouteProductDetails extends Component{
       purchaser_id:user_id,
     }
     var {id} = this.props;
-    api.updateProducts(id,data).then(res=>navigate("/"))
+    api.updateProducts(id,data).then(res=>navigate("/thank-you"))
     // this.props.openModal()
   }
 

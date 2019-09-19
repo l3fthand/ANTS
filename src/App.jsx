@@ -12,6 +12,7 @@ import PurchaseProductDetail from './PurchaseProductDetail';
 import RouteProductDetails from './RouteProductDetails';
 import PurchaseProductListings from './PurchaseProductListings';
 import RouteCat from './RouteCategory';
+import ThankYou from './RouteThankYou';
 import {
   Accordion,
   Card,
@@ -189,6 +190,7 @@ componentDidMount=()=>
             <RouteProductDetails path="/products/:id"/>
             <PurchaseProductListings path="/purchases"/>
             <UserProfile path="/user-profile"/>
+            <ThankYou path="/thank-you"/>
           </Router>
  
           </div>
