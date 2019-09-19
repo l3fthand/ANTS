@@ -186,7 +186,7 @@ componentDidMount=()=>
             <Products path="/products"/>
             <AddProduct path="/products/new"/>
             <EditProduct path="/products/:id/edit"/>
-            <RouteProductDetails path="/products/:id"/>
+            <RouteProductDetails currentUser={this.state.currentUser} path="/products/:id"/>
            
             {this.state.currentUser ?  <PurchaseProductListings path="/purchases" currentUser={this.state.currentUser}/> :null}
             <UserProfile path="/user-profile"/>

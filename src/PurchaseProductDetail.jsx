@@ -26,33 +26,6 @@ class PurchaseProductDetail extends Component {
       
 
       <div className="Item userItem">
-      {/* <Card
-          style={{
-              width: '18rem'
-          }}>
-          <Card.Img variant="top" src={server+photo}/>
-          <Card.Body>
-              <Card.Title><Link to={'/products/'+id}>{name}</Link><Button variant="outline-dark">
-                      <i className="far fa-heart"></i>
-                  </Button>
-              </Card.Title>
-              <Card.Text></Card.Text>
-
-              <ListGroup variant="flush">
-                  <ListGroup.Item>
-                      <span className="itemDescription">{description}</span>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                      <span className="itemPrice">{price}</span>
-                  </ListGroup.Item>
-                  
-                  <ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'}>Edit Listing</Link></ListGroup.Item>
-                  <ListGroup.Item onClick={this.deleteProduct} className="delete linkColor">Remove Listing</ListGroup.Item>
-
-              </ListGroup>
-
-          </Card.Body>
-      </Card> */}
       <ul className="list-unstyled">
         <Media as="li" className="line">
             <img

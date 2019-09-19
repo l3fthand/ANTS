@@ -31,7 +31,6 @@ class PurchaseProductListings extends Component{
   
 }
   render(){
-    console.log("productlisting"+this.state.currentUser)
     var products = this.state.currentUser.purchases;
     
     return products ? (
