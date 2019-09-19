@@ -15,7 +15,7 @@ import {
 import {api, server} from './API';
 import Modal from 'react-awesome-modal';
 import Login from './Login';
-import CreditCardInput from 'react-credit-card-input';
+
 import './App.css';
 
 class RouteProductDetails extends Component {
@@ -174,13 +174,6 @@ class RouteProductDetails extends Component {
                         </a>
                     </Row>
 
-                    {/* <CreditCardInput
-              cardNumberInputProps={{ value: cardNumber, onChange: this.handleCardNumberChange }}
-              cardExpiryInputProps={{ value: expiry, onChange: this.handleCardExpiryChange }}
-              cardCVCInputProps={{ value: cvc, onChange: this.handleCardCVCChange }}
-              fieldClassName="input"
-            /> */
-                    }
 
                     <Form
                         className="purchaseForm"
