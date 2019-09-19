@@ -28,6 +28,7 @@ class Login extends Component {
         username: form.get("userName-input"),
         password: form.get("password-input"),
         email: form.get("email-input"),
+        photo:'default.png',
 
     }
     api.addUser(data).then(res => {
@@ -40,7 +41,7 @@ class Login extends Component {
 
         api.authenticate(data).then(res =>{
 
-            console.log(res.data)
+            
             this.props.updateCurrentUser(res.data)
             localStorage.setItem('userID',user.id)
             this.props.closeModal()
