@@ -215,7 +215,7 @@ componentDidMount=()=>
           <Router>
             <ProductListings path="/home"/>
             <Products path="/products"/>
-            <AddProduct path="/products/new"/>
+            <AddProduct path="/products/new" user={this.currentUser}/>
             <EditProduct path="/products/:id/edit"/>
             <RouteProductDetails path="/products/:id"/>
             <PurchaseProductListings path="/purchases"/>

@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-// var url = 'http://10.2.24.12:4001/api';
-// var server = 'http://10.2.24.12:4001/home/';
+var url = 'http://10.2.24.48:4001/api';
+var server = 'http://10.2.24.48:4001/';
 
-var url = 'http://localhost:4001/api';
-var server = 'http://localhost:4001/';
+// var url = 'http://localhost:4001/api';
+// var server = 'http://localhost:4001/';
 
 
 var api = {
@@ -15,7 +15,7 @@ var api = {
     },
     
     updateProduct : (id,data) => {
-        return axios.get(url+'/products/'+id,data)
+        return axios.put(url+'/products/'+id,data)
     },
     
     deleteProduct : (id) => {
