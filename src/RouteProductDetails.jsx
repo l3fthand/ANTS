@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 // import {Link, navigate} from '@reach/router';
 import Review from './Review';
-import {Link} from '@reach/router';
+import {Link,navigate} from '@reach/router';
 import {Form,Button,ToggleButtonGroup,ToggleButton,Card,ListGroup} from 'react-bootstrap';
 import {api, server} from './API';
 import Modal from 'react-awesome-modal';
 import Login from './Login';
-
 import './App.css';
 
 class RouteProductDetails extends Component{
@@ -73,7 +72,7 @@ class RouteProductDetails extends Component{
       purchaser_id:user_id,
     }
     var {id} = this.props;
-    api.updateProducts(id,data)
+    api.updateProducts(id,data).then(res=>navigate("/"))
     // this.props.openModal()
   }
 
@@ -145,7 +144,7 @@ class RouteProductDetails extends Component{
                     {
                                 user_id ? (
                                 <>
-                                <Form className="purchaseForm" onSubmit={this.handlePurchase} ref={(el) => {this.form = el}} ><Link type="submit" className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Link></Form>
+                                <Form className="purchaseForm" onSubmit={this.handlePurchase} ref={(el) => {this.form = el}} ><Button type="submit" className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button></Form>
                                 </>
                                 ) : <><Button onClick={() => this.openModal()} className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button></>
                     }
