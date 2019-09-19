@@ -145,7 +145,7 @@ class RouteProductDetails extends Component{
                     {
                                 user_id ? (
                                 <>
-                                <Form className="purchaseForm" onSubmit={this.handlePurchase} ref={(el) => {this.form = el}} ><Button type="submit" className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button></Form>
+                                <Form className="purchaseForm" onSubmit={this.handlePurchase} ref={(el) => {this.form = el}} ><Link type="submit" className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Link></Form>
                                 </>
                                 ) : <><Button onClick={() => this.openModal()} className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button></>
                     }
