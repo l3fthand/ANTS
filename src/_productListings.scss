@@ -154,9 +154,12 @@
         border-top:solid thin $color-4;
     }
     .col:nth-last-child(2) {
-        border-bottom:solid thin $color-4;
+        border-bottom:none;
     }
     .col:nth-child(-n+2) {
         border-top:solid thin $color-1;
+    }
+    .col:nth-last-child(1){
+        border-bottom:none;
     }
 }

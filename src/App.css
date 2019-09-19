@@ -475,11 +475,15 @@ a {
 }
 
 .productsListing .col:nth-last-child(2) {
-  border-bottom: solid thin #495158;
+  border-bottom: none;
 }
 
 .productsListing .col:nth-child(-n+2) {
   border-top: solid thin #f2f2f2;
+}
+
+.productsListing .col:nth-last-child(1) {
+  border-bottom: none;
 }
 
 .productForm {
