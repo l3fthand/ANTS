@@ -15,7 +15,7 @@ var api = {
     },
     
     updateProduct : (id,data) => {
-        return axios.get(url+'/products/'+id,data)
+        return axios.put(url+'/products/'+id,data)
     },
 
     updateProducts : (id,data) => {
@@ -58,8 +58,12 @@ var api = {
        return axios.post(url+'/users/',data)
     },
 
+    updateUser: (id,data) => {
+        return axios.put(url+'/users/'+id,data)
+     },
+
     addReview : (data) => {
-        return axios.post(url+'/reviews',data)
+        return axios.get(url+'/reviews',data)
     },
     
     // updateReview : (id,data) => {

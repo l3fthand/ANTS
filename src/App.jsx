@@ -7,11 +7,13 @@ import AddProduct from './AddProduct';
 import EditProduct from './EditProduct';
 import Login from './Login';
 import UserProfile from './UserProfile';
+import UserProducts from './UserProducts';
 import Product from './Product';
 import PurchaseProductDetail from './PurchaseProductDetail';
 import RouteProductDetails from './RouteProductDetails';
 import PurchaseProductListings from './PurchaseProductListings';
 import RouteCat from './RouteCategory';
+import RouteThanks from './RouteThanks';
 import {
   Accordion,
   Card,
@@ -31,7 +33,7 @@ import './App.css';
 import Modal from 'react-awesome-modal';
 import 'react-multi-carousel/lib/styles.css';
 import './App.scss';
-import {api} from './API';
+import {api,server} from './API';
 
 
 class App extends Component{
@@ -59,6 +61,9 @@ handleLogOut=()=>{
 updateCurrentUser=(user)=>{
     this.setState({currentUser:user})
 }
+
+
+
 componentDidMount=()=>
 {
     api.getCategories().then(res => this.setState({categories:res.data}))
@@ -70,6 +75,7 @@ componentDidMount=()=>
     }
 
 }
+
   render(){
     var {categories} = this.state;
     return(
@@ -121,12 +127,9 @@ componentDidMount=()=>
                        </InputGroup>
 
                        {
-                           this.state.currentUser ? <> <input
-                            className="loginButton"
-                            type="button"
-                            value="Logout"
-                            onClick={this.handleLogOut}/>
-                        </>:
+                           
+                           this.state.currentUser ?  null
+                        :
                        <><input
                             className="loginButton"
                             type="button"
@@ -140,7 +143,9 @@ componentDidMount=()=>
                           this.state.currentUser ? (
                           <>
                           
-                          <Navbar.Toggle className="userControl" aria-controls="responsive-navbar-nav"/>
+                          <Navbar.Toggle className="userControl" aria-controls="responsive-navbar-nav"> 
+                          <Image className="navbar-default"src={server+this.state.currentUser.photo} thumbnail={true} />
+                          </Navbar.Toggle>
 
                           <Navbar.Collapse id="responsive-navbar-nav">
                               <Nav className="mr-auto">
@@ -150,6 +155,11 @@ componentDidMount=()=>
                               <Nav.Link href="#watchlist">Watch List</Nav.Link>
                               <Nav.Link href="/my-reviews">My Reviews</Nav.Link>
                               <Nav.Link href="/purchases">Purchase Products</Nav.Link>
+                              <input
+                            className="loginButton"
+                            type="button"
+                            value="Logout"
+                            onClick={this.handleLogOut}/>
                               </Nav>
                           </Navbar.Collapse>
                           </>
@@ -183,12 +193,14 @@ componentDidMount=()=>
           <Router>
             <ProductListings path="/"/>
             <RouteCat path="/categories/:id"/>
-            <Products path="/products"/>
-            <AddProduct path="/products/new"/>
-            <EditProduct path="/products/:id/edit"/>
+            { this.state.currentUser ?<UserProducts path="/products" user={this.state.currentUser}/> : null}
+            { this.state.currentUser ?<AddProduct path="/products/new"user={this.state.currentUser}/> : null}
+            { this.state.currentUser ?<EditProduct path="/products/:id/edit"/> : null}
             <RouteProductDetails path="/products/:id"/>
             <PurchaseProductListings path="/purchases"/>
-            <UserProfile path="/user-profile"/>
+            <RouteThanks path="/thanks"/>
+            { this.state.currentUser ? <PurchaseProductListings path="/purchases" user={this.state.currentUser} /> : null}
+            { this.state.currentUser ? <UserProfile path="/user-profile" user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}
           </Router>
  
           </div>
