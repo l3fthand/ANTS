@@ -30,11 +30,11 @@ class Product extends Component{
           style={{
               width: '18rem'
           }}>
-          {/* <Carousel interval={null}> */}
+          <Carousel interval={null}>
             {
               photos.map(photo=><Card.Img variant="top" src={server+photo}/>)
             }
-          {/* </Carousel> */}
+          </Carousel>
 
           {/* <Card.Img variant="top" src={server+photo}/> */}
 
