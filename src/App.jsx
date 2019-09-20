@@ -25,9 +25,7 @@ import {
   Col,
   Image,
   FormControl,
-  InputGroup,
-  Tabs,
-  Tab,
+  InputGroup
 } from 'react-bootstrap';
 import './App.css';
 import Modal from 'react-awesome-modal';
@@ -41,8 +39,8 @@ class App extends Component{
   super(props)
     this.state = {
       visible: false,
-      categories:[],
       currentUser:null,
+      categories: [],
     }
   }
 
@@ -66,7 +64,6 @@ updateCurrentUser=(user)=>{
 
 componentDidMount=()=>
 {
-    api.getCategories().then(res => this.setState({categories:res.data}))
 
     var userLocal = localStorage.getItem('userID')
     
@@ -74,10 +71,12 @@ componentDidMount=()=>
         api.getUser(userLocal).then(res=>this.setState({currentUser:res.data}))
     }
 
+    api.getCategories().then(res => this.setState({categories:res.data}))
+
 }
 
   render(){
-    var {categories} = this.state;
+      var {categories} = this.state;
     return(
 
 
@@ -149,7 +148,7 @@ componentDidMount=()=>
 
                           <Navbar.Collapse id="responsive-navbar-nav">
                               <Nav className="mr-auto">
-                              <Nav.Link href="/products/new">+ Sell an Item</Nav.Link>
+                                  <Nav.Link href="/products/new">+ Sell an Item</Nav.Link>
                               <Nav.Link href="/user-profile">User Profile</Nav.Link>
                               <Nav.Link href="/products">My Products</Nav.Link>
                               <Nav.Link href="#watchlist">Watch List</Nav.Link>
@@ -201,6 +200,7 @@ componentDidMount=()=>
             <RouteThanks path="/thanks"/>
             { this.state.currentUser ? <PurchaseProductListings path="/purchases" user={this.state.currentUser} /> : null}
             { this.state.currentUser ? <UserProfile path="/user-profile" user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}
+            <Products path="/products"/>
           </Router>
  
           </div>

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-var url = 'http://10.2.24.48:4001/api';
-var server = 'http://10.2.48.12:4001/';
+var url = 'http://10.2.24.18:4001/api';
+var server = 'http://10.2.24.18:4001/';
 
 // var url = 'http://localhost:4001/api';
 // var server = 'http://localhost:4001/';
@@ -45,6 +45,10 @@ var api = {
     
     uploadPhoto : (data) => {
         return axios.post(url+'/upload',data)
+    },
+
+    uploadPhotos : (data) => {
+        return axios.post(url+'/uploads',data)
     },
 
     authenticate : (data) => {
