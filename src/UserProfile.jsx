@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Products from './Products';
 import PurchaseProductListings from './PurchaseProductListings';
+import SellerReviewProducts from './SellerReviewProducts';
 import {
     Tabs,
     Tab,
@@ -27,7 +28,7 @@ class UserProfile extends Component {
                     <Products/>
                 </Tab>
                 <Tab eventKey="Reviews" title="Reviews">
-                    {/* <Sonnet /> */}
+                    <SellerReviewProducts/>
                 </Tab>
                 <Tab eventKey="Purchases" title="Purchases" >
                     {/* <Sonnet /> */}

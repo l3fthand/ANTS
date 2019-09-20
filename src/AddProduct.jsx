@@ -15,7 +15,12 @@ import './App.css';
 
 class AddProduct extends Component{
   constructor(props){
-    super(props)
+		super(props)
+		{
+			this.state={
+				
+			}
+		}
 	}
 
 	
@@ -38,7 +43,7 @@ class AddProduct extends Component{
 				price: form.get('price-input'),
 				cat_name: form.get('cat-input'),
 				photo: file,
-
+				seller_id:this.prop.currentuser,
 			}
 
 			api.addProduct(data).then(navigate('/products'));

@@ -183,8 +183,8 @@ componentDidMount=()=>
           <Router>
             <ProductListings path="/"/>
             <RouteCat path="/categories/:id"/>
-            <Products path="/products"/>
-            <AddProduct path="/products/new"/>
+            <Products path="/products" />
+            <AddProduct path="/products/new" currentUser={this.state.currentUser}/>
             <EditProduct path="/products/:id/edit"/>
             <RouteProductDetails currentUser={this.state.currentUser} path="/products/:id"/>
            
