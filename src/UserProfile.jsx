@@ -45,7 +45,7 @@ handlePhotoSubmit=(e)=>{
         return(
             <Container>
                 <Row>
-                    <Col xs={1} md={1} className="user-photo">
+                    <Col xs={3} md={1} className="user-photo">
                     <Image src={server+this.state.fileName} roundedCircle thumbnail={true} />
                     <Form className = "userProfile" onSubmit={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
                     <Form.Group controlId="formPhoto">

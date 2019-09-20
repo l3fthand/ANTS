@@ -77,7 +77,7 @@ class AddProduct extends Component{
 				</Form.Group>
 
 				<Form.Group controlId="formBasicPhoto">
-					<Form.Control type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo"/>
+					<Form.Control type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo" multiple/>
 				</Form.Group>
 
 				<Button variant="primary" type="submit">
