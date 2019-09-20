@@ -38,6 +38,7 @@ class AddProduct extends Component{
 				price: form.get('price-input'),
 				cat_name: form.get('cat-input'),
 				photo: file,
+				seller_id: this.props.user.id
 
 			}
 
@@ -76,7 +77,7 @@ class AddProduct extends Component{
 				</Form.Group>
 
 				<Form.Group controlId="formBasicPhoto">
-					<Form.Control type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo"/>
+					<Form.Control type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo" multiple/>
 				</Form.Group>
 
 				<Button variant="primary" type="submit">
