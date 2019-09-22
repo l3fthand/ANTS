@@ -196,7 +196,7 @@ class ProductListings extends Component {
                             <Container>
                                 <h1>Our Store</h1>
                                 <p>
-                                    We stock a huge range of new & second trade in's. We check the listing matches
+                                    We stock a huge range of new & second hand trade in's. We check the listing matches
                                     the product for quality assurance.
                                 </p>
                             </Container>
