@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-// import {Link, navigate} from '@reach/router';
-import Review from './Review';
 import {Link, navigate} from '@reach/router';
 import {
     Form,
@@ -22,10 +20,10 @@ class RouteProductDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            product: null,
             currentUser: {},
             mLogin: false,
-            mCreditCard: false
+            mCreditCard: false,
+            product:{},
         }
     }
 
@@ -46,60 +44,20 @@ class RouteProductDetails extends Component {
     }
 
     routeGetProduct = (id) => {
-        api
-            .getProduct(id)
-            .then(res => this.setState({product: res.data}))
+        api.getProduct(id).then(res => this.setState({product:res.data}))
     }
-
-    componentDidMount() {
-        var {
-            id
-        } = this.props
+    
+    componentDidMount(){
+        var {id} = this.props;
         //console.log(id);
-        this.routeGetProduct(id)
-    }
-    handleReviewFormSubmit = (e) => {
-        e.preventDefault();
-
-        var formData = new FormData(this.reviewForm);
-
-        var productId = this.props.id;
-
-        var data = {
-            comment: formData.get('comment-input'),
-            rating: formData.get('rating-input'),
-            prod_id: productId,
-            // user_id: this.props.currentUser.id
-        }
-        api
-            .addReview(data)
-            .then(res => {
-                this
-                    .reviewForm
-                    .reset()
-                this.routeGetProduct(productId)
-            })
-        var userID = localStorage.getItem('userID')
-
-        api
-            .getUser(userID)
-            .then(res => {
-                var currentUser = res
-                    .data
-                    this
-                    .setState({currentUser})
-
-            })
-
+        this.routeGetProduct(id);
     }
 
     handlePurchase = (e) => {
         e.preventDefault();
-
-        var user_id = localStorage.getItem('userID')
-
+        var user = this.state.user;
         var data = {
-            purchaser_id: user_id
+            purchaser_id: user
         }
         var {
             id
@@ -107,49 +65,35 @@ class RouteProductDetails extends Component {
         api
             .updateProducts(id, data)
             .then(res => navigate("/thanks"))
-        // this.props.openModal()
     }
 
     render() {
-        var {
-            product,
-            currentUser
-        } = this.state;
-        var user_id = localStorage.getItem('userID')
+        var {name,description,price,photo} = this.state.product
+        var user = this.state.currentUser;
 
-        return product
-            ? (
-                <> {/* <div className="product">
-        <h2 className="name text">{product.name}</h2>
-        <p className="description text">{product.description}</p>
-        <p className="price text">{product.price}</p>
-        <img className="photo" src={server+product.photo}/>
-        <div className="buttons">
-          <button className="edit">Edit</button>
-          <button className="delete">Delete</button>
 
-        </div> */
-                } {
-                    product
-                        .reviews
-                        .map(review => {
-                            var reviewProps = {
-                                review: review,
-                                currentUser: currentUser,
-                                refreshData: () => this.routeGetProduct(product.id)
+        return ( 
+            <>
+            <div className="Item">
+                <Card>
+                    <Card.Body>
+                        <Card.Title>{name}</Card.Title>
+                        <Card.Img variant="top" src={server + photo}/>
+                        <Card.Text>{description}</Card.Text>
+                        <Card.Text className="productPrice">${price}
+                            {
+                                user ? ( <Form className="purchaseForm" onSubmit={() => this.openCreditModal()} ref={(el) => {this.form = el}} >
+                                        < Button onClick = {() => this.openCreditModal()}className = "purchaseButton" name = "purchase" variant = "outline-dark" > Purchase</Button></Form>
+                                ) : <Button onClick={() => this.openLoginModal()} className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button>
                             }
-                            return <Review {...reviewProps} currentUser={this.props.currentUser}/>
-                        })
-                } {/* </div>  */
-                } < Modal visible = {
-                    this.state.mLogin
-                }
-                width = "95%" height = "80%" effect = "fadeInUp" onClickAway = {
-                    () => this.closeLoginModal()
-                } > <div className="loginModal">
-
+                        </Card.Text>
+                    </Card.Body>
+                </Card>
+            </div>
+            <Modal className="modalStyle" visible = {this.state.mLogin}width = "95%" height = "80%" effect = "fadeInUp" onClickAway = {() => this.closeLoginModal()}> 
+            <div className="loginModal">
                     <span>
-                        <h6>Login or Register to buy & sell</h6>
+                        <h6>Login / Register to Buy & Sell</h6>
                         <a href="javascript:void(0);" onClick={() => this.closeLoginModal()}>
                             <i className="far fa-window-close"></i>
                         </a>
@@ -161,6 +105,7 @@ class RouteProductDetails extends Component {
                 </div>
             </Modal>
             <Modal
+                className="modalStyle"
                 visible={this.state.mCreditCard}
                 width="95%"
                 height="80%"
@@ -173,8 +118,6 @@ class RouteProductDetails extends Component {
                             <i className="far fa-window-close"></i>
                         </a>
                     </Row>
-
-
                     <Form
                         className="purchaseForm"
                         onSubmit={this.handlePurchase}
@@ -222,96 +165,11 @@ class RouteProductDetails extends Component {
                             name="purchase"
                             variant="outline-dark">Purchase</Button>
                     </Form>
-
                 </Container>
             </Modal>
-
-            <div className="Item">
-                <Card style={{
-                        width: '18rem'
-                    }}>
-
-                    <Card.Body>
-                        <Card.Title>{product.name}
-                        </Card.Title>
-                        <Card.Img variant="top" src={server + product.photo}/>
-                        <Card.Text>{product.description}</Card.Text>
-                        <Card.Text className="productPrice">${product.price}
-                            {
-                                user_id
-                                    ? (<> {/*  <Form className="purchaseForm" onSubmit={() => this.openCreditModal()} ref={
- *  (el) => {this.form = el}} >
-
- */
-                                    } < Button onClick = {
-                                        () => this.openCreditModal()
-                                    }
-                                    className = "purchaseButton" name = "purchase" variant = "outline-dark" > Purchase</Button> {/* </Form> */
-                                    } < />
-                                ) : <><Button onClick={() => this.openLoginModal()} className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button > </>}
-                        </Card.Text>
-
-                        {/* <ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'}>Edit Listing</Link></ListGroup.Item>
-                <ListGroup.Item onClick={this.deleteProduct} className="delete linkColor">Remove Listing</ListGroup.Item> */
-                        }
-
-                    </Card.Body>
-                </Card>
-            </div>
-
-            <Form
-                className="reviewForm addReview"
-                onSubmit={this.handleReviewFormSubmit}
-                ref={(el) => {
-                    this.reviewForm = el
-                }}>
-                <h3>Add a Review</h3>
-                    {/* <Form.Group controlId="formGridDescription">
-			<Form.Control type="text" placeholder="Description"/>
-		</Form.Group> */
-                } < Form.Group controlId = "formGridComment" > <Form.Label>Comment:</Form.Label>
-                <Form.Control
-                    type="text"
-                    className="form-control"
-                    name="comment-input"
-                    id="comment-input"
-                    placeholder="Enter Comment"/>
-            </Form.Group>
-
-            <Form.Group controlId="formGridRating">
-                <Form.Label>Rating:</Form.Label>
-                <ToggleButtonGroup
-                    type="radio"
-                    required="true"
-                    className="form-control"
-                    name="rating-input"
-                    id="rating-input">
-                    <ToggleButton value={1}>★</ToggleButton>
-                    <ToggleButton value={2}>★★</ToggleButton>
-                    <ToggleButton value={3}>★★★</ToggleButton>
-                    <ToggleButton value={4}>★★★★</ToggleButton>
-                    <ToggleButton value={5}>★★★★★</ToggleButton>
-                </ToggleButtonGroup>
-            </Form.Group>
-
-            <Button variant="primary" type="submit">Add Review < /Button>
-	</Form > </>
-            )
-            : null;
-
-        // <div className="card review">    <div className="card-body">      <h3>Add a
-        // review</h3>      <form onSubmit={this.handleReviewFormSubmit} ref={(el) =>
-        // {this.reviewForm = el}}>        <div className="form-group">          <label
-        // htmlFor="comment-input">Comment</label>          <input type="text"
-        // className="form-control" name="comment-input" id="comment-input"
-        // placeholder="Enter comment"/>        </div>        <div
-        // className="form-group">          <label htmlFor="rating-input">Rating</label>
-        // <input type="number" className="form-control" name="rating-input"
-        // id="rating-input" placeholder="Enter rating"/>        </div>        <button
-        // type="submit" className="btn btn-primary">Add Review</button>      </form>
-        // </div>  </div> </>) : null;
-
+            </>
+     )
     }
-}
+  }
 
 export default RouteProductDetails;

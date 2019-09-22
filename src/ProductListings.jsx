@@ -1,13 +1,11 @@
 import React, {Component} from 'react';
 import Item from './Item';
-import RouteProductDetails from './RouteProductDetails';
 import {Router, Link, navigate} from '@reach/router';
 import {api} from './API';
 import Carousel from 'react-multi-carousel';
 import {
     Col,
     Card,
-    Button,
     Image,
     Row,
     Jumbotron,

@@ -51,13 +51,15 @@
 }
 
 .browseNav {
-    padding: 0 2em;
+    padding: 0 1.5em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     .browseNavButton {
-        padding: 0.5em;
+        padding: 0.4em;
         text-transform: capitalize;
+        transition: ease all .7s;
+        font-size:.9em;
     }
     a:hover {
         color: $color-5;
@@ -93,6 +95,7 @@
                 padding-top: 1em;
                 margin: 0;
                 font-size: 1em;
+                
             }
         }
     }
