@@ -2,29 +2,51 @@ import React, {Component} from 'react';
 import RouteProductDetails from './RouteProductDetails';
 import {Link, navigate} from '@reach/router';
 import {api, server} from './API';
-import {Card, Carousel, Button, ListGroup} from 'react-bootstrap';
+import {Card, Container, Carousel, Button, ListGroup} from 'react-bootstrap';
+import Modal from 'react-awesome-modal';
+import { MdClose } from "react-icons/md";
+
+
+
 
 import './App.css';
 
 class Product extends Component{
   constructor(props){
     super(props);
+    this.state = {
+      visible: false,
+    }
   }
-  // routeGetProduct = (id) => {
-  //   api.getProduct(id).then(res => this.setState({product:res.data}))
-  // }
+  
+  openModal = () => {
+    this.setState({visible: true});
+  }
+
+  closeModal = () => {
+    this.setState({visible: false});
+  }
+
   deleteProduct = () => {
     var {id, refreshData} = this.props;
     api.deleteProduct(id).then(() => refreshData())
   }
 
+  deletePhoto = (data) => {
+    var {photos} = this.props;
+    // photos[0]
+    console.log(photos)
+    for(var i=0; i.photos.length; i++){
+      
+    }
+  }
 
   render(){
     var {name, description, price, id, photos} = this.props;
 
     return(
       
-
+      <>
       <div className="Item userItem">
       <Card
           style={{
@@ -32,7 +54,7 @@ class Product extends Component{
           }}>
           <Carousel interval={null}>
             {
-              photos.map(photo=><Card.Img variant="top" src={server+photo}/>)
+              photos.map(photo=><Card.Img variant="top" src={server+photo} onClick={this.deletePhoto}/>)
             }
           </Carousel>
 
@@ -45,6 +67,7 @@ class Product extends Component{
               </Card.Title>
               <Card.Text></Card.Text>
 
+
               <ListGroup variant="flush">
                   <ListGroup.Item>
                       <span className="itemDescription">{description}</span>
@@ -54,13 +77,36 @@ class Product extends Component{
                   </ListGroup.Item>
                   
                   <ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'}>Edit Listing</Link></ListGroup.Item>
-                  <ListGroup.Item onClick={this.deleteProduct} className="delete linkColor">Remove Listing</ListGroup.Item>
+                  <ListGroup.Item onClick={this.openModal} className="delete linkColor">Remove Listing</ListGroup.Item>
 
               </ListGroup>
 
           </Card.Body>
       </Card>
     </div>
+
+    <Container className="modalStyle">
+      <Modal
+          visible={this.state.visible}
+          width="90%"
+          height="50%"
+          effect="fadeInUp"
+          onClickAway={() => this.closeModal()}>
+          <div className="deleteModal">
+              <span>
+                  <a href="javascript:void(0);" onClick={() => this.closeModal()}>
+                  <MdClose/>
+                  </a>
+              </span>
+              <h3>Are You Sure You Want To Delete This Product</h3>
+              <div class="buttons">
+                <Button variant="primary" onClick={() => this.closeModal()}>Cancel</Button>
+                <Button variant="primary" onClick={() => this.deleteProduct()}>Delete</Button>
+              </div>
+          </div>
+      </Modal>
+    </Container>
+    </>
     );
   }
 }

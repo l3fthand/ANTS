@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {Router, Link, navigate} from '@reach/router';
-import {api} from './API';
+import {api, server} from './API';
 
 import {
 	Col,
+	Card,
 	Button,
 	Form,
 	ToggleButton,
@@ -37,34 +38,36 @@ class EditProduct extends Component{
 
 		e.preventDefault();
 
-		// var {} = this.props;
+		var {photos} = this.state.product;
 
 		var form = new FormData(this.form);
 
-		// api.uploadPhoto(form).then(res => {
-			// var file = res.data;
-			// console.log(file);
+		api.uploadPhotos(form).then(res => {
+			var files = res.data;
+			console.log(files);
 
 			var data = {
 				name: form.get('name-input'),
 				description: form.get('description-input'),
 				price: form.get('price-input'),
-				// photo: file,
+				photos: [...photos,...files],
 			}
 
 			var {id} = this.props;
 			api.updateProduct(id, data).then(navigate('/products'));
 
 			console.log(data);
-		// });
+		});
 	}
 
 
   render(){
 
-		var {name,description,price} = this.state.product;
+	var {name,description,price, photos} = this.state.product;
+	// var {photos} = this.props;
 
     return(
+		
 	  
 		
 		<Form className="productForm" onSubmit={this.submitForm} ref={(el) => {this.form = el}}>
@@ -85,23 +88,16 @@ class EditProduct extends Component{
             <Form.Control type="text" className="form-control" name="description-input" id="description-input" defaultValue={description}/>
         </Form.Group>
         <Form.Group controlId="formGridFile">
-            <Form.Control type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo"/>
+            <Form.Control type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo" multiple/>
         </Form.Group>
-
-        <Form.Group controlId="formGridCondition">
-        <ToggleButtonGroup type="radio" name="options" required="true">
-            <ToggleButton value={1}>Average</ToggleButton>
-            <ToggleButton value={2}>Good</ToggleButton>
-            <ToggleButton value={3}>Very Good</ToggleButton>
-            <ToggleButton value={4}>Unboxed</ToggleButton>
-            
-            </ToggleButtonGroup>
+		<Form.Group controlId="formGridFile">
+			<img src={server+photos}></img>
         </Form.Group>
-
         <Button variant="primary" type="submit">
             Update Product
         </Button>
     </Form>
+
 
 
     //   <div className="add-product">

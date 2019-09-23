@@ -51,6 +51,10 @@ var api = {
         return axios.post(url+'/uploads',data)
     },
 
+    // getPhotos : (data) => {
+    //     return axios.get(url+'/uploads',data)
+    // },
+
     authenticate : (data) => {
         return axios.post(url+'/authenticate',data)
     },
