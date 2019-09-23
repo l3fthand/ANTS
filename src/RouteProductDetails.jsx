@@ -55,9 +55,11 @@ class RouteProductDetails extends Component {
 
     handlePurchase = (e) => {
         e.preventDefault();
-        var user = this.state.user;
+
+        var user_id = localStorage.getItem('userID')
+    
         var data = {
-            purchaser_id: user
+          purchaser_id:user_id,
         }
         var {
             id
