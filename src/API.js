@@ -51,6 +51,10 @@ var api = {
         return axios.post(url+'/uploads',data)
     },
 
+    deletePhoto : (data) => {
+        return axios.delete(url+'/products/'+id,data)
+    },
+
     // getPhotos : (data) => {
     //     return axios.get(url+'/uploads',data)
     // },

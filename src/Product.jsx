@@ -32,13 +32,12 @@ class Product extends Component{
     api.deleteProduct(id).then(() => refreshData())
   }
 
-  deletePhoto = (data) => {
-    var {photos} = this.props;
-    // photos[0]
-    console.log(photos)
-    for(var i=0; i.photos.length; i++){
-      
-    }
+  deletePhoto = (e) => {
+    var name = e.target.dataset.name;
+    // var {refreshData} = this.props;
+    console.log(name)
+    api.deletePhoto(name)
+    
   }
 
   render(){
@@ -54,7 +53,7 @@ class Product extends Component{
           }}>
           <Carousel interval={null}>
             {
-              photos.map(photo=><Card.Img variant="top" src={server+photo} onClick={this.deletePhoto}/>)
+              photos.map(photo=><Card.Img variant="top" src={server+photo} data-name={photo} onClick={this.deletePhoto}/>)
             }
           </Carousel>
 
