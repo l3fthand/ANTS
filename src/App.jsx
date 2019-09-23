@@ -30,7 +30,7 @@ import {
 import './App.css';
 import Modal from 'react-awesome-modal';
 import 'react-multi-carousel/lib/styles.css';
-import './App.scss';
+// import './App.scss';
 import {api,server} from './API';
 
 
@@ -196,7 +196,7 @@ componentDidMount=()=>
             { this.state.currentUser ?<AddProduct path="/products/new"user={this.state.currentUser}/> : null}
             { this.state.currentUser ?<EditProduct path="/products/:id/edit"/> : null}
             <RouteProductDetails path="/products/:id"/>
-            <PurchaseProductListings path="/purchases"/>
+           
             <RouteThanks path="/thanks"/>
             { this.state.currentUser ? <PurchaseProductListings path="/purchases" user={this.state.currentUser} /> : null}
             { this.state.currentUser ? <UserProfile path="/user-profile" user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}

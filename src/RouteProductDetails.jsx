@@ -129,18 +129,18 @@ class RouteProductDetails extends Component {
           <button className="delete">Delete</button>
 
         </div> */
-                } {
-                    product
-                        .reviews
-                        .map(review => {
-                            var reviewProps = {
-                                review: review,
-                                currentUser: currentUser,
-                                refreshData: () => this.routeGetProduct(product.id)
-                            }
-                            return <Review {...reviewProps} currentUser={this.props.currentUser}/>
-                        })
-                } {/* </div>  */
+                // } {
+                //     product
+                //         .reviews
+                //         .map(review => {
+                //             var reviewProps = {
+                //                 review: review,
+                //                 currentUser: currentUser,
+                //                 refreshData: () => this.routeGetProduct(product.id)
+                //             }
+                //             return <Review {...reviewProps} currentUser={this.props.currentUser}/>
+                //         })
+                // } {/* </div>  */
                 } < Modal visible = {
                     this.state.mLogin
                 }
