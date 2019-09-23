@@ -12,6 +12,7 @@ import RouteProductDetails from './RouteProductDetails';
 import PurchaseProductListings from './PurchaseProductListings';
 import RouteCat from './RouteCategory';
 import RouteThanks from './RouteThanks';
+import RouteFeaturedProduct from './RouteFeaturedProduct';
 import Footer from './Footer';
 
 import {
@@ -201,6 +202,7 @@ componentDidMount=()=>
             <RouteThanks path="/thanks"/>
             { this.state.currentUser ? <PurchaseProductListings path="/purchases" user={this.state.currentUser} /> : null}
             { this.state.currentUser ? <UserProfile path="/user-profile" user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}
+            <RouteFeaturedProduct path="/featured"/>
             <Products path="/products"/>
           </Router>
  

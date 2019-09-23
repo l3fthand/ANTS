@@ -34,7 +34,7 @@ class Item extends Component{
 
 
   render(){
-    var {name, description, price, photos, id} = this.props;
+    var {name, photos, id} = this.props;
 
     return(
       

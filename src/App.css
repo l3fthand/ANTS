@@ -297,6 +297,48 @@ a {
   border-color: #343a40;
 }
 
+.purchasesItem {
+  width: 100%;
+}
+
+.purchasesItem .media {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.purchasesItem .media .media-body {
+  margin-right: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  max-width: 100%;
+}
+
+.purchasesItem .media .media-body .col {
+  padding: 0;
+  max-width: 50%;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.purchasesItem .media .media-body .col p {
+  margin-bottom: 0;
+}
+
 .modalText {
   padding: 1em;
   text-align: center;
@@ -1023,10 +1065,11 @@ a {
 }
 
 .loginModal .loginForm button {
-  background-color: #3f3f3f;
+  background-color: #f2f2f2;
   border: none;
   color: #A68B3C;
   border-bottom: thin solid #A68B3C;
+  border-radius: 0;
 }
 
 .purchaseForm {
@@ -1055,6 +1098,10 @@ a {
   color: #A68B3C;
   border-bottom: thin solid #A68B3C;
   border-radius: 0;
+}
+
+.purchaseForm .form-group {
+  margin-bottom: 0;
 }
 
 .section {

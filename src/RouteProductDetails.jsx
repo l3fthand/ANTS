@@ -161,12 +161,36 @@ class RouteProductDetails extends Component {
                                  </Col>
                             </Form.Row>
                         </Form.Group>
+                        <Form.Group controlId="formGridAddress1">
+                        <Form.Row>
+                                <Col>
+                                    <Form.Label></Form.Label>
+                                    <Form.Control placeholder="Name on Card"/>
+                                </Col>
+                            </Form.Row>
+                            <Form.Row>
+                                <Col>
+                                    <Form.Label></Form.Label>
+                                    <Form.Control placeholder="Card Number"/>
+                                </Col>
+                            </Form.Row>
+                            <Form.Row>
+                                <Col>
+                                    <Form.Label></Form.Label>
+                                    <Form.Control placeholder="Expiry"/>
+                                </Col>
+                                <Col>
+                                    <Form.Label></Form.Label>
+                                    <Form.Control placeholder="cvv"/>
+                                </Col>
+                            </Form.Row>
+                        </Form.Group>
                         <Button
                             type="submit"
                             className="purchaseButton"
                             name="purchase"
                             variant="outline-dark">Purchase</Button>
-                    </Form>
+                        </Form>
                 </Container>
             </Modal>
             </>

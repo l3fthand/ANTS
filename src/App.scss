@@ -262,11 +262,11 @@ a {
                 border-radius:0;
             }
             button {
-                background-color:  $color-5;
+                background-color:  $color-1;
                 border:none;
                 color:$link-color;
-       
                 border-bottom:thin solid $link-color;
+                border-radius:0;
             }
         }
     }
@@ -288,6 +288,9 @@ a {
             color:$link-color;
             border-bottom:thin solid $link-color;
             border-radius:0;
+        }
+        .form-group {
+            margin-bottom:0;
         }
     }
 

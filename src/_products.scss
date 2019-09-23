@@ -171,6 +171,34 @@
     }
 }
 
+.purchasesItem {
+    width: 100%;
+    .media {
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        align-items:center;
+        .media-body {
+            margin-right:0;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            max-width: 100%;
+            .col {
+                padding:0;
+                max-width: 50%;
+                text-align:left;
+                overflow-wrap: break-word;
+
+                p {
+                    margin-bottom:0;
+                }
+            }
+        }
+    }
+
+}
+
 .modalText {
     h6 {
         padding: 0em;
