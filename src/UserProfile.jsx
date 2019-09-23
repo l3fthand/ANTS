@@ -4,7 +4,7 @@ import UserProducts from './UserProducts';
 import PurchaseProductListings from './PurchaseProductListings';
 import {api, server} from './API';
 import Modal from 'react-awesome-modal';
-import './App.css';
+
 import {
     Tabs,
     Tab,

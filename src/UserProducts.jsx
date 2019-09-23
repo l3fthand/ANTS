@@ -8,8 +8,6 @@ import {
   Button,
 } from 'react-bootstrap';
 
-import './App.css';
-
 
 class UserProducts extends Component{
   constructor(props){

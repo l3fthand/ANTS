@@ -4,8 +4,6 @@ import {Link, navigate} from '@reach/router';
 import {api, server} from './API';
 import {Card, Button, ListGroup,Media,Col} from 'react-bootstrap';
 
-import './App.css';
-
 class PurchaseProductDetail extends Component {
   constructor(props){
     super(props);

@@ -4,8 +4,6 @@ import {Link, navigate} from '@reach/router';
 import {api, server} from './API';
 import {Card, Button,Col, ListGroup} from 'react-bootstrap';
 
-import './App.css';
-
 class Item extends Component{
   constructor(props){
     super(props);
@@ -32,6 +30,10 @@ class Item extends Component{
     this.routeGetProduct(id)
   }
 
+  addDefaultSrc(ev){
+    ev.target.src = '/coming-soon.png'
+  }
+
 
   render(){
     var {name, photos, id} = this.props;
@@ -41,7 +43,7 @@ class Item extends Component{
       this.state.purchaser_id ? null : (
         <Col>
           <Card>
-          <Link to={'/products/'+id}><Card.Img variant="top" src={server+photos}/>
+          <Link to={'/products/'+id}><Card.Img variant="top" src={server+photos} onError={this.addDefaultSrc}/> 
               <Card.Body>
                   <Card.Title><Link to={'/products/'+id}>{name}</Link>
                   </Card.Title>

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {Card, Container} from 'react-bootstrap';
 
-import './App.css';
-
 class RouteFeaturedProduct extends Component{
   constructor(props){
     super(props);

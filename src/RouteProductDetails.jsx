@@ -14,8 +14,6 @@ import {api, server} from './API';
 import Modal from 'react-awesome-modal';
 import Login from './Login';
 
-import './App.css';
-
 class RouteProductDetails extends Component {
     constructor(props) {
         super(props);
@@ -46,6 +44,10 @@ class RouteProductDetails extends Component {
     routeGetProduct = (id) => {
         api.getProduct(id).then(res => this.setState({product:res.data}))
     }
+
+    addDefaultSrc(ev){
+        ev.target.src = '/coming-soon.png'
+      }
     
     componentDidMount(){
         var {id} = this.props;
@@ -80,7 +82,7 @@ class RouteProductDetails extends Component {
                 <Card>
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
-                        <Card.Img variant="top" src={server + photos}/>
+                        <Card.Img variant="top" src={server + photos} onError={this.addDefaultSrc}/>
                         <Card.Text>{description}</Card.Text>
                         <Card.Text className="productPrice">${price}
                             {
@@ -103,7 +105,6 @@ class RouteProductDetails extends Component {
                     <Login
                         closeModal={this.closeLoginModal}
                         updateCurrentUser={this.updateCurrentUser}/>
-
                 </div>
             </Modal>
             <Modal

@@ -16,16 +16,17 @@ import RouteFeaturedProduct from './RouteFeaturedProduct';
 import Footer from './Footer';
 
 import {
-  Accordion,Nav,Navbar,Container,Card,Image,Row
+  Accordion,Nav,Navbar,Container,Card,Image,Row,NavDropdown
 } from 'react-bootstrap';
 import './App.css';
 import Modal from 'react-awesome-modal';
-import {Router, Link, navigate} from '@reach/router';
+import {Router, Link, navigate, createMemorySource, createHistory} from '@reach/router';
 import 'react-multi-carousel/lib/styles.css';
-import { FiChevronDown  } from "react-icons/fi";
+import { FiChevronDown,FiChevronLeft  } from "react-icons/fi";
 import { IoIosArrowRoundBack,IoIosClose,IoIosAdd } from "react-icons/io";
-import './App.scss';
 import {api,server} from './API';
+
+
 
 
 
@@ -58,7 +59,12 @@ updateCurrentUser=(user)=>{
 goHome = (e) => {
     e.preventDefault();
     navigate("/")
-} 
+}
+
+goBack = (e) => {
+    e.preventDefault();
+    window.history.back()
+}
 
 componentDidMount=()=>
 {
@@ -75,6 +81,7 @@ componentDidMount=()=>
 
   render(){
       var {categories} = this.state;
+      
     return(
 
 
@@ -109,21 +116,9 @@ componentDidMount=()=>
               bg="dark"
               variant="dark">
               
-              <div className="navBarbot">  
+              <Container className="navBarbot">  
               
               <Link to="/"><Image className="Logo" src={require('./logo.png')} fluid="fluid"/></Link>
-                  {/* <InputGroup className="searchBar">
-                      <InputGroup.Append>
-                          <Button variant="outline-secondary">
-                              <i className="fas fa-search"></i>
-                          </Button>
-                      </InputGroup.Append>
-                      <FormControl
-                          placeholder="Search"
-                          aria-label="Search"
-                          aria-describedby="basic-addon2"/>
-                       </InputGroup> */}
-
                        {
                            
                            this.state.currentUser ?  null
@@ -145,8 +140,9 @@ componentDidMount=()=>
                           <Image className="navbar-default"src={server+this.state.currentUser.photo} thumbnail={true} />
                           </Navbar.Toggle>
 
-                          <Navbar.Collapse id="responsive-navbar-nav">
-                              <Nav className="mr-auto">
+                          <Navbar.Collapse id="responsive-navbar-nav" >
+                          
+                              <Nav className="mr-auto" >
                               <Nav.Link href="/products/new"><IoIosAdd/> Sell an Item</Nav.Link>
                               <Nav.Link href="/user-profile">User Profile</Nav.Link>
                               <Nav.Link href="/products">My Products</Nav.Link>
@@ -159,11 +155,12 @@ componentDidMount=()=>
                             value="Logout"
                             onClick={this.handleLogOut}/>
                               </Nav>
+                            
                           </Navbar.Collapse>
                           </>
                           ) : null
                       }
-              </div>
+              </Container>
           </Navbar>
       </div>
       <div className="section">
@@ -173,7 +170,7 @@ componentDidMount=()=>
                   
                   <Card>
                       <Card.Header>
-                      <span onClick={this.goHome} className="backArrow" to="/"><IoIosArrowRoundBack/></span>
+                      <span onClick={this.goBack} className="backArrow" to="/"><FiChevronLeft/></span>
                           <Accordion.Toggle as={Card.Header} eventKey="0">
                           <h5>CATAGORIES</h5><FiChevronDown/>
                           </Accordion.Toggle>

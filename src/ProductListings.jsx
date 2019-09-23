@@ -12,8 +12,6 @@ import {
     Container
 } from 'react-bootstrap';
 
-import './App.css';
-
 const responsive = {
     desktop: {
         breakpoint: {
