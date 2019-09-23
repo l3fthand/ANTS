@@ -22,6 +22,7 @@ class UserProfile extends Component {
     this.state ={
         fileName:this.props.user.photo,
         visible:false,
+        user:{},
         }
     }
     openModal = () => {
@@ -32,7 +33,7 @@ class UserProfile extends Component {
         this.setState({visible: false});
     }
 handlePhotoSubmit=(e)=>{
-    var {user} = this.props;
+    var {user} = this.state;
     
     e.preventDefault();
 
@@ -47,7 +48,7 @@ handlePhotoSubmit=(e)=>{
 
 handleEditSubmit =(e)=>{
     e.preventDefault()
-    var id= this.props.user.id
+    var id= this.state.user.id
     var form = new FormData(this.form);
     var data = {
         name: form.get("name-input"),
@@ -59,11 +60,20 @@ handleEditSubmit =(e)=>{
     })
 //NEED A REFRESHING THING!!!!!!
 }
+getUserProfile=(id)=>{
+    api.getUser(id).then(res=>{
+        this.setState({user:res.data})
+    })
+}
+componentDidMount(){
+    this.getUserProfile(this.props.id)
+}
+
 
 
     render(){
         
-        var products = this.props.user.products
+        var products = 0
         var currentListing = 0
         var soldListing = 0
 
@@ -103,7 +113,7 @@ handleEditSubmit =(e)=>{
                 onClickAway={() => this.closeModal()}>
               <Form className="editForm" onSubmit={this.handleEditSubmit} ref={(el) => {this.form = el}} >
               <Form.Group  controlId="formGridName">
-                <Form.Control type="text" defaultValue={this.props.user.name} name="name-input"/>
+                <Form.Control type="text" defaultValue={this.state.user.name} name="name-input"/>
                 </Form.Group>
                       <Form.Group controlId="formGridPassword">
                           <Form.Control type="password" placeholder="Current Password" name="password-input"/>
@@ -116,7 +126,7 @@ handleEditSubmit =(e)=>{
                       </Form.Group>
                   
                   <Form.Group controlId="formGridEmail">
-                      <Form.Control type="email" defaultValue={this.props.user.email} name="email-input"/>
+                      <Form.Control type="email" defaultValue={this.state.user.email} name="email-input"/>
                   </Form.Group>
                   <Button variant="primary" type="submit">
                       Save Changes
@@ -126,8 +136,8 @@ handleEditSubmit =(e)=>{
               </Modal>
                     </Col>
                     <Col>
-                    <p>{this.props.user.username}({soldListing})</p>
-                    <p>Memeber since {this.props.user.date}</p>
+                    <p>{this.state.user.username}({soldListing})</p>
+                    <p>Memeber since {this.state.user.date}</p>
                     <p> reviews</p>
                     <p> {currentListing} listings</p>
                     </Col>
@@ -137,14 +147,14 @@ handleEditSubmit =(e)=>{
             <Tabs defaultActiveKey="Products" id="uncontrolled-tab-example">
                 <Tab eventKey="Products" title="My Listings">
                    
-                    <UserProducts user={this.props.user}/>
+                    <UserProducts user={this.state.user}/>
                 </Tab>
                 <Tab eventKey="Reviews" title="Reviews">
                     
                 </Tab>
                 <Tab eventKey="Purchases" title="Purchases" >
                     
-                    <PurchaseProductListings user={this.props.user}/>
+                    <PurchaseProductListings user={this.state.user}/>
                 </Tab>
             </Tabs>
             </Container>

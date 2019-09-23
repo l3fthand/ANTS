@@ -22,6 +22,7 @@ class RouteProductDetails extends Component {
             mLogin: false,
             mCreditCard: false,
             product:{},
+            seller:{},
         }
     }
 
@@ -42,7 +43,13 @@ class RouteProductDetails extends Component {
     }
 
     routeGetProduct = (id) => {
-        api.getProduct(id).then(res => this.setState({product:res.data}))
+        api.getProduct(id).then(res => {
+            this.setState({product:res.data})
+            api.getUser(res.data.seller_id).then(res=>{
+                this.setState({seller:res.data})
+            })
+            
+        })
     }
 
     addDefaultSrc(ev){
@@ -51,8 +58,8 @@ class RouteProductDetails extends Component {
     
     componentDidMount(){
         var {id} = this.props;
-        //console.log(id);
         this.routeGetProduct(id);
+        
     }
 
     handlePurchase = (e) => {
@@ -74,7 +81,8 @@ class RouteProductDetails extends Component {
     render() {
         var {name,description,price,photos} = this.state.product
         var user = this.state.currentUser;
-
+        var seller = this.state.seller;
+        
 
         return ( 
             <>
@@ -90,6 +98,10 @@ class RouteProductDetails extends Component {
                                         < Button onClick = {() => this.openCreditModal()}className = "purchaseButton" name = "purchase" variant = "outline-dark" > Purchase</Button></Form>
                                 ) : <Button onClick={() => this.openLoginModal()} className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button>
                             }
+                        </Card.Text>
+                        <Card.Text>
+                            <Link to={'/users/' + seller.id}>{seller.name}</Link>
+                            <image src ={server+seller.photo}></image>
                         </Card.Text>
                     </Card.Body>
                 </Card>
