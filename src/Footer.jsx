@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { FiTriangle } from "react-icons/fi";
+import { IoMdArrowDropup } from "react-icons/io";
 
 import {
     Nav,
@@ -64,7 +64,7 @@ render () {
         })}>
         <Container>
 
-          <Col className="lCol">© 2019 Threads</Col><Col className="linkColor" onClick={this.goHome}><FiTriangle/></Col><Col className="rCol"></Col>
+          <Col className="lCol">© 2019 Threads</Col><Col className="linkColor" onClick={this.goHome}><IoMdArrowDropup/></Col><Col className="rCol"></Col>
 
         </Container>
         </Navbar>

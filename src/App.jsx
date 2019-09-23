@@ -205,7 +205,7 @@ componentDidMount=()=>
           </Router>
  
           </div>
-          <Footer user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/>
+          <Footer/>
         </div>
     );
   }

@@ -271,6 +271,26 @@ a {
         }
     }
 
+    .purchaseForm {
+        padding: 1em;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        input {
+            border:none;
+            border-bottom:solid thin rgb(73, 81, 88);
+            border-radius:0;
+        }
+        button {
+            background-color:  $color-1;
+            border:none;
+            color:$link-color;
+            border-bottom:thin solid $link-color;
+            border-radius:0;
+        }
+    }
+
 .section {
     display: flex;
     flex-direction: column;

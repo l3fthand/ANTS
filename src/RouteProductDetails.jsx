@@ -68,7 +68,7 @@ class RouteProductDetails extends Component {
     }
 
     render() {
-        var {name,description,price,photo} = this.state.product
+        var {name,description,price,photos} = this.state.product
         var user = this.state.currentUser;
 
 
@@ -78,7 +78,7 @@ class RouteProductDetails extends Component {
                 <Card>
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
-                        <Card.Img variant="top" src={server + photo}/>
+                        <Card.Img variant="top" src={server + photos}/>
                         <Card.Text>{description}</Card.Text>
                         <Card.Text className="productPrice">${price}
                             {

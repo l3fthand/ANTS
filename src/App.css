@@ -211,6 +211,16 @@ a {
   font-size: 1em;
 }
 
+.Item .card .card-body img {
+  display: block;
+  max-width: auto;
+  max-height: 13em;
+  width: auto;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .Item .card .card-body .card-text {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -490,7 +500,7 @@ a {
           justify-content: center;
   text-align: center;
   max-width: 50%;
-  padding: 1em;
+  padding: .5em 1em;
 }
 
 .productsListing .col .card {
@@ -505,6 +515,26 @@ a {
       -ms-flex-pack: justify;
           justify-content: space-between;
   border: none;
+}
+
+.productsListing .col .card a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.productsListing .col .card a img {
+  display: block;
+  max-width: auto;
+  max-height: 6em;
+  width: auto;
+  height: auto;
+  -o-object-fit: contain;
+     object-fit: contain;
 }
 
 .productsListing .col .card .card-body {
@@ -522,8 +552,11 @@ a {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  padding-top: 1em;
+  padding-top: .5em;
   margin: 0;
+  font-size: .9em;
+  font-weight: 100;
+  text-transform: capitalize;
 }
 
 .productsListing .col:nth-child(odd) {
@@ -750,7 +783,7 @@ a {
 }
 
 .footer svg {
-  font-size: 1.5em;
+  font-size: 3em;
   stroke-width: 1;
 }
 
@@ -994,6 +1027,34 @@ a {
   border: none;
   color: #A68B3C;
   border-bottom: thin solid #A68B3C;
+}
+
+.purchaseForm {
+  padding: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.purchaseForm input {
+  border: none;
+  border-bottom: solid thin #495158;
+  border-radius: 0;
+}
+
+.purchaseForm button {
+  background-color: #f2f2f2;
+  border: none;
+  color: #A68B3C;
+  border-bottom: thin solid #A68B3C;
+  border-radius: 0;
 }
 
 .section {

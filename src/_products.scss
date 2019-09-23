@@ -101,6 +101,14 @@
                 padding: 0;
                 font-size:1em;
             }
+            img {
+                display: block;
+                max-width:auto;
+                max-height:13em;
+                width: auto;
+                height: auto;
+                object-fit: contain;
+            }
             .card-text {
                 // text-align:center;
                 display: flex;
