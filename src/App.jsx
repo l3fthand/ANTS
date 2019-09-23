@@ -15,16 +15,15 @@ import RouteThanks from './RouteThanks';
 import Footer from './Footer';
 
 import {
-  Accordion,Nav,Navbar,Container,Card,Image,
+  Accordion,Nav,Navbar,Container,Card,Image,Row
 } from 'react-bootstrap';
-import {
-    MorphIcon,CloseButton,NavButton,PlusButton,
-} from 'react-svg-buttons'
 import './App.css';
 import Modal from 'react-awesome-modal';
 import {Router, Link, navigate} from '@reach/router';
-
 import 'react-multi-carousel/lib/styles.css';
+import { FiChevronDown  } from "react-icons/fi";
+import { IoIosArrowRoundBack,IoIosClose,IoIosAdd } from "react-icons/io";
+
 import './App.scss';
 import {api,server} from './API';
 
@@ -56,7 +55,10 @@ updateCurrentUser=(user)=>{
     this.setState({currentUser:user})
 }
 
-
+goHome = (e) => {
+    e.preventDefault();
+    navigate("/")
+} 
 
 componentDidMount=()=>
 {
@@ -90,7 +92,7 @@ componentDidMount=()=>
                 <span>
                     <h6>Login/Register to Buy & Sell</h6>
                     <a href="javascript:void(0);" onClick={() => this.closeModal()}>
-                    <CloseButton size={35}/>
+                    <IoIosClose/>
                     </a>
                 </span>
             <Login closeModal={this.closeModal} updateCurrentUser={this.updateCurrentUser}/>
@@ -145,7 +147,7 @@ componentDidMount=()=>
 
                           <Navbar.Collapse id="responsive-navbar-nav">
                               <Nav className="mr-auto">
-                              <Nav.Link href="/products/new">+ Sell an Item</Nav.Link>
+                              <Nav.Link href="/products/new"><IoIosAdd/> Sell an Item</Nav.Link>
                               <Nav.Link href="/user-profile">User Profile</Nav.Link>
                               <Nav.Link href="/products">My Products</Nav.Link>
                               {/* <Nav.Link href="#watchlist">Watch List</Nav.Link> */}
@@ -171,10 +173,11 @@ componentDidMount=()=>
                   
                   <Card>
                       <Card.Header>
-                      <Link to="/"><MorphIcon type="arrowLeft" opened={false} size={35} /></Link>
+                      <span onClick={this.goHome} className="backArrow" to="/"><IoIosArrowRoundBack/></span>
                           <Accordion.Toggle as={Card.Header} eventKey="0">
-                              <h5>CATAGORIES</h5>
+                          <h5>CATAGORIES</h5><FiChevronDown/>
                           </Accordion.Toggle>
+                          
                       </Card.Header>
                       <Accordion.Collapse eventKey="0">
                         <Nav className="browseNav" variant="pills" defaultActiveKey="/home">
@@ -202,7 +205,7 @@ componentDidMount=()=>
           </Router>
  
           </div>
-          <Footer user={this.state.currentUser}/>
+          <Footer user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/>
         </div>
     );
   }

@@ -411,6 +411,27 @@ a {
   text-align: center;
 }
 
+.categoryContainer .noListing {
+  z-index: 1;
+  position: absolute;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 0.4em;
+  padding-top: 1em;
+}
+
+.categoryContainer .noListing p {
+  text-transform: capitalize;
+  padding-top: .4em;
+  font-weight: 700;
+}
+
 .categoryContainer .card {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -451,6 +472,7 @@ a {
   display: flex;
   background-color: #fff;
   border-bottom: solid thin #495158;
+  z-index: 5;
 }
 
 .productsListing .col {
@@ -514,11 +536,11 @@ a {
   border-right: none;
 }
 
-.productsListing .col:last-child {
-  border-bottom: none;
+.productsListing .col:first-child {
+  border-bottom: solid thin #495158;
 }
 
-.productsListing .col:nth-last-child(2) {
+.productsListing .col:last-child {
   border-bottom: none;
 }
 
@@ -689,7 +711,20 @@ a {
   transition: top 0.6s;
   -webkit-transition: ease all .3s;
   transition: ease all .3s;
-  height: 5em;
+  z-index: 9;
+}
+
+.footer .lCol {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  padding: 0;
 }
 
 .footer .rCol {
@@ -702,10 +737,21 @@ a {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  padding: 0;
+}
+
+.footer .linkColor {
+  text-align: center;
+  padding: 0em;
 }
 
 .footer .container {
   height: 2.5em;
+}
+
+.footer svg {
+  font-size: 1.5em;
+  stroke-width: 1;
 }
 
 .footer--hidden {
@@ -786,6 +832,11 @@ a {
 
 .Header .navBarbot div#responsive-navbar-nav .loginButton {
   border: thin solid #495158;
+}
+
+.Header .navBarbot div#responsive-navbar-nav svg {
+  font-size: 1.4em;
+  margin-top: -.14em;
 }
 
 .Header .navBarbot .searchBar {
@@ -902,6 +953,11 @@ a {
   color: #0c0c0c;
 }
 
+.loginModal span svg {
+  font-size: 1.4em;
+  stroke-width: 1;
+}
+
 .loginModal span a {
   color: #495158;
   font-size: 1.5em;
@@ -997,16 +1053,38 @@ a {
   background-color: white;
   border: 0;
   padding: .3em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-bottom: .1em;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
-.section .FilterCat .card-header h3 {
+.section .FilterCat .card-header svg {
+  font-size: 2.2em;
+  padding-bottom: 0.2em;
+  stroke-width: 1;
+}
+
+.section .FilterCat .card-header h5 {
   font-family: Raleway;
+  padding-left: 1.3em;
+  line-height: 1.5;
 }
 
-.section .FilterCat .card-header span {
-  left: 1em;
-  width: 3.5em;
+.section .FilterCat .card-header .backArrow {
   position: absolute;
+  left: 0.2em;
+  width: 3.5em;
+  padding-top: .3em;
+  position: absolute;
+  font-size: 1.5em;
+  stroke-width: 1;
 }
 
 .section .container {

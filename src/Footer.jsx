@@ -1,40 +1,33 @@
 import React, {Component} from 'react';
+import { FiTriangle } from "react-icons/fi";
+
 import {
     Nav,
     Navbar,
     Col,
     Container
   } from 'react-bootstrap';
-  
-  import {api} from './API';
+  import {navigate} from '@reach/router';
   import classnames from "classnames";
-
-
-
 
 class Footer extends Component{
     constructor(props) {
         super(props);
         this.state ={
-            currentUser:{},
             prevScrollpos: window.pageYOffset,
             visible: true
         }
     }
+    
+
 
     componentDidMount(){
-
-        window.addEventListener("scroll", this.handleScroll);
-
-        var userLocal = localStorage.getItem('userID')
-    
-        if(userLocal){
-            api.getUser(userLocal).then(res=>this.setState({currentUser:res.data}))
-        }
-
+      window.addEventListener("scroll", this.handleScroll);
 
     }
 
+
+ 
     componentWillUnmount() {
         window.removeEventListener("scroll", this.handleScroll);
       }
@@ -50,22 +43,28 @@ class Footer extends Component{
           prevScrollpos: currentScrollPos,
           visible
         });
-      };
+    };
 
-
+    goHome = (e) => {
+      e.preventDefault();
+      navigate("/")
+  } 
 
     
 
 
 render () {
-    var user = this.state.currentUser;
+    var user = this.props;
+    console.log(user)
+  
+    // var user = this.state.currentUser;
     return (
         <Navbar sticky="bottom" className={classnames("footer", {
           "footer--hidden": !this.state.visible
         })}>
         <Container>
 
-            <Col>© 2019 Threads</Col><Col className="rCol">User:<Nav.Link href="/user-profile">{user.name}</Nav.Link></Col>
+          <Col className="lCol">© 2019 Threads</Col><Col className="linkColor" onClick={this.goHome}><FiTriangle/></Col><Col className="rCol"></Col>
 
         </Container>
         </Navbar>
