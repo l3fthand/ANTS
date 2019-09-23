@@ -24,7 +24,6 @@ import {Router, Link, navigate} from '@reach/router';
 import 'react-multi-carousel/lib/styles.css';
 import { FiChevronDown  } from "react-icons/fi";
 import { IoIosArrowRoundBack,IoIosClose,IoIosAdd } from "react-icons/io";
-
 import './App.scss';
 import {api,server} from './API';
 
