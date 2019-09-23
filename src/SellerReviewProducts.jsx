@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 // import {Link, navigate} from '@reach/router'
+import SoldProductDetail from './SoldProductDetail';
 import {Form, Button, ListGroup,ToggleButton} from 'react-bootstrap';
 import {api} from './API';
 
@@ -12,24 +13,7 @@ class SellerReviewProducts extends Component {
             }
         }
     }
-
-    handleTrashClick = (e) => {
-        var {
-            refreshData
-        } = this.props
-
-        var reviewId = e
-            .target
-            .dataset
-            .reviewid
-            api
-            .deleteReview(reviewId)
-            .then(res => refreshData())
-    }
-    componentDidMount=()=>{
-    
-        // var userID = localStorage.getItem('userID')
-        
+    componentDidMount=()=>{ 
         api.getUser(1568773768783).then(res =>{
           var currentUser = res.data
           this.setState({currentUser})
@@ -38,21 +22,23 @@ class SellerReviewProducts extends Component {
       
     }
     render(){
-        var products = this.state.currentUser.products;
-        
-        return products ? (
+     
+        var reviews = this.state.currentUser.receivedReviews;
+
+       
+        return reviews ? (
           
           <div className="listings">
-            <h1>Purchase Products</h1>
-              {/* <div className="listProduct"><Link to="/products/new"><Button className="AddButton" variant="primary" type="submit">List a product</Button></Link></div> */}
+            <h1>Sold Products {reviews.length}</h1>
             {
-              products.map((item) => {
-                var props = {
+             
+              reviews.map((item) => {
+                var Reviewprops = {
                   ...item,
                   key: item.id,
                 //   refreshData: this.getProducts,
                 }
-                // return <PurchaseProductDetail {...props} currentUser={this.props.currentUser}/>
+                return <SoldProductDetail {...Reviewprops}/>
              
                 
               })

@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import RouteProductDetails from './RouteProductDetails';
 import {Link, navigate} from '@reach/router';
 import {api, server} from './API';
 import {Card, Button,Col, ListGroup} from 'react-bootstrap';
@@ -36,22 +35,6 @@ class Item extends Component{
             </Card.Body>
         </Card>
       </Col>
-
-  // <div className="Item">
-  //     <Card
-  //         style={{
-  //             width: '18rem'
-  //         }}>
-  //         <Card.Img variant="top" src={require('./item1.png')}/>
-  //         <Card.Body>
-  //              <Card.Title><Link to={'/products/'+id}>{name}</Link><Button variant="outline-dark">
-                      
-  //                 </Button>
-  //             </Card.Title>
-
-  //         </Card.Body>
-  //     </Card>
-  // </div>
 
    
     );

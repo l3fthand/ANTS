@@ -5,7 +5,7 @@ import {api, server} from './API';
 
 import './App.css';
 
-class RouteProductDetails extends Component{
+class ProductDetails extends Component{
   constructor(props){
     super(props);
     this.state = {
@@ -66,4 +66,4 @@ class RouteProductDetails extends Component{
   }
 }
 
-export default RouteProductDetails;
+export default ProductDetails;

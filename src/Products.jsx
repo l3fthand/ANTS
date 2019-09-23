@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Product from './Product';
-import RouteProductDetails from './RouteProductDetails';
+import RouteProductDetailsReview from './RouteProductDetailsReview';
 import {Router, Link, navigate} from '@reach/router';
 import {api} from './API';
 import {

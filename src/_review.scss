@@ -37,3 +37,11 @@
     background-color:$color-1;
     border-top:thin solid $color-2;
 }
+
+.listing 
+{
+    .Item
+    {
+        align-items: inherit;
+    }
+}

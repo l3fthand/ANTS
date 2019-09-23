@@ -9,6 +9,7 @@ import Login from './Login';
 import UserProfile from './UserProfile';
 import Product from './Product';
 import PurchaseProductDetail from './PurchaseProductDetail';
+import RouteProductDetailsReview from './RouteProductDetailsReview';
 import RouteProductDetails from './RouteProductDetails';
 import PurchaseProductListings from './PurchaseProductListings';
 import RouteCat from './RouteCategory';
@@ -187,7 +188,7 @@ componentDidMount=()=>
             <AddProduct path="/products/new" currentUser={this.state.currentUser}/>
             <EditProduct path="/products/:id/edit"/>
             <RouteProductDetails currentUser={this.state.currentUser} path="/products/:id"/>
-           
+            <RouteProductDetailsReview currentUser={this.state.currentUser} path="/review-products/:id"/>
             {this.state.currentUser ?  <PurchaseProductListings path="/purchases" currentUser={this.state.currentUser}/> :null}
             <UserProfile path="/user-profile"/>
           </Router>

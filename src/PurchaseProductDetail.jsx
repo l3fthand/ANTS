@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import RouteProductDetails from './RouteProductDetails';
+import RouteProductDetailsReview from './RouteProductDetailsReview';
 import {Link, navigate} from '@reach/router';
 import {api, server} from './API';
 import {Card, Button, ListGroup,Media} from 'react-bootstrap';
@@ -40,7 +40,7 @@ class PurchaseProductDetail extends Component {
             <p className="price">${price}</p>
             </Media.Body>
             <Button variant="primary" type="submit">
-            <Link to={'/products/'+id}>   Review </Link></Button>
+            <Link to={'/review-products/'+id}>   Review </Link></Button>
             
             {/* 
             <p><Link to={'/products/'+id}>View</Link></p>
