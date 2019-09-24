@@ -18,29 +18,29 @@ class UserProducts extends Component{
     }
   }
 
-  getProducts = () => {
-    var {user} = this.props
-    api.getUser(user.id).then(res => {
-      this.setState({products:res.data.currentListings})
-    })
-  }
+  // getProducts = () => {
+  //   var {user} = this.props
+  //   api.getUser(user.id).then(res => {
+  //     this.setState({products:res.data.currentListings})
+  //   })
+  // }
 
-  componentDidMount(){
-    this.getProducts()
-  }
+  // componentDidMount(){
+  //   this.getProducts()
+  // }
   
 
   
 
   render(){
-    var {products} = this.state;
+    var {user} = this.props;
     
-    return(
+    return user ? (
       <div className="listings">
         <h1>My Products</h1>
           <div className="listProduct"><Link to="/products/new"><Button className="AddButton" variant="primary" type="submit">List a product</Button></Link></div>
         {
-          products.map((item) => {
+          user.currentListings.map((item) => {
             var props = {
               ...item,
               key: item.id,
@@ -50,7 +50,7 @@ class UserProducts extends Component{
           })
         }
       </div>
-    );
+    ) : null
   }
 
 

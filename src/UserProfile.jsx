@@ -22,7 +22,9 @@ class UserProfile extends Component {
     this.state ={
         fileName:this.props.user.photo,
         visible:false,
-        user:{},
+        user:null,
+        sold:'',
+        listings:'',
         }
     }
     openModal = () => {
@@ -32,32 +34,32 @@ class UserProfile extends Component {
     closeModal = () => {
         this.setState({visible: false});
     }
-handlePhotoSubmit=(e)=>{
-    var {user} = this.state;
-    
-    e.preventDefault();
+    handlePhotoSubmit=(e)=>{
+        var {user} = this.state;
+        
+        e.preventDefault();
 
-    var form = new FormData(this.userForm)
+        var form = new FormData(this.userForm)
 
-    api.uploadPhoto(form).then(res=>{
-        api.updateUser(user.id,{photo:res.data}).then(res=>{
+        api.uploadPhoto(form).then(res=>{
+            api.updateUser(user.id,{photo:res.data}).then(res=>{
+                this.props.updateCurrentUser(res.data)
+            })
+        })
+    }
+
+    handleEditSubmit =(e)=>{
+        e.preventDefault()
+        var id= this.state.user.id
+        var form = new FormData(this.form);
+        var data = {
+            name: form.get("name-input"),
+            password: form.get("password-input"),
+            email: form.get("email-input"),
+        }
+        api.updateUser(id,data).then(res=>{
             this.props.updateCurrentUser(res.data)
         })
-    })
-}
-
-handleEditSubmit =(e)=>{
-    e.preventDefault()
-    var id= this.state.user.id
-    var form = new FormData(this.form);
-    var data = {
-        name: form.get("name-input"),
-        password: form.get("password-input"),
-        email: form.get("email-input"),
-    }
-    api.updateUser(id,data).then(res=>{
-        this.props.updateCurrentUser(res.data)
-    })
 //NEED A REFRESHING THING!!!!!!
 }
 getUserProfile=(id)=>{
@@ -72,40 +74,34 @@ componentDidMount(){
 
 
     render(){
+        var {user} = this.state
+        var currentListing = user ? user.currentListings.length : 0
+        var soldListing = user ? user.sold.length : 0
+       
         
-        var products = 0
-        var currentListing = 0
-        var soldListing = 0
-
-        for(var i=0;i<products.length;i++){
-            if(products[i].purchaser_id == null){
-                currentListing++
-            }
-        }
-        for(var i=0;i<products.length;i++){
-            if(products[i].purchaser_id){
-                soldListing++
-            }
-        }
         
-        return(
+        return user ? (
             <Container>
                 <Row>
                     <Col xs={3} md={1} className="user-photo">
                     <Image src={server+this.state.fileName} roundedCircle thumbnail={true} />
-                    <Form className = "userProfile" onSubmit={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
+                    {user.id == localStorage.getItem('userID')?
+                    ( <Form className = "userProfile" onSubmit={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
                     <Form.Group controlId="formPhoto">
 					<input type="file" className="photo-input" name="Userphoto-input" id="Userphoto-input" placeholder="Change your photo"/>
-				</Form.Group>
-                <Button variant="primary" type="submit">
-				upload
-				</Button>
-                    </Form>
-                    <input
-                            className="loginButton"
-                            type="button"
-                            value="Edit"
-                            onClick={() => this.openModal()}/>
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                    upload
+                    </Button>
+                    </Form>): null}
+                   
+                    {user.id == localStorage.getItem('userID')?(<input
+                        className="loginButton"
+                        type="button"
+                        value="Edit"
+                        onClick={() => this.openModal()}
+                    />) : null}
+                    
                 <Modal visible={this.state.visible}
                     width="95%"
                     height="70%"
@@ -128,10 +124,15 @@ componentDidMount(){
                   <Form.Group controlId="formGridEmail">
                       <Form.Control type="email" defaultValue={this.state.user.email} name="email-input"/>
                   </Form.Group>
-                  <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit">
                       Save Changes
-                  </Button>
+                    </Button>
                   <p>Please email contact@threads.com to change User Name</p>
+                  <br/>
+                  
+                  <Button variant="danger" type="submit">
+                        Delete Account
+                    </Button>
               </Form>
               </Modal>
                     </Col>
@@ -158,7 +159,7 @@ componentDidMount(){
                 </Tab>
             </Tabs>
             </Container>
-        )
+        ) : null
     }
 }
 export default UserProfile;

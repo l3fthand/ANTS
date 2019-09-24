@@ -8,7 +8,8 @@ import {
     Card,
     Row,
     Container,
-    Col
+    Col,
+    Image,
 } from 'react-bootstrap';
 import {api, server} from './API';
 import Modal from 'react-awesome-modal';
@@ -101,7 +102,7 @@ class RouteProductDetails extends Component {
                         </Card.Text>
                         <Card.Text>
                             <Link to={'/users/' + seller.id}>{seller.name}</Link>
-                            <image src ={server+seller.photo}></image>
+                            <Image src={server+seller.photo} roundedCircle thumbnail={true} />
                         </Card.Text>
                     </Card.Body>
                 </Card>
