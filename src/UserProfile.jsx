@@ -44,6 +44,7 @@ class UserProfile extends Component {
         api.uploadPhoto(form).then(res=>{
             api.updateUser(user.id,{photo:res.data}).then(res=>{
                 this.props.updateCurrentUser(res.data)
+                this.setState({fileName:res.data.photo})
             })
         })
     }
@@ -65,6 +66,7 @@ class UserProfile extends Component {
 getUserProfile=(id)=>{
     api.getUser(id).then(res=>{
         this.setState({user:res.data})
+        this.setState({fileName:res.data.photo})
     })
 }
 componentDidMount(){
@@ -83,17 +85,15 @@ componentDidMount(){
         return user ? (
             <Container>
                 <Row>
-                    <Col xs={3} md={1} className="user-photo">
-                    <Image src={server+this.state.fileName} roundedCircle thumbnail={true} />
-                    {user.id == localStorage.getItem('userID')?
-                    ( <Form className = "userProfile" onSubmit={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
+                    <Col xs={5} md={2} className="user-photo">
+                    <Image src={server+this.state.fileName} roundedCircle thumbnail={true}/>
+                    {/* {user.id == localStorage.getItem('userID')?
+                    ( <Form className = "userProfile" onChange={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
                     <Form.Group controlId="formPhoto">
 					<input type="file" className="photo-input" name="Userphoto-input" id="Userphoto-input" placeholder="Change your photo"/>
                     </Form.Group>
-                    <Button variant="primary" type="submit">
-                    upload
-                    </Button>
-                    </Form>): null}
+                    
+                    </Form>): null} */}
                    
                     {user.id == localStorage.getItem('userID')?(<input
                         className="loginButton"
@@ -104,25 +104,45 @@ componentDidMount(){
                     
                 <Modal visible={this.state.visible}
                     width="95%"
-                    height="70%"
+                    height="90%"
                 effect="fadeInUp"
                 onClickAway={() => this.closeModal()}>
-              <Form className="editForm" onSubmit={this.handleEditSubmit} ref={(el) => {this.form = el}} >
+              <Form className="editForm" onSubmit={this.handleEditSubmit} onSubmit={this.closeModal} ref={(el) => {this.form = el}}>
+
+                <Col xs={8}>
+              <Image src={server+this.state.fileName} roundedCircle thumbnail={true}/>
+              <Form className = "userProfile" onChange={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
+                    <Form.Group controlId="formPhoto">
+					<input type="file" className="photo-input" name="Userphoto-input" id="Userphoto-input" placeholder="Change your photo"/>
+                    </Form.Group>
+                    </Form>
+                </Col>
               <Form.Group  controlId="formGridName">
+              <Col>
                 <Form.Control type="text" defaultValue={this.state.user.name} name="name-input"/>
+                </Col>
                 </Form.Group>
+                
                       <Form.Group controlId="formGridPassword">
+                        <Col>
                           <Form.Control type="password" placeholder="Current Password" name="password-input"/>
+                        </Col>
                       </Form.Group>
                       <Form.Group controlId="formGridPassword">
+                        <Col>
                           <Form.Control type="password" placeholder="New Password" name="password-input"/>
+                        </Col>
                       </Form.Group>
                       <Form.Group controlId="formGridPassword">
+                        <Col>
                           <Form.Control type="password" placeholder="Confirm Password" name="password-input"/>
+                        </Col>
                       </Form.Group>
                   
                   <Form.Group controlId="formGridEmail">
+                    <Col>
                       <Form.Control type="email" defaultValue={this.state.user.email} name="email-input"/>
+                    </Col>
                   </Form.Group>
                     <Button variant="primary" type="submit">
                       Save Changes
@@ -139,7 +159,7 @@ componentDidMount(){
                     <Col>
                     <p>{this.state.user.username}({soldListing})</p>
                     <p>Memeber since {this.state.user.date}</p>
-                    <p> reviews</p>
+                    <p> {user.receivedReviews.length} reviews</p>
                     <p> {currentListing} listings</p>
                     </Col>
                 </Row>
@@ -152,11 +172,15 @@ componentDidMount(){
                 </Tab>
                 <Tab eventKey="Reviews" title="Reviews">
                     
-                    <SellerReviewProducts/>
+                    <SellerReviewProducts user={this.state.user}/>
                 </Tab>
                 <Tab eventKey="Purchases" title="Purchases" >
                     
                     <PurchaseProductListings user={this.state.user}/>
+                </Tab>
+                <Tab eventKey="Sold" title="Sold">
+                   
+                    
                 </Tab>
             </Tabs>
             </Container>
