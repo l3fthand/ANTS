@@ -207,3 +207,18 @@
     display: flex;
     margin: 1em;
 }
+
+.productImage{
+    // position: relative;
+
+    .imageRemove{
+        position: absolute;
+        z-index: 50;
+        color: black;
+        right: 1em;
+        top: 1em;
+        height: 2em;
+        width: 2em;
+    }
+}
+

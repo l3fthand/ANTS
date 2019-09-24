@@ -54,9 +54,8 @@ class EditProduct extends Component{
 			}
 
 			var {id} = this.props;
-			api.updateProduct(id, data).then(navigate('/products'));
+			api.updateProduct(id, data).then(() => navigate('/products'));
 
-			console.log(data);
 		});
 	}
 
@@ -89,9 +88,6 @@ class EditProduct extends Component{
         </Form.Group>
         <Form.Group controlId="formGridFile">
             <Form.Control type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo" multiple/>
-        </Form.Group>
-		<Form.Group controlId="formGridFile">
-			<img src={server+photos}></img>
         </Form.Group>
         <Button variant="primary" type="submit">
             Update Product

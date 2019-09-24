@@ -4,10 +4,7 @@ import {Link, navigate} from '@reach/router';
 import {api, server} from './API';
 import {Card, Container, Carousel, Button, ListGroup} from 'react-bootstrap';
 import Modal from 'react-awesome-modal';
-import { MdClose } from "react-icons/md";
-
-
-
+import {MdClose} from "react-icons/md";
 
 import './App.css';
 
@@ -33,10 +30,17 @@ class Product extends Component{
   }
 
   deletePhoto = (e) => {
-    var name = e.target.dataset.name;
-    // var {refreshData} = this.props;
-    console.log(name)
-    api.deletePhoto(name)
+    var photo = e.target.dataset.name;
+    console.log(e.target)
+    var {id,photos,refreshData} = this.props;
+
+    var data = {
+      photos: photos.filter(item => item!=photo)
+    }
+
+    api.updateProduct(id, data).then(()=> refreshData());
+
+    
     
   }
 
@@ -53,11 +57,13 @@ class Product extends Component{
           }}>
           <Carousel interval={null}>
             {
-              photos.map(photo=><Card.Img variant="top" src={server+photo} data-name={photo} onClick={this.deletePhoto}/>)
+              photos.map(photo =>
+              <Carousel.Item className="productImage">
+                <Card.Img variant="top" src={server+photo}/>
+                <i data-name={photo} onClick={this.deletePhoto} className="fas fa-trash imageRemove"></i>
+              </Carousel.Item>)
             }
           </Carousel>
-
-          {/* <Card.Img variant="top" src={server+photo}/> */}
 
           <Card.Body>
               <Card.Title><Link to={'/products/'+id}>{name}</Link><Button variant="outline-dark">
