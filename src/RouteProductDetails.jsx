@@ -100,10 +100,10 @@ class RouteProductDetails extends Component {
                                 ) : <Button onClick={() => this.openLoginModal()} className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button>
                             }
                         </Card.Text>
-                        <Card.Text>
+                            <Col xs={3}>
+                           <Link to={'/users/' + seller.id} ><Image  src={server+seller.photo} roundedCircle thumbnail={true}/></Link>
+                            </Col>
                             <Link to={'/users/' + seller.id}>{seller.name}</Link>
-                            <Image src={server+seller.photo} roundedCircle thumbnail={true} />
-                        </Card.Text>
                     </Card.Body>
                 </Card>
             </div>
