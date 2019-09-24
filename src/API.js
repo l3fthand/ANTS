@@ -70,10 +70,6 @@ var api = {
         return axios.get(url+'/reviews',data)
     },
     
-    // updateReview : (id,data) => {
-    //     return axios.get(url+'/review/'+id,data)
-    // },
-    
     deleteReview : (id) => {
         return axios.delete(url+'/reviews/'+id)
     },

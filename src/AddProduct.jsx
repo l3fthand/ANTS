@@ -25,6 +25,7 @@ class AddProduct extends Component{
 
 		var form = new FormData(this.form);
 
+		console.log(form)
 		api.uploadPhotos(form).then(res => {
 			var files = res.data
 			console.log(files);
