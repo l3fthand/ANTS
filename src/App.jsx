@@ -195,7 +195,7 @@ componentDidMount=()=>
             { this.state.currentUser ?<AddProduct path="/products/new"user={this.state.currentUser}/> : null}
             { this.state.currentUser ?<EditProduct path="/products/:id/edit"/> : null}
             <RouteProductDetails path="/products/:id" user={this.state.currentUser}/>
-            <PurchaseProductListings path="/purchases"/>
+            
             <RouteThanks path="/thanks"/>
             { this.state.currentUser ? <PurchaseProductListings path="/purchases" user={this.state.currentUser} /> : null}
             { this.state.currentUser ? <UserProfile path="/users/:id" user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}

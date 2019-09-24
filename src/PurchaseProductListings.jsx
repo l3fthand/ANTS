@@ -16,7 +16,9 @@ class PurchaseProductListings extends Component{
     }
   
 
-  
+  componentDidMount(){
+    
+  }
 
   render(){
    var {user} = this.props
