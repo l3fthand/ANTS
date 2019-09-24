@@ -67,13 +67,10 @@ var api = {
      },
 
     addReview : (data) => {
-        return axios.get(url+'/reviews',data)
+        return axios.post(url+'/reviews',data)
     },
     
-    deleteReview : (id) => {
-        return axios.delete(url+'/reviews/'+id)
-    },
-    
+
 }
 
 

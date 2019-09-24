@@ -29,7 +29,6 @@ class Product extends Component{
 
   deletePhoto = (e) => {
     var photo = e.target.dataset.name;
-    console.log(e.target)
     var {id,photos,refreshData} = this.props;
 
     var data = {
@@ -49,10 +48,7 @@ class Product extends Component{
       
       <>
       <div className="Item userItem">
-      <Card
-          style={{
-              width: '18rem'
-          }}>
+      <Card>
           <Carousel interval={null}>
             {
               photos.map(photo =>

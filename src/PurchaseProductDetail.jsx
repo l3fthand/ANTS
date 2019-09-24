@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import RouteProductDetails from './RouteProductDetails';
+import RouteProductDetailsReview from './RouteProductDetailsReview';
 import {Link, navigate} from '@reach/router';
 import {api, server} from './API';
 import {Card, Button, ListGroup,Media,Col} from 'react-bootstrap';
@@ -18,7 +18,7 @@ class PurchaseProductDetail extends Component {
 
 
   render(){
-    var {name, description, price, photo, id} = this.props;
+    var {name, description, price, photo, id,currentUser} = this.props;
 
     return(
       
@@ -51,31 +51,31 @@ class PurchaseProductDetail extends Component {
 
           </Card.Body>
       </Card> */}
-      <ul className="purchasesItem">
-        <Media as="li" className="line">
+ 
+        <Media className="line">
+            
+         
+
             <img
             width={64}
             height={64}
             className="mr-3"
             src={server+photo}
             />
-            <Media.Body className="mr-3">
             <Col>   
               <h5><Link to={'/products/'+id}>{name}</Link></h5>
               <p className="price">${price}</p>
             </Col>
             <Col>              
               <Button variant="primary" type="submit">
-              <Link to={'/products/'+id}>   Review </Link></Button>
+              <Link to={'/review-products/'+id}>   Review </Link></Button>
             </Col>
-            </Media.Body>
-
-
+         
             {/* 
             <p><Link to={'/products/'+id}>View</Link></p>
             */}
         </Media>
-        </ul>
+       
     </div>
     );
   }

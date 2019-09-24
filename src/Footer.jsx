@@ -57,6 +57,7 @@ class Footer extends Component{
 
 render () {
     var user = this.props;
+    
   
     // var user = this.state.currentUser;
     return (

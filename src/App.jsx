@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-
 import ProductListings from './ProductListings';
 import Products from './Products';
 import AddProduct from './AddProduct';
@@ -8,6 +7,9 @@ import EditProduct from './EditProduct';
 import Login from './Login';
 import UserProfile from './UserProfile';
 import UserProducts from './UserProducts';
+import Product from './Product';
+import PurchaseProductDetail from './PurchaseProductDetail';
+import RouteProductDetailsReview from './RouteProductDetailsReview';
 import RouteProductDetails from './RouteProductDetails';
 import PurchaseProductListings from './PurchaseProductListings';
 import RouteCat from './RouteCategory';
@@ -144,7 +146,8 @@ componentDidMount=()=>
                           
                               <Nav className="mr-auto" >
                               <Nav.Link href="/products/new"><IoIosAdd/> Sell an Item</Nav.Link>
-                              <Nav.Link href="/user-profile">User Profile</Nav.Link>
+                              <Nav.Link href={'/users/' + this.state.currentUser.id} >User Profile</Nav.Link>
+                              
                               <Nav.Link href="/products">My Products</Nav.Link>
                               {/* <Nav.Link href="#watchlist">Watch List</Nav.Link> */}
                               <Nav.Link href="/my-reviews">My Reviews</Nav.Link>
@@ -196,9 +199,11 @@ componentDidMount=()=>
             <RouteProductDetails path="/products/:id" user={this.state.currentUser}/>
             <RouteThanks path="/thanks"/>
             { this.state.currentUser ? <PurchaseProductListings path="/purchases" user={this.state.currentUser} /> : null}
-            { this.state.currentUser ? <UserProfile path="/user-profile" user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}
+            { this.state.currentUser ? <UserProfile path="/users/:id" user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}
             <RouteFeaturedProduct path="/featured"/>
             <Products path="/products"/>
+            <RouteProductDetailsReview currentUser={this.state.currentUser} path="/review-products/:id"/>
+       
           </Router>
  
           </div>

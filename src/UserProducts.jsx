@@ -14,20 +14,14 @@ class UserProducts extends Component{
     super(props)
     this.state = {
       products: [],
-      item: null,
+
     }
   }
 
   getProducts = () => {
     var {user} = this.props
     api.getUser(user.id).then(res => {
-      this.setState({products:res.data.products})
-
-    //   for(var i=0;i<res.data.products.length;i++){
-    //     if(res.data.products[i].purchaser_id == null){
-    //         this.state.products.push(i)
-    //     }
-    // }
+      this.setState({products:res.data.currentListings})
     })
   }
 
@@ -39,29 +33,24 @@ class UserProducts extends Component{
   
 
   render(){
-    var {products} = this.state;
+    var {user} = this.props;
     
-    return(
-       this.state.item ? null : (
-        <>
+    return user ? (
       <div className="listings">
         <h1>My Products</h1>
           <div className="listProduct"><Link to="/products/new"><Button className="AddButton" variant="primary" type="submit">List a product</Button></Link></div>
         {
-          products.map((item) => {
+          user.currentListings.map((item) => {
             var props = {
               ...item,
               key: item.id,
               refreshData: this.getProducts,
             }
             return <Product {...props}/>
-            
           })
         }
-        
       </div>
-      </>)
-    );
+    ) : null
   }
 
 

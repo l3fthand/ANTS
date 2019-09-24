@@ -405,10 +405,9 @@ a {
   position: absolute;
   z-index: 50;
   color: black;
-  right: 1em;
-  top: 1em;
-  height: 2em;
-  width: 2em;
+  right: 1.8em;
+  top: 1.5em;
+  font-size: 1.3em;
 }
 
 .react-multi-carousel-item {
@@ -781,6 +780,27 @@ a {
 .addReview {
   background-color: #f2f2f2;
   border-top: thin solid #bfbfbf;
+}
+
+.listings .Item {
+  -webkit-box-align: stretch !important;
+      -ms-flex-align: stretch !important;
+          align-items: stretch !important;
+}
+
+.Item .card .card-body .card-text {
+  -webkit-box-pack: normal;
+      -ms-flex-pack: normal;
+          justify-content: normal;
+}
+
+.Item .card .card-body .card-text .tag_product {
+  font-weight: bold;
+  padding-right: 1em;
+}
+
+.Item .card .card-body .first_cardText {
+  margin-top: 2em;
 }
 
 .imageGrid {

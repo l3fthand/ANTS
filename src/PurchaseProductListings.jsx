@@ -13,15 +13,25 @@ import {
 class PurchaseProductListings extends Component{
   constructor(props){
     super(props)
+    this.state={
+      currentUser:{},
     }
-  
+    
+  }
 
-  
+//   componentDidMount=()=>{
+    
+//     var userID = localStorage.getItem('userID')
+    
+//     api.getUser(userID).then(res =>{
+//       var currentUser = res.data
+//       this.setState({currentUser})
+      
+//   })
+// }
 
   render(){
-   var {user} = this.props
-    var products = user.purchases
-    
+    var products = this.props.user.purchases;
     return products ? (
       
       <div className="listings">
@@ -34,7 +44,7 @@ class PurchaseProductListings extends Component{
               key: item.id,
             //   refreshData: this.getProducts,
             }
-            return <PurchaseProductDetail {...props}/>
+            return <PurchaseProductDetail {...props} currentUser={this.props.user}/>
          
             
           })
