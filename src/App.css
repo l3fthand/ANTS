@@ -733,6 +733,27 @@ a {
   border-top: thin solid #bfbfbf;
 }
 
+.listings .Item {
+  -webkit-box-align: stretch !important;
+      -ms-flex-align: stretch !important;
+          align-items: stretch !important;
+}
+
+.Item .card .card-body .card-text {
+  -webkit-box-pack: normal;
+      -ms-flex-pack: normal;
+          justify-content: normal;
+}
+
+.Item .card .card-body .card-text .tag_product {
+  font-weight: bold;
+  padding-right: 1em;
+}
+
+.Item .card .card-body .first_cardText {
+  margin-top: 2em;
+}
+
 .imageGrid {
   opacity: .95;
   background-color: #fcfcfc;

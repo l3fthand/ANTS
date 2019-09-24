@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-
 import ProductListings from './ProductListings';
 import Products from './Products';
 import AddProduct from './AddProduct';
@@ -8,6 +7,9 @@ import EditProduct from './EditProduct';
 import Login from './Login';
 import UserProfile from './UserProfile';
 import UserProducts from './UserProducts';
+import Product from './Product';
+import PurchaseProductDetail from './PurchaseProductDetail';
+import RouteProductDetailsReview from './RouteProductDetailsReview';
 import RouteProductDetails from './RouteProductDetails';
 import PurchaseProductListings from './PurchaseProductListings';
 import RouteCat from './RouteCategory';
@@ -193,13 +195,13 @@ componentDidMount=()=>
             { this.state.currentUser ?<UserProducts path="/products" user={this.state.currentUser}/> : null}
             { this.state.currentUser ?<AddProduct path="/products/new"user={this.state.currentUser}/> : null}
             { this.state.currentUser ?<EditProduct path="/products/:id/edit"/> : null}
-            <RouteProductDetails path="/products/:id" user={this.state.currentUser}/>
-            <PurchaseProductListings path="/purchases"/>
             <RouteThanks path="/thanks"/>
-            { this.state.currentUser ? <PurchaseProductListings path="/purchases" user={this.state.currentUser} /> : null}
             { this.state.currentUser ? <UserProfile path="/user-profile" user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}
             <RouteFeaturedProduct path="/featured"/>
             <Products path="/products"/>
+            <RouteProductDetails currentUser={this.state.currentUser} path="/products/:id"/>
+            <RouteProductDetailsReview currentUser={this.state.currentUser} path="/review-products/:id"/>
+            {this.state.currentUser ?  <PurchaseProductListings path="/purchases" currentUser={this.state.currentUser}/> :null}
           </Router>
  
           </div>

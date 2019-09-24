@@ -4,7 +4,7 @@ import UserProducts from './UserProducts';
 import PurchaseProductListings from './PurchaseProductListings';
 import {api, server} from './API';
 import Modal from 'react-awesome-modal';
-
+import SellerReviewProducts from './SellerReviewProducts';
 import {
     Tabs,
     Tab,
@@ -141,6 +141,7 @@ handleEditSubmit =(e)=>{
                 </Tab>
                 <Tab eventKey="Reviews" title="Reviews">
                     
+                    <SellerReviewProducts/>
                 </Tab>
                 <Tab eventKey="Purchases" title="Purchases" >
                     

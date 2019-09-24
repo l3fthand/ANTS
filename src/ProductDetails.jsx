@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import Review from './Review';
 import {api, server} from './API';
 
-class RouteProductDetails extends Component{
+class ProductDetails extends Component{
   constructor(props){
     super(props);
     this.state = {
@@ -64,4 +64,4 @@ class RouteProductDetails extends Component{
   }
 }
 
-export default RouteProductDetails;
+export default ProductDetails;
