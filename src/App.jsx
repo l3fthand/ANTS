@@ -16,6 +16,8 @@ import RouteCat from './RouteCategory';
 import RouteThanks from './RouteThanks';
 import RouteFeaturedProduct from './RouteFeaturedProduct';
 import Footer from './Footer';
+import RouteProductSearch from './RouteProductSearch';
+import RouteOurStore from './RouteOurStore';
 
 import {
   Accordion,Nav,Navbar,Container,Card,Image,Row,NavDropdown
@@ -24,7 +26,7 @@ import './App.css';
 import Modal from 'react-awesome-modal';
 import {Router, Link, navigate, createMemorySource, createHistory} from '@reach/router';
 import 'react-multi-carousel/lib/styles.css';
-import { FiChevronDown,FiChevronLeft  } from "react-icons/fi";
+import { FiChevronDown,FiChevronLeft,FiSearch  } from "react-icons/fi";
 import { IoIosArrowRoundBack,IoIosClose,IoIosAdd } from "react-icons/io";
 import {api,server} from './API';
 
@@ -151,7 +153,7 @@ componentDidMount=()=>
                               <Nav.Link href="/products">My Products</Nav.Link>
                               {/* <Nav.Link href="#watchlist">Watch List</Nav.Link> */}
                               <Nav.Link href="/my-reviews">My Reviews</Nav.Link>
-                              <Nav.Link href="/purchases">Purchase Products</Nav.Link>
+                              <Nav.Link href="/purchases">My Purchases</Nav.Link>
                               <input
                             className="loginButton"
                             type="button"
@@ -177,7 +179,7 @@ componentDidMount=()=>
                           <Accordion.Toggle as={Card.Header} eventKey="0">
                           <h5>CATAGORIES</h5><FiChevronDown/>
                           </Accordion.Toggle>
-                          
+                          <Link to="/search" ><FiSearch className="searchIcon"/></Link>
                       </Card.Header>
                       <Accordion.Collapse eventKey="0">
                         <Nav className="browseNav" variant="pills" defaultActiveKey="/home">
@@ -191,6 +193,7 @@ componentDidMount=()=>
               </Accordion>
           </div>
           <Router>
+            <RouteProductSearch path="/search"/>
             <ProductListings path="/"/>
             <RouteCat path="/categories/:id"/>
             { this.state.currentUser ?<UserProducts path="/products" user={this.state.currentUser}/> : null}
@@ -203,7 +206,7 @@ componentDidMount=()=>
             <RouteFeaturedProduct path="/featured"/>
             <Products path="/products"/>
             <RouteProductDetailsReview currentUser={this.state.currentUser} path="/review-products/:id"/>
-       
+            <RouteOurStore path="/our-store"/>
           </Router>
  
           </div>

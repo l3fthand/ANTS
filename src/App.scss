@@ -81,6 +81,7 @@ a {
 @import "_review.scss";
 @import "_imageGrid.scss";
 @import "_footer.scss";
+@import "_searchList.scss";
 
 .wrap {
     display: flex;
@@ -320,52 +321,64 @@ a {
 
    
 
-            .FilterCat {
-                background-color:white;
-                color:$color-6;
-                text-align: center;
-                border-bottom:thin solid $color-4;
-                cursor: pointer;
-                .card {
-                    background: white;
-                }
-                .card-header {
-                    letter-spacing: .1em;
-                    padding: 0;
-                    background-color: white;
-                    border:0;
-                    padding: .3em;
-                    display: flex;
-                    justify-content: center;
-                    padding-bottom: .1em;
-                    align-items: center;
+    .FilterCat {
+        background-color:white;
+        color:$color-6;
+        text-align: center;
+        border-bottom:thin solid $color-4;
+        cursor: pointer;
+        .btn-secondary{
+            color: $link-color;
+            background-color:transparent;
+            border:none;
+            transition: none;
+            position: absolute;
+            right: .5em;
+            margin-top: -1.5em;
+        }
+        .card {
+            background: white;
+        }
+        .card-header {
+            letter-spacing: .1em;
+            padding: 0;
+            background-color: white;
+            border:0;
+            padding: .3em;
+            display: flex;
+            justify-content: space-around;
+            padding-bottom: .1em;
+            align-items: center;
 
-                    svg {
-                        font-size: 2.2em;
-                        padding-bottom: 0.2em;
-                        stroke-width: 1;
-                    }
-                    h5 {
-                        font-family: Raleway;
-                        padding-left: 1.3em;
-                        line-height: 1.5;
-                    }
-                    .backArrow {
-                        position: absolute;
-                        left:0.2em;
-                        // width:3.5em;
-                        // padding-top:.3em;
-                        font-size: 1.5em;
-                        color:$link-color;
-
-                        svg {
-                            stroke-width: 1;
-                            font-size: 1.5em;
-                        }
-                    }
-                }
-            
+            svg {
+                font-size: 2.2em;
+                padding-bottom: 0.2em;
+                stroke-width: 1;
             }
+            .searchIcon {
+                font-size:1.8em;
+            }
+
+            h5 {
+                font-family: Raleway;
+                padding-left: 1.3em;
+                line-height: 1.5;
+            }
+            .backArrow {
+                left:0.2em;
+                // width:3.5em;
+                // padding-top:.3em;
+                font-size: 1.5em;
+                color:$link-color;
+
+                svg {
+                    stroke-width: 1;
+                    font-size: 1.5em;
+                }
+            }
+        }
+    
+    }
 
 
     
