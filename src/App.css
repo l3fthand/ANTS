@@ -764,8 +764,8 @@ a {
 }
 
 .dropdown-menu.show {
-  -webkit-transform: translate3d(-9em, 1em, 0px) !important;
-          transform: translate3d(-9em, 1em, 0px) !important;
+  -webkit-transform: translate3d(-8.5em, 1em, 0px) !important;
+          transform: translate3d(-8.5em, 1em, 0px) !important;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -774,7 +774,7 @@ a {
       -ms-flex-direction: column;
           flex-direction: column;
   text-align: right;
-  margin-left: 1em !important;
+  margin-left: 0em !important;
   width: 12em;
   -webkit-transition: ease all .5s;
   transition: ease all .5s;
@@ -1099,7 +1099,6 @@ a {
       -ms-flex-direction: column;
           flex-direction: column;
   height: 100vh;
-  overflow-x: hidden;
 }
 
 .wrap .react-multi-carousel-track {

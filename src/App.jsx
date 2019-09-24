@@ -18,7 +18,6 @@ import RouteFeaturedProduct from './RouteFeaturedProduct';
 import Footer from './Footer';
 import RouteProductSearch from './RouteProductSearch';
 import RouteOurStore from './RouteOurStore';
-import UserNav from './UserNav';
 
 import {
   Accordion,Nav,Navbar,Container,Card,Image,Row,NavDropdown
@@ -29,19 +28,18 @@ import {Router, Link, navigate, createMemorySource, createHistory} from '@reach/
 import 'react-multi-carousel/lib/styles.css';
 import { FiChevronDown,FiChevronLeft,FiSearch  } from "react-icons/fi";
 import { IoIosArrowRoundBack,IoIosClose,IoIosAdd } from "react-icons/io";
+import { Dropdown, DropdownMenu, DropdownToggle } from 'reactstrap';
 import {api,server} from './API';
-
-
-
-
 
 class App extends Component{
   constructor(props){
-  super(props)
+  super(props);
+  this.toggle = this.toggle.bind(this);
     this.state = {
       visible: false,
       currentUser:null,
       categories: [],
+      dropdownOpen: false,
     }
   }
 
@@ -56,6 +54,7 @@ closeModal = () => {
 handleLogOut=()=>{
     localStorage.removeItem('userID')
     this.setState({currentUser:null})
+    navigate("/")
 }
 updateCurrentUser=(user)=>{
     this.setState({currentUser:user})
@@ -69,6 +68,12 @@ goHome = (e) => {
 goBack = (e) => {
     e.preventDefault();
     window.history.back()
+}
+
+toggle() {
+  this.setState({
+    dropdownOpen: !this.state.dropdownOpen
+  });
 }
 
 componentDidMount=()=>
@@ -139,9 +144,30 @@ componentDidMount=()=>
                      
                       {
                           this.state.currentUser ? (
-                          <>
-                                <UserNav currentUser={this.state.currentUser}/>
-                          </>
+                                <>
+                                  <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                                    <DropdownToggle
+                                      tag="span"
+                                      onClick={this.toggle}
+                                      data-toggle="dropdown"
+                                      aria-expanded={this.state.dropdownOpen}
+                                    >
+                                    <Image className="navbar-default"src={server+this.state.currentUser.photo} thumbnail={true} />
+                                    </DropdownToggle>
+                                    <DropdownMenu>
+                                      <Link onClick={this.toggle} to="/products/new"><IoIosAdd/> Sell an Item</Link>
+                                      <Link onClick={this.toggle} to={'/users/' + this.state.currentUser.id} >User Profile</Link>
+                                      <Link onClick={this.toggle} to="/products">My Products</Link>
+                                      <Link onClick={this.toggle} to="/my-reviews">My Reviews</Link>
+                                      <Link onClick={this.toggle} to="/purchases">My Purchases</Link>
+                                          <input
+                                        className="loginButton"
+                                        type="button"
+                                        value="Logout"
+                                        onClick={this.handleLogOut}/>
+                                    </DropdownMenu>
+                                  </Dropdown>
+                                  </>
                           ) : null
                       }
               </Container>
