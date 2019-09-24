@@ -25,6 +25,7 @@ class UserProfile extends Component {
         user:null,
         sold:'',
         listings:'',
+        currentUser:null,
         }
     }
     openModal = () => {
@@ -71,12 +72,14 @@ getUserProfile=(id)=>{
 }
 componentDidMount(){
     this.getUserProfile(this.props.id)
+    this.setState({currentUser:this.props.user})
 }
 
 
 
     render(){
         var {user} = this.state
+        var {currentUser} = this.state
         var currentListing = user ? user.currentListings.length : 0
         var soldListing = user ? user.sold.length : 0
        
@@ -85,7 +88,7 @@ componentDidMount(){
         return user ? (
             <Container>
                 <Row>
-                    <Col xs={5} md={2} className="user-photo">
+                    <Col xs={5} md={10} className="user-photo">
                     <Image src={server+this.state.fileName} roundedCircle thumbnail={true}/>
                     {/* {user.id == localStorage.getItem('userID')?
                     ( <Form className = "userProfile" onChange={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
@@ -95,7 +98,7 @@ componentDidMount(){
                     
                     </Form>): null} */}
                    
-                    {user.id == localStorage.getItem('userID')?(<input
+                    {user.id == currentUser.id?(<input
                         className="loginButton"
                         type="button"
                         value="Edit"
@@ -159,25 +162,26 @@ componentDidMount(){
                     <Col>
                     <p>{this.state.user.username}({soldListing})</p>
                     <p>Memeber since {this.state.user.date}</p>
-                    <p> {user.receivedReviews.length} reviews</p>
-                    <p> {currentListing} listings</p>
+                    <p> {user.receivedReviews.length} {user.receivedReviews.length>1?'reviews':'review'} </p>
+                    <p> {currentListing} {currentListing>1?'listings':'listing'}</p>
                     </Col>
                 </Row>
                 
                
             <Tabs defaultActiveKey="Products" id="uncontrolled-tab-example">
                 <Tab eventKey="Products" title="My Listings">
-                   
                     <UserProducts user={this.state.user}/>
+                    
                 </Tab>
                 <Tab eventKey="Reviews" title="Reviews">
                     
                     <SellerReviewProducts user={this.state.user}/>
                 </Tab>
+                {user.id == currentUser.id?
                 <Tab eventKey="Purchases" title="Purchases" >
                     
                     <PurchaseProductListings user={this.state.user}/>
-                </Tab>
+                </Tab>:null}
                 <Tab eventKey="Sold" title="Sold">
                    
                     
