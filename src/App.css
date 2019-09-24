@@ -339,26 +339,76 @@ a {
   margin-bottom: 0;
 }
 
-.modalText {
-  padding: 1em;
-  text-align: center;
+.modalText h6 {
+  padding: 0em;
+  margin: 0em;
+}
+
+.deleteModal {
+  color: #8c8c8c;
+  border: none;
+  border-bottom: #495158;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+.deleteModal span {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 1em;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  color: #0c0c0c;
+}
+
+.deleteModal span a {
+  color: #495158;
+  font-size: 1.5em;
+}
+
+.deleteModal span a span {
+  padding: 0em;
+}
+
+.deleteModal button {
+  color: #3f3f3f;
+  margin: 1em 2em;
+  padding: 0.5em;
+}
+
+.deleteModal .buttons {
   -ms-flex-pack: distribute;
       justify-content: space-around;
 }
 
-.modalText h6 {
-  padding: 0em;
-  margin: 0em;
+.deleteModal button {
+  background-color: #3f3f3f;
+  border: none;
+  color: #A68B3C;
+  border-bottom: thin solid #A68B3C;
+}
+
+.addPhoto {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 1em;
+}
+
+.deleteButton {
+  position: absolute;
+  z-index: 50;
+  color: black;
+  right: 1em;
+  top: 1em;
+  height: 2em;
+  width: 2em;
 }
 
 .react-multi-carousel-item {

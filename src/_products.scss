@@ -203,6 +203,9 @@
     h6 {
         padding: 0em;
         margin:0em;
+    }
+}
+
 .deleteModal{
     color:$color-3;
     border:none;
@@ -241,25 +244,17 @@
     }
 }
 
-
-
 .addPhoto{
     display: flex;
     margin: 1em;
 }
 
-.productImage{
-    // position: relative;
-
-
-    .fa-trash{
-        position: absolute;
-        z-index: 50;
-        color: black;
-        right: 1em;
-        top: 1em;
-        height: 2em;
-        width: 2em;
-    }
+.deleteButton{
+    position: absolute;
+    z-index: 50;
+    color: black;
+    right: 1em;
+    top: 1em;
+    height: 2em;
+    width: 2em;
 }
-

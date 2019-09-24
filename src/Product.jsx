@@ -58,7 +58,7 @@ class Product extends Component{
               photos.map(photo =>
               <Carousel.Item className="productImage">
                 <Card.Img variant="top" src={server+photo}/>
-                <i data-name={photo} onClick={this.deletePhoto} className="fas fa-trash"></i>
+                <i data-name={photo} onClick={this.deletePhoto} className="fas fa-trash deleteButton"></i>
               </Carousel.Item>)
             }
           </Carousel>
