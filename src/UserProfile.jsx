@@ -22,6 +22,9 @@ class UserProfile extends Component {
     this.state ={
         fileName:this.props.user.photo,
         visible:false,
+        user:null,
+        sold:'',
+        listings:'',
         }
     }
     openModal = () => {
@@ -31,71 +34,74 @@ class UserProfile extends Component {
     closeModal = () => {
         this.setState({visible: false});
     }
-handlePhotoSubmit=(e)=>{
-    var {user} = this.props;
-    
-    e.preventDefault();
+    handlePhotoSubmit=(e)=>{
+        var {user} = this.state;
+        
+        e.preventDefault();
 
-    var form = new FormData(this.userForm)
+        var form = new FormData(this.userForm)
 
-    api.uploadPhoto(form).then(res=>{
-        api.updateUser(user.id,{photo:res.data}).then(res=>{
+        api.uploadPhoto(form).then(res=>{
+            api.updateUser(user.id,{photo:res.data}).then(res=>{
+                this.props.updateCurrentUser(res.data)
+            })
+        })
+    }
+
+    handleEditSubmit =(e)=>{
+        e.preventDefault()
+        var id= this.state.user.id
+        var form = new FormData(this.form);
+        var data = {
+            name: form.get("name-input"),
+            password: form.get("password-input"),
+            email: form.get("email-input"),
+        }
+        api.updateUser(id,data).then(res=>{
             this.props.updateCurrentUser(res.data)
         })
-    })
-}
-
-handleEditSubmit =(e)=>{
-    e.preventDefault()
-    var id= this.props.user.id
-    var form = new FormData(this.form);
-    var data = {
-        name: form.get("name-input"),
-        password: form.get("password-input"),
-        email: form.get("email-input"),
-    }
-    api.updateUser(id,data).then(res=>{
-        this.props.updateCurrentUser(res.data)
-    })
 //NEED A REFRESHING THING!!!!!!
 }
+getUserProfile=(id)=>{
+    api.getUser(id).then(res=>{
+        this.setState({user:res.data})
+    })
+}
+componentDidMount(){
+    this.getUserProfile(this.props.id)
+}
+
 
 
     render(){
+        var {user} = this.state
+        var currentListing = user ? user.currentListings.length : 0
+        var soldListing = user ? user.sold.length : 0
+       
         
-        var products = this.props.user.products
-        var currentListing = 0
-        var soldListing = 0
-
-        for(var i=0;i<products.length;i++){
-            if(products[i].purchaser_id == null){
-                currentListing++
-            }
-        }
-        for(var i=0;i<products.length;i++){
-            if(products[i].purchaser_id){
-                soldListing++
-            }
-        }
         
-        return(
+        return user ? (
             <Container>
                 <Row>
                     <Col xs={3} md={1} className="user-photo">
                     <Image src={server+this.state.fileName} roundedCircle thumbnail={true} />
-                    <Form className = "userProfile" onSubmit={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
+                    {user.id == localStorage.getItem('userID')?
+                    ( <Form className = "userProfile" onSubmit={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
                     <Form.Group controlId="formPhoto">
 					<input type="file" className="photo-input" name="Userphoto-input" id="Userphoto-input" placeholder="Change your photo"/>
-				</Form.Group>
-                <Button variant="primary" type="submit">
-				upload
-				</Button>
-                    </Form>
-                    <input
-                            className="loginButton"
-                            type="button"
-                            value="Edit"
-                            onClick={() => this.openModal()}/>
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                    upload
+                    </Button>
+                    </Form>): null}
+                   
+                    {user.id == localStorage.getItem('userID')?(<input
+                        className="loginButton"
+                        type="button"
+                        value="Edit"
+                        onClick={() => this.openModal()}
+                    />) : null}
+                    
                 <Modal visible={this.state.visible}
                     width="95%"
                     height="70%"
@@ -103,7 +109,7 @@ handleEditSubmit =(e)=>{
                 onClickAway={() => this.closeModal()}>
               <Form className="editForm" onSubmit={this.handleEditSubmit} ref={(el) => {this.form = el}} >
               <Form.Group  controlId="formGridName">
-                <Form.Control type="text" defaultValue={this.props.user.name} name="name-input"/>
+                <Form.Control type="text" defaultValue={this.state.user.name} name="name-input"/>
                 </Form.Group>
                       <Form.Group controlId="formGridPassword">
                           <Form.Control type="password" placeholder="Current Password" name="password-input"/>
@@ -116,18 +122,23 @@ handleEditSubmit =(e)=>{
                       </Form.Group>
                   
                   <Form.Group controlId="formGridEmail">
-                      <Form.Control type="email" defaultValue={this.props.user.email} name="email-input"/>
+                      <Form.Control type="email" defaultValue={this.state.user.email} name="email-input"/>
                   </Form.Group>
-                  <Button variant="primary" type="submit">
+                    <Button variant="primary" type="submit">
                       Save Changes
-                  </Button>
+                    </Button>
                   <p>Please email contact@threads.com to change User Name</p>
+                  <br/>
+                  
+                  <Button variant="danger" type="submit">
+                        Delete Account
+                    </Button>
               </Form>
               </Modal>
                     </Col>
                     <Col>
-                    <p>{this.props.user.username}({soldListing})</p>
-                    <p>Memeber since {this.props.user.date}</p>
+                    <p>{this.state.user.username}({soldListing})</p>
+                    <p>Memeber since {this.state.user.date}</p>
                     <p> reviews</p>
                     <p> {currentListing} listings</p>
                     </Col>
@@ -137,7 +148,7 @@ handleEditSubmit =(e)=>{
             <Tabs defaultActiveKey="Products" id="uncontrolled-tab-example">
                 <Tab eventKey="Products" title="My Listings">
                    
-                    <UserProducts user={this.props.user}/>
+                    <UserProducts user={this.state.user}/>
                 </Tab>
                 <Tab eventKey="Reviews" title="Reviews">
                     
@@ -145,11 +156,11 @@ handleEditSubmit =(e)=>{
                 </Tab>
                 <Tab eventKey="Purchases" title="Purchases" >
                     
-                    <PurchaseProductListings user={this.props.user}/>
+                    <PurchaseProductListings user={this.state.user}/>
                 </Tab>
             </Tabs>
             </Container>
-        )
+        ) : null
     }
 }
 export default UserProfile;

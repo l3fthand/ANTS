@@ -8,7 +8,8 @@ import {
     Card,
     Row,
     Container,
-    Col
+    Col,
+    Image,
 } from 'react-bootstrap';
 import {api, server} from './API';
 import Modal from 'react-awesome-modal';
@@ -18,10 +19,11 @@ class RouteProductDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentUser: {},
+            // currentUser: {},
             mLogin: false,
             mCreditCard: false,
             product:{},
+            seller:{},
         }
     }
 
@@ -42,7 +44,13 @@ class RouteProductDetails extends Component {
     }
 
     routeGetProduct = (id) => {
-        api.getProduct(id).then(res => this.setState({product:res.data}))
+        api.getProduct(id).then(res => {
+            this.setState({product:res.data})
+            api.getUser(res.data.seller_id).then(res=>{
+                this.setState({seller:res.data})
+            })
+            
+        })
     }
 
     addDefaultSrc(ev){
@@ -51,8 +59,8 @@ class RouteProductDetails extends Component {
     
     componentDidMount(){
         var {id} = this.props;
-        //console.log(id);
         this.routeGetProduct(id);
+        
     }
 
     handlePurchase = (e) => {
@@ -73,9 +81,12 @@ class RouteProductDetails extends Component {
 
     render() {
         var {name,description,price,photos} = this.state.product
-        var user = this.state.currentUser;
-
-
+        var {user} = this.props
+        var seller = this.state.seller;
+        console.log('seller')
+        console.log(seller)
+        console.log('buyer')
+        console.log(user)
         return ( 
             <>
             <div className="Item">
@@ -85,12 +96,18 @@ class RouteProductDetails extends Component {
                         <Card.Img variant="top" src={server + photos} onError={this.addDefaultSrc}/>
                         <Card.Text>{description}</Card.Text>
                         <Card.Text className="productPrice">${price}
-                            {
-                                user ? ( <Form className="purchaseForm" onSubmit={() => this.openCreditModal()} ref={(el) => {this.form = el}} >
-                                        < Button onClick = {() => this.openCreditModal()}className = "purchaseButton" name = "purchase" variant = "outline-dark" > Purchase</Button></Form>
-                                ) : <Button onClick={() => this.openLoginModal()} className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button>
+                            {user && user.id!=seller.id? (<> 
+                                {
+                                    user ? ( <Form className="purchaseForm" onSubmit={() => this.openCreditModal()} ref={(el) => {this.form = el}} >
+                                            < Button onClick = {() => this.openCreditModal()}className = "purchaseButton" name = "purchase" variant = "outline-dark" > Purchase</Button></Form>
+                                    ) : <Button onClick={() => this.openLoginModal()} className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button>
+                            }</>) : null
                             }
                         </Card.Text>
+                            <Col xs={3}>
+                           <Link to={'/users/' + seller.id} ><Image  src={server+seller.photo} roundedCircle thumbnail={true}/></Link>
+                            </Col>
+                            <Link to={'/users/' + seller.id}>{seller.name}</Link>
                     </Card.Body>
                 </Card>
             </div>

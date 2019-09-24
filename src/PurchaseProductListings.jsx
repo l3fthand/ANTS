@@ -19,19 +19,19 @@ class PurchaseProductListings extends Component{
     
   }
 
-  componentDidMount=()=>{
+//   componentDidMount=()=>{
     
-    var userID = localStorage.getItem('userID')
+//     var userID = localStorage.getItem('userID')
     
-    api.getUser(userID).then(res =>{
-      var currentUser = res.data
-      this.setState({currentUser})
+//     api.getUser(userID).then(res =>{
+//       var currentUser = res.data
+//       this.setState({currentUser})
       
-  })
-}
+//   })
+// }
 
   render(){
-    var products = this.state.currentUser.purchases;
+    var products = this.props.user.purchases;
     return products ? (
       
       <div className="listings">
@@ -44,7 +44,7 @@ class PurchaseProductListings extends Component{
               key: item.id,
             //   refreshData: this.getProducts,
             }
-            return <PurchaseProductDetail {...props} currentUser={this.props.currentUser}/>
+            return <PurchaseProductDetail {...props} currentUser={this.props.user}/>
          
             
           })

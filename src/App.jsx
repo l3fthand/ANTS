@@ -146,7 +146,8 @@ componentDidMount=()=>
                           
                               <Nav className="mr-auto" >
                               <Nav.Link href="/products/new"><IoIosAdd/> Sell an Item</Nav.Link>
-                              <Nav.Link href="/user-profile">User Profile</Nav.Link>
+                              <Nav.Link href={'/users/' + this.state.currentUser.id} >User Profile</Nav.Link>
+                              
                               <Nav.Link href="/products">My Products</Nav.Link>
                               {/* <Nav.Link href="#watchlist">Watch List</Nav.Link> */}
                               <Nav.Link href="/my-reviews">My Reviews</Nav.Link>
@@ -195,13 +196,14 @@ componentDidMount=()=>
             { this.state.currentUser ?<UserProducts path="/products" user={this.state.currentUser}/> : null}
             { this.state.currentUser ?<AddProduct path="/products/new"user={this.state.currentUser}/> : null}
             { this.state.currentUser ?<EditProduct path="/products/:id/edit"/> : null}
+            <RouteProductDetails path="/products/:id" user={this.state.currentUser}/>
             <RouteThanks path="/thanks"/>
-            { this.state.currentUser ? <UserProfile path="/user-profile" user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}
+            { this.state.currentUser ? <PurchaseProductListings path="/purchases" user={this.state.currentUser} /> : null}
+            { this.state.currentUser ? <UserProfile path="/users/:id" user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}
             <RouteFeaturedProduct path="/featured"/>
             <Products path="/products"/>
-            <RouteProductDetails currentUser={this.state.currentUser} path="/products/:id"/>
             <RouteProductDetailsReview currentUser={this.state.currentUser} path="/review-products/:id"/>
-            {this.state.currentUser ?  <PurchaseProductListings path="/purchases" currentUser={this.state.currentUser}/> :null}
+       
           </Router>
  
           </div>
