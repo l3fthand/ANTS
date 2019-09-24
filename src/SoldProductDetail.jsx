@@ -31,7 +31,7 @@ class SoldProductDetail extends Component {
             //  <Form className="reviewForm">
 
             <>
-                <h3>Product Review</h3>
+                
                 <div className="Item userItem">
                     <ul className="list-unstyled">
                     <Media as="li" className="line">

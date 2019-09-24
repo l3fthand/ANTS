@@ -17,7 +17,7 @@ class Product extends Component{
     var {id, refreshData} = this.props;
     api.deleteProduct(id).then(() => refreshData())
   }
-
+  
 
   render(){
     var {name, description, price, photo, id} = this.props;

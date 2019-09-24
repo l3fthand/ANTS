@@ -38,10 +38,33 @@
     border-top:thin solid $color-2;
 }
 
-.listing 
+.listings 
 {
     .Item
     {
-        align-items: inherit;
+        align-items: stretch !important;
+    }
+}
+.Item 
+{
+    .card 
+    {
+        .card-body 
+        {
+            .card-text
+            {
+                justify-content: normal;
+                .tag_product
+                {
+                    font-weight: bold;
+                    padding-right: 1em;
+                }
+                
+            }
+            .first_cardText
+            {
+                margin-top: 2em;
+            }
+        }
     }
 }

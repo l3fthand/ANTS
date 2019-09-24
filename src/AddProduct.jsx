@@ -43,7 +43,7 @@ class AddProduct extends Component{
 				price: form.get('price-input'),
 				cat_name: form.get('cat-input'),
 				photo: file,
-				seller_id:this.prop.currentuser,
+				// seller_id:this.prop.currentuser,
 			}
 
 			api.addProduct(data).then(navigate('/products'));

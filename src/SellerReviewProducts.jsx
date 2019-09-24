@@ -14,7 +14,7 @@ class SellerReviewProducts extends Component {
         }
     }
     componentDidMount=()=>{ 
-        api.getUser(1568773768783).then(res =>{
+        api.getUser(1569197171706).then(res =>{
           var currentUser = res.data
           this.setState({currentUser})
           
@@ -29,7 +29,7 @@ class SellerReviewProducts extends Component {
         return reviews ? (
           
           <div className="listings">
-            <h1>Sold Products {reviews.length}</h1>
+            <h1>User Reviews </h1>
             {
              
               reviews.map((item) => {
