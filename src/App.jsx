@@ -18,6 +18,7 @@ import RouteFeaturedProduct from './RouteFeaturedProduct';
 import Footer from './Footer';
 import RouteProductSearch from './RouteProductSearch';
 import RouteOurStore from './RouteOurStore';
+import UserNav from './UserNav';
 
 import {
   Accordion,Nav,Navbar,Container,Card,Image,Row,NavDropdown
@@ -139,29 +140,7 @@ componentDidMount=()=>
                       {
                           this.state.currentUser ? (
                           <>
-                          
-                          <Navbar.Toggle className="userControl" aria-controls="responsive-navbar-nav"> 
-                          <Image className="navbar-default"src={server+this.state.currentUser.photo} thumbnail={true} />
-                          </Navbar.Toggle>
-
-                          <Navbar.Collapse id="responsive-navbar-nav" >
-                          
-                              <Nav className="mr-auto" >
-                              <Nav.Link href="/products/new"><IoIosAdd/> Sell an Item</Nav.Link>
-                              <Nav.Link href={'/users/' + this.state.currentUser.id} >User Profile</Nav.Link>
-                              
-                              <Nav.Link href="/products">My Products</Nav.Link>
-                              {/* <Nav.Link href="#watchlist">Watch List</Nav.Link> */}
-                              <Nav.Link href="/my-reviews">My Reviews</Nav.Link>
-                              <Nav.Link href="/purchases">My Purchases</Nav.Link>
-                              <input
-                            className="loginButton"
-                            type="button"
-                            value="Logout"
-                            onClick={this.handleLogOut}/>
-                              </Nav>
-                            
-                          </Navbar.Collapse>
+                                <UserNav currentUser={this.state.currentUser}/>
                           </>
                           ) : null
                       }
