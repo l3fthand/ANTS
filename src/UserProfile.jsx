@@ -92,9 +92,9 @@ componentDidMount(){
         
         return user ? (
             <Container>
-                <Row>
+                <Row className="userAdminDetails">
                     <Col xs={5} md={10} className="user-photo">
-                    <Image src={server+this.state.fileName} roundedCircle thumbnail={true}/>
+                    <Image src={server+this.state.fileName} thumbnail={true}/>
                     {user.id == currentUser.id?(<input
                         className="loginButton"
                         type="button"
@@ -155,7 +155,7 @@ componentDidMount(){
               </Form>
               </Modal>
                     </Col>
-                    <Col>
+                    <Col className="userInfo">
                     <p>{this.state.user.username}({soldListing})</p>
                     <p>Memeber since {this.state.user.date}</p>
                     <p> {user.receivedReviews.length} {user.receivedReviews.length>1?'reviews':'review'} </p>

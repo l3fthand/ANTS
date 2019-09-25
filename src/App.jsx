@@ -153,7 +153,8 @@ componentDidMount=()=>
                                 <>
                                   <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
                                     <DropdownToggle
-                                      tag="span"
+                                      tag="div"
+                                      className="adminToggle"
                                       onClick={this.toggle}
                                       data-toggle="dropdown"
                                       aria-expanded={this.state.dropdownOpen}

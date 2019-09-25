@@ -871,9 +871,42 @@ a {
   position: absolute;
 }
 
-.dropdown, .dropleft, .dropright, .dropup {
+.navBarbot:nth-child(2) {
   position: absolute;
   right: 1.2em;
+  width: 2em;
+  height: 2em;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.adminToggle {
+  width: 2em;
+  height: 2em;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.dropdown {
+  position: absolute;
+  right: 1.5em;
+}
+
+.dropdown .navbar-default {
+  background-color: transparent;
+  border: none;
+  max-width: 2em;
+  padding: 0;
+}
+
+.dropdown .navbar-default img {
+  display: block;
+  max-width: 8em;
+  max-height: auto;
+  width: auto;
+  height: auto;
+  margin-left: -50%;
+  margin-top: -50%;
 }
 
 .dropdown-menu {
@@ -910,13 +943,6 @@ a {
   border: none;
 }
 
-.dropdown-menu.show span {
-  position: absolute;
-  right: 0em;
-  top: 0em;
-  z-index: 99;
-}
-
 .dropdown-menu.show a {
   color: #bfbfbf;
   margin-top: .5em;
@@ -941,6 +967,61 @@ a {
   cursor: pointer;
   font-size: 1.1em !important;
   margin-bottom: 1em;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid #dee2e6;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  font-size: .9em;
+  padding: .5em;
+}
+
+#uncontrolled-tab-example-tab-Sold {
+  margin-right: 60%;
+}
+
+.userAdminDetails {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.userAdminDetails .user-photo {
+  width: 6em;
+  height: 6em;
+  max-width: 6em;
+  max-height: 6em;
+  overflow: hidden;
+  border-radius: 50%;
+  margin-left: 1.5em;
+}
+
+.userAdminDetails .user-photo img {
+  display: block;
+  max-width: 8em;
+  max-height: auto;
+  width: auto;
+  height: auto;
+  margin-left: -50%;
+  margin-top: -50%;
+}
+
+.userInfo {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.userInfo p {
+  margin-bottom: .5em;
 }
 
 .mr-3 p, .mx-3 p {
@@ -1427,14 +1508,6 @@ a {
 .Header .navBarbot .searchBar .dropright .dropdown-menu .mb-3 Button i {
   font-size: 1em;
   padding: .2em;
-}
-
-.Header .navbar-default {
-  background-color: transparent;
-  border: none;
-  max-width: 2em;
-  padding: 0;
-  border-radius: 50%;
 }
 
 .Header .Logo {

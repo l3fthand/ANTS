@@ -39,12 +39,48 @@
     }
 }
 
-
-
-
-.dropdown, .dropleft, .dropright, .dropup {
+.navBarbot:nth-child(2) {
     position: absolute;
     right: 1.2em;
+    width:2em;
+    height:2em;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+// .dropdown .show:nth-child(2) {
+//     border-top:none;
+//     border-bottom: solid thin $color-4; 
+// }
+
+.adminToggle {
+    width:2em;
+    height:2em;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.dropdown {
+    position: absolute;
+    right: 1.5em;
+
+    .navbar-default{
+        background-color:transparent;
+        border: none;
+        max-width: 2em;
+        padding:0;
+
+        img {
+            display: block;
+            max-width:8em;
+            max-height:auto;
+            width: auto;
+            height: auto;
+            margin-left:-50%;
+            margin-top:-50%;
+            // object-fit: contain;
+        }
+    }
 }
 
 .dropdown-menu {
@@ -72,14 +108,9 @@
     z-index: 2;
     margin-top: 1.5em;
     border:none;
+    
 
 
-    span {
-        position: absolute;
-        right: 0em;
-        top: 0em;
-        z-index: 99;
-    }
     a {
         color:$color-2;
         margin-top:.5em;
@@ -103,6 +134,53 @@
         cursor: pointer;
         font-size: 1.1em !important;
         margin-bottom: 1em;
+    }
+}
+.nav-tabs {
+    border-bottom: 1px solid #dee2e6;
+    display: flex;
+    justify-content: space-around;
+    font-size: .9em;
+    padding: .5em;
+}
+
+#uncontrolled-tab-example-tab-Sold {
+    margin-right: 60%;
+}
+
+.userAdminDetails {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    .user-photo {
+        // display: flex;
+        // justify-self: center;
+        // align-items: center;
+        width:6em;
+        height:6em;
+        max-width: 6em;
+        max-height: 6em;
+        overflow: hidden;
+        border-radius: 50%;
+        margin-left: 1.5em;
+        img {
+            display: block;
+            max-width:8em;
+            max-height:auto;
+            width: auto;
+            height: auto;
+            margin-left:-50%;
+            margin-top:-50%;
+            // object-fit: contain;
+        }
+    }
+}
+
+.userInfo {
+    padding-top:1em;
+    padding-bottom:1em;
+    p {
+        margin-bottom: .5em;
     }
 }
 
