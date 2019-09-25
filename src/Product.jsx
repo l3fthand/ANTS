@@ -26,10 +26,11 @@ class Product extends Component{
     var {id, refreshData} = this.props;
     api.deleteProduct(id).then(() => refreshData())
   }
+  
 
   deletePhoto = (e) => {
     var photo = e.target.dataset.name;
-    var {id,photos,refreshData} = this.props;
+    var {id,photos,refreshData} = this.state;
 
     var data = {
       photos: photos.filter(item => item!=photo)
@@ -97,7 +98,7 @@ class Product extends Component{
                   <MdClose/>
                   </a>
               </span>
-              <h3>Are You Sure You Want To Delete This Product</h3>
+              <h3>Are You Sure You Want To Delete This Product?</h3>
               <div class="buttons">
                 <Button variant="primary" onClick={() => this.closeModal()}>Cancel</Button>
                 <Button variant="primary" onClick={() => this.deleteProduct()}>Delete</Button>

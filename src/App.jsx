@@ -101,7 +101,7 @@ componentDidMount=()=>
     return(
 
 
-      <div className="wrap">
+      <Container className="wrap">
 
     <Container className="modalStyle">
         <Modal
@@ -223,7 +223,7 @@ componentDidMount=()=>
  
           </div>
           <Footer/>
-        </div>
+        </Container>
     );
   }
 }

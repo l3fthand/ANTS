@@ -17,11 +17,6 @@ class Item extends Component{
     api.getProduct(id).then(res => this.setState({product:res.data}))
   }
 
-  deleteProduct = () => {
-    var {id, refreshData} = this.props;
-    api.deleteProduct(id).then(() => refreshData())
-  }
-
   componentDidMount(){
     var {purchaser_id} = this.props;
     this.setState({purchaser_id:purchaser_id})

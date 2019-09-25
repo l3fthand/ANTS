@@ -117,14 +117,36 @@
 
 .userItem {
 
+    .card .card-body .productImage img {
+        display: block;
+        max-width: auto;
+        max-height: 10em;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+    }
+
+    
     
  .card .card-body {
         display: flex;
         justify-content: space-between;
         flex-direction: row;
         flex: 0 1;
-        padding: 1em 3em;
-        
+        padding: 1em 2em;
+            .carousel {
+                position: relative;
+                width: 100%;
+                display: flex;
+            .carousel-inner {
+                background-color:$color-1;
+            }
+            .carousel-indicators {
+                li {
+                background-color:$color-3;
+                }
+            }
+        }
     }
 
     .list-group {
