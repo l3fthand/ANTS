@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {navigate} from '@reach/router'
 import {api} from './API';
+import TextValidator from './TextValidator';
 import {
   Col,
   Accordion,

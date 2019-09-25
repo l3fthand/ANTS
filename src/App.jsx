@@ -18,6 +18,7 @@ import RouteFeaturedProduct from './RouteFeaturedProduct';
 import Footer from './Footer';
 import RouteProductSearch from './RouteProductSearch';
 import RouteOurStore from './RouteOurStore';
+import RouteErrorPage from './RouteErrorPage';
 
 import {
   Accordion,Nav,Navbar,Container,Card,Image,Row,NavDropdown
@@ -54,7 +55,7 @@ closeModal = () => {
 handleLogOut=()=>{
     localStorage.removeItem('userID')
     this.setState({currentUser:null})
-    navigate("/")
+    navigate('/')
 }
 updateCurrentUser=(user)=>{
     this.setState({currentUser:user})
@@ -212,6 +213,7 @@ componentDidMount=()=>
             <Products path="/products"/>
             <RouteProductDetailsReview currentUser={this.state.currentUser} path="/review-products/:id"/>
             <RouteOurStore path="/our-store"/>
+            <RouteErrorPage default path="/not-found"/>       
           </Router>
  
           </div>
