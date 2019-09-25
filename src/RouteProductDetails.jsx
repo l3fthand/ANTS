@@ -10,6 +10,7 @@ import {
     Container,
     Col,
     Image,
+    Carousel,
 } from 'react-bootstrap';
 import {api, server} from './API';
 import Modal from 'react-awesome-modal';
@@ -80,20 +81,23 @@ class RouteProductDetails extends Component {
     }
 
     render() {
-        var {name,description,price,photos} = this.state.product
-        var {user} = this.props
+        var {name,description,price,photos} = this.state.product;
+        var {user} = this.props;
         var seller = this.state.seller;
-        console.log('seller')
-        console.log(seller)
-        console.log('buyer')
-        console.log(user)
         return ( 
             <>
             <div className="Item">
                 <Card>
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
-                        <Card.Img variant="top" src={server + photos} onError={this.addDefaultSrc}/>
+                        <Carousel interval={null}>
+                            {
+                            photos ? photos.map(photo => 
+                                <Carousel.Item className="productImage">
+                                    <Card.Img variant="top" src={server+photo}/>
+                                </Carousel.Item>) : null
+                            }
+                        </Carousel>
                         <Card.Text>{description}</Card.Text>
                         <Card.Text className="productPrice">${price}
                             {user && user.id!=seller.id? (<> 

@@ -403,11 +403,14 @@ a {
 
 .deleteButton {
   position: absolute;
-  z-index: 50;
   color: black;
   right: 1.8em;
   top: 1.5em;
   font-size: 1.3em;
+}
+
+.productImage {
+  width: 100%;
 }
 
 .react-multi-carousel-item {

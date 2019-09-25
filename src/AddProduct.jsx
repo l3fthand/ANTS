@@ -44,7 +44,8 @@ class AddProduct extends Component{
 				photos: files,
 				// photo: file,
 			}
-			api.addProduct(data).then(navigate('/products'));
+			api.addProduct(data)
+			.then(navigate('/products'))
 			console.log(data);
 		})
 	}

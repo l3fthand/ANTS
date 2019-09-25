@@ -60,9 +60,7 @@ class Product extends Component{
           </Carousel>
 
           <Card.Body>
-              <Card.Title><Link to={'/products/'+id}>{name}</Link><Button variant="outline-dark">
-                      <i className="far fa-heart"></i>
-                  </Button>
+              <Card.Title><Link to={'/products/'+id}>{name}</Link><Button variant="outline-dark"></Button>
               </Card.Title>
               <Card.Text></Card.Text>
 
@@ -75,7 +73,7 @@ class Product extends Component{
                       <span className="itemPrice">{price}</span>
                   </ListGroup.Item>
                   
-                  <ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'}>Edit Listing</Link></ListGroup.Item>
+                  <ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'} refreshData={this.refreshData}>Edit Listing</Link></ListGroup.Item>
                   <ListGroup.Item onClick={this.openModal} className="delete linkColor">Remove Listing</ListGroup.Item>
 
               </ListGroup>

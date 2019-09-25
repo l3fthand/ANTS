@@ -42,7 +42,7 @@ class Item extends Component{
       this.state.purchaser_id ? null : (
         <Col>
           <Card>
-          <Link to={'/products/'+id}><Card.Img variant="top" src={server+photos} onError={this.addDefaultSrc}/> 
+          <Link to={'/products/'+id}><Card.Img variant="top" src={server+photos[0]}/> 
               <Card.Body>
                   <Card.Title><Link to={'/products/'+id}>{name}</Link>
                   </Card.Title>
