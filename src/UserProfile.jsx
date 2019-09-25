@@ -61,9 +61,14 @@ class UserProfile extends Component {
         }
         api.updateUser(id,data).then(res=>{
             this.props.updateCurrentUser(res.data)
+           
         })
 //NEED A REFRESHING THING!!!!!!
-}
+    }
+    handleDeleteAccount=(e)=>{
+      e.preventDefault()
+      api.deleteUser(this.state.user.id)
+    }
 getUserProfile=(id)=>{
     api.getUser(id).then(res=>{
         this.setState({user:res.data})
@@ -90,27 +95,18 @@ componentDidMount(){
                 <Row>
                     <Col xs={5} md={10} className="user-photo">
                     <Image src={server+this.state.fileName} roundedCircle thumbnail={true}/>
-                    {/* {user.id == localStorage.getItem('userID')?
-                    ( <Form className = "userProfile" onChange={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
-                    <Form.Group controlId="formPhoto">
-					<input type="file" className="photo-input" name="Userphoto-input" id="Userphoto-input" placeholder="Change your photo"/>
-                    </Form.Group>
-                    
-                    </Form>): null} */}
-                   
                     {user.id == currentUser.id?(<input
                         className="loginButton"
                         type="button"
                         value="Edit"
                         onClick={() => this.openModal()}
                     />) : null}
-                    
                 <Modal visible={this.state.visible}
                     width="95%"
                     height="90%"
                 effect="fadeInUp"
                 onClickAway={() => this.closeModal()}>
-              <Form className="editForm" onSubmit={this.handleEditSubmit} onSubmit={this.closeModal} ref={(el) => {this.form = el}}>
+              <Form className="editForm" onSubmit={this.handleEditSubmit} ref={(el) => {this.form = el}}>
 
                 <Col xs={8}>
               <Image src={server+this.state.fileName} roundedCircle thumbnail={true}/>
@@ -147,13 +143,13 @@ componentDidMount(){
                       <Form.Control type="email" defaultValue={this.state.user.email} name="email-input"/>
                     </Col>
                   </Form.Group>
-                    <Button variant="primary" type="submit">
+                    <Button onClick={this.closeModal} variant="primary" type="submit">
                       Save Changes
                     </Button>
                   <p>Please email contact@threads.com to change User Name</p>
                   <br/>
                   
-                  <Button variant="danger" type="submit">
+                  <Button variant="danger" type="submit" onSubmit={this.handleDeleteAccount}>
                         Delete Account
                     </Button>
               </Form>

@@ -96,18 +96,24 @@ class RouteProductDetails extends Component {
                         <Card.Img variant="top" src={server + photos} onError={this.addDefaultSrc}/>
                         <Card.Text>{description}</Card.Text>
                         <Card.Text className="productPrice">${price}
-                            {user && user.id!=seller.id? (<> 
-                                {
-                                    user ? ( <Form className="purchaseForm" onSubmit={() => this.openCreditModal()} ref={(el) => {this.form = el}} >
+                            {user? (user && user.id!=seller.id? 
+                                ( <Form className="purchaseForm" onSubmit={() => this.openCreditModal()} ref={(el) => {this.form = el}} >
                                             < Button onClick = {() => this.openCreditModal()}className = "purchaseButton" name = "purchase" variant = "outline-dark" > Purchase</Button></Form>
-                                    ) : <Button onClick={() => this.openLoginModal()} className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button>
-                            }</>) : null
-                            }
+                                    ) : null
+                            ): (<Button onClick={() => this.openLoginModal()} className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button>)}
+                            
                         </Card.Text>
                             <Col xs={3}>
-                           <Link to={'/users/' + seller.id} ><Image  src={server+seller.photo} roundedCircle thumbnail={true}/></Link>
+                                {seller.deleted_at != null ? <Link to={'/not-found'} >
+                               <Image  src={server+seller.photo} roundedCircle thumbnail={true}/>
+                            </Link>
+                            : <Link to={'/users/' + seller.id} >
+                               <Image  src={server+seller.photo} roundedCircle thumbnail={true}/>
+                            </Link>}
+                            
                             </Col>
-                            <Link to={'/users/' + seller.id}>{seller.name}</Link>
+                            {seller.deleted_at != null?<Link to={'/not-found'}>{seller.name}</Link>:<Link to={'/users/' + seller.id}>{seller.name}</Link>}
+                            
                     </Card.Body>
                 </Card>
             </div>
