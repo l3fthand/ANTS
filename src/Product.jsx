@@ -42,7 +42,7 @@ class Product extends Component{
   }
 
   render(){
-    var {name, description, price, id, photos} = this.props;
+    var {name, price, id, photos} = this.props;
 
     return(
       
@@ -60,23 +60,18 @@ class Product extends Component{
           </Carousel>
 
           <Card.Body>
-              <Card.Title><Link to={'/products/'+id}>{name}</Link><Button variant="outline-dark">
-                      <i className="far fa-heart"></i>
-                  </Button>
+              <Card.Title><Link to={'/products/'+id}>{name}</Link>
               </Card.Title>
               <Card.Text></Card.Text>
 
 
               <ListGroup variant="flush">
                   <ListGroup.Item>
-                      <span className="itemDescription">{description}</span>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                      <span className="itemPrice">{price}</span>
+                      <span className="itemPrice">$ {price}</span>
                   </ListGroup.Item>
                   
-                  <ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'}>Edit Listing</Link></ListGroup.Item>
-                  <ListGroup.Item onClick={this.openModal} className="delete linkColor">Remove Listing</ListGroup.Item>
+                  <ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'}>Edit</Link></ListGroup.Item>
+                  <ListGroup.Item onClick={this.openModal} className="delete linkColor">Remove</ListGroup.Item>
 
               </ListGroup>
 

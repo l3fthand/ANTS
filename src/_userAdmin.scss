@@ -40,6 +40,8 @@
 }
 
 
+
+
 .dropdown, .dropleft, .dropright, .dropup {
     position: absolute;
     right: 1.2em;
@@ -68,7 +70,7 @@
     padding-right:2em;
     background-color: #343a40;
     z-index: 2;
-    margin-top: 1em;
+    margin-top: 1.5em;
     border:none;
 
 
@@ -101,5 +103,38 @@
         cursor: pointer;
         font-size: 1.1em !important;
         margin-bottom: 1em;
+    }
+}
+
+//misc
+.mr-3, .mx-3 {
+    p {
+        margin-bottom: .2em;
+    }
+}
+
+
+
+.userItem {
+    
+    // .card .card-body .card-title {
+    //     justify-content: flex-start;
+    // } 
+    .list-group {
+        display: flex;
+        flex-direction: row;
+        padding-left: 0;
+        justify-content: space-around;
+        margin-bottom: 0;
+        border-bottom: thin $color-2 solid;
+        padding:.1em;
+        .list-group-item {
+            position: relative;
+            display: block;
+            padding: 0em 1em;
+            margin-bottom: -1px;
+            background-color: #fff;
+            border:none;
+        }
     }
 }

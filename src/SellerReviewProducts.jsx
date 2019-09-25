@@ -5,25 +5,10 @@ import {Form, Button, ListGroup,ToggleButton} from 'react-bootstrap';
 import {api} from './API';
 
 class SellerReviewProducts extends Component {
-    constructor(props){
-        super(props)
-        {
-            this.state = {
-                currentUser:{},
-            }
-        }
-    }
-    componentDidMount=()=>{ 
-        api.getUser(1569197171706).then(res =>{
-          var currentUser = res.data
-          this.setState({currentUser})
-          
-      })
-      
-    }
+
     render(){
      
-        var reviews = this.state.currentUser.receivedReviews;
+        var reviews = this.props.user.receivedReviews;
 
        
         return reviews ? (

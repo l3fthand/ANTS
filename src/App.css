@@ -191,11 +191,26 @@ a {
   -webkit-box-flex: 0;
       -ms-flex: 0;
           flex: 0;
-  padding: 1em 0 0;
+  padding: 1em;
 }
 
 .Item .card .card-body h5 {
   text-align: center;
+}
+
+.Item .card .card-body .col-3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0em;
+  width: 3em;
 }
 
 .Item .card .card-body .card-title {
@@ -339,9 +354,21 @@ a {
   margin-bottom: 0;
 }
 
+.modalText {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+
 .modalText h6 {
   padding: 0em;
-  margin: 0em;
+  margin-top: 1em;
 }
 
 .deleteModal {
@@ -695,6 +722,18 @@ a {
   border-bottom: solid thin #495158;
 }
 
+.card-title {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  padding-right: 1em;
+  padding-left: 1em;
+}
+
+.card-text {
+  word-break: break-all;
+  overflow-wrap: break-word;
+}
+
 .productForm {
   padding: 1em;
   display: -webkit-box;
@@ -782,7 +821,7 @@ a {
   padding-right: 2em;
   background-color: #343a40;
   z-index: 2;
-  margin-top: 1em;
+  margin-top: 1.5em;
   border: none;
 }
 
@@ -817,6 +856,35 @@ a {
   cursor: pointer;
   font-size: 1.1em !important;
   margin-bottom: 1em;
+}
+
+.mr-3 p, .mx-3 p {
+  margin-bottom: .2em;
+}
+
+.userItem .list-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  padding-left: 0;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-bottom: 0;
+  border-bottom: thin #bfbfbf solid;
+  padding: .1em;
+}
+
+.userItem .list-group .list-group-item {
+  position: relative;
+  display: block;
+  padding: 0em 1em;
+  margin-bottom: -1px;
+  background-color: #fff;
+  border: none;
 }
 
 .reviewForm {

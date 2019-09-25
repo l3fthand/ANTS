@@ -90,9 +90,16 @@
             justify-content: flex-end;
             flex-direction: column;
             flex: 0;
-            padding: 1em 0 0;
+            padding: 1em;
             h5 {
                 text-align: center;
+            }
+            .col-3 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding:0em;
+                width:3em;
             }
             .card-title {
                 display: flex;
@@ -100,6 +107,7 @@
                 align-items: center;
                 padding: 0;
                 font-size:1em;
+
             }
             img {
                 display: block;
@@ -200,10 +208,14 @@
 }
 
 .modalText {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     h6 {
         padding: 0em;
-        margin:0em;
+        margin-top:1em;
     }
+    text-align:center;
 }
 
 .deleteModal{

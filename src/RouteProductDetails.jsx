@@ -106,8 +106,9 @@ class RouteProductDetails extends Component {
                         </Card.Text>
                             <Col xs={3}>
                            <Link to={'/users/' + seller.id} ><Image  src={server+seller.photo} roundedCircle thumbnail={true}/></Link>
+                           <Link to={'/users/' + seller.id}>{seller.name}</Link>
                             </Col>
-                            <Link to={'/users/' + seller.id}>{seller.name}</Link>
+                            
                     </Card.Body>
                 </Card>
             </div>
