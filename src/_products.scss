@@ -269,3 +269,13 @@
     top: 1.5em;
     font-size: 1.3em;
 }
+
+//misc
+.formGridPrice {
+    display: flex;
+    align-items: center;
+}
+
+p.productPrice.card-text {
+    justify-content: space-around;
+}

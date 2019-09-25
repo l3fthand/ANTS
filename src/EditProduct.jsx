@@ -75,9 +75,9 @@ class EditProduct extends Component{
                 <Form.Control type="text" className="form-control" name="name-input" id="name-input" defaultValue={name}/>
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formGridPrice">
+            <Form.Group as={Col} controlId="formGridPrice" className="formGridPrice">
 
-                <Form.Control type="currency" className="form-control" name="price-input" id="price-input" defaultValue={price}/>
+                $ <Form.Control type="currency" className="form-control" name="price-input" id="price-input" defaultValue={price}/>
             </Form.Group>
         </Form.Row>
 

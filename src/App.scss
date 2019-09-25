@@ -188,7 +188,7 @@ a {
     .navbar-default{
         background-color:transparent;
         border: none;
-        max-width: 2.3em;
+        max-width: 2em;
         padding:0;
         border-radius:50%;
     }
@@ -405,6 +405,27 @@ a {
     padding:0;
     .container {
         margin:0;
+    }
+}
+
+.btn-primary {
+    background-color: #f2f2f2;
+    border: none;
+    color: #A68B3C;
+    border-bottom: thin solid #A68B3C;
+    border-radius: 0;
+}
+
+.productForm {
+    h3 {
+        text-align: center;
+    }
+    .btn-primary {
+        background-color: #f2f2f2;
+        border: none;
+        color: #A68B3C;
+        border-bottom: thin solid #A68B3C;
+        border-radius: 0;
     }
 }
 

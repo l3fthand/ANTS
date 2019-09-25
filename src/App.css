@@ -437,6 +437,20 @@ a {
   font-size: 1.3em;
 }
 
+.formGridPrice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+p.productPrice.card-text {
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
 .react-multi-carousel-item {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1291,7 +1305,7 @@ a {
 .Header .navbar-default {
   background-color: transparent;
   border: none;
-  max-width: 2.3em;
+  max-width: 2em;
   padding: 0;
   border-radius: 50%;
 }
@@ -1559,6 +1573,26 @@ a {
 
 .NoPad .container {
   margin: 0;
+}
+
+.btn-primary {
+  background-color: #f2f2f2;
+  border: none;
+  color: #A68B3C;
+  border-bottom: thin solid #A68B3C;
+  border-radius: 0;
+}
+
+.productForm h3 {
+  text-align: center;
+}
+
+.productForm .btn-primary {
+  background-color: #f2f2f2;
+  border: none;
+  color: #A68B3C;
+  border-bottom: thin solid #A68B3C;
+  border-radius: 0;
 }
 
 @media (min-width: 576px) {
