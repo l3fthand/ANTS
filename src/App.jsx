@@ -77,6 +77,11 @@ toggle() {
   });
 }
 
+addDefaultSrc(ev){
+  ev.target.src = '/default.png'
+}
+
+
 componentDidMount=()=>
 {
 
@@ -153,7 +158,7 @@ componentDidMount=()=>
                                       data-toggle="dropdown"
                                       aria-expanded={this.state.dropdownOpen}
                                     >
-                                    <Image className="navbar-default"src={server+this.state.currentUser.photo} thumbnail={true} />
+                                    <Image className="navbar-default"src={server+this.state.currentUser.photo} thumbnail={true} onError={this.addDefaultSrc}/> 
                                     </DropdownToggle>
                                     <DropdownMenu>
                                       <Link onClick={this.toggle} to="/products/new"><IoIosAdd/> Sell an Item</Link>

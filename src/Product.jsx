@@ -37,44 +37,46 @@ class Product extends Component{
 
     api.updateProduct(id, data).then(()=> refreshData());
 
-    
-    
   }
 
+  addDefaultSrc(ev){
+    ev.target.src = '/coming-soon.png'
+  }
+
+
   render(){
-    var {name, description, price, id, photos} = this.props;
+    var {name, price, id, photos} = this.props;
 
     return(
       
       <>
       <div className="Item userItem">
       <Card>
-          <Carousel interval={null}>
-            {
-              photos.map(photo =>
-              <Carousel.Item className="productImage">
-                <Card.Img variant="top" src={server+photo}/>
-                <i data-name={photo} onClick={this.deletePhoto} className="fas fa-trash deleteButton"></i>
-              </Carousel.Item>)
-            }
-          </Carousel>
+
 
           <Card.Body>
-              <Card.Title><Link to={'/products/'+id}>{name}</Link><Button variant="outline-dark"></Button>
-              </Card.Title>
-              <Card.Text></Card.Text>
-
-
+              <Carousel interval={null}>
+                  {
+                    photos.map(photo =>
+                    <Carousel.Item className="productImage">
+                      <Card.Img variant="top" src={server+photo} onError={this.addDefaultSrc}/> 
+                      <i data-name={photo} onClick={this.deletePhoto} className="fas fa-trash deleteButton"></i>
+                    </Carousel.Item>)
+                  }
+                </Carousel>
               <ListGroup variant="flush">
-                  <ListGroup.Item>
-                      <span className="itemDescription">{description}</span>
-                  </ListGroup.Item>
-                  <ListGroup.Item>
-                      <span className="itemPrice">{price}</span>
-                  </ListGroup.Item>
+
+
+              <ListGroup.Item className="prodName"><Link to={'/products/'+id}>{name}</Link>
+              </ListGroup.Item>
+              <ListGroup.Item>
+                      <span className="itemPrice">$ {price}</span>
+              </ListGroup.Item>
+
+                 
                   
-                  <ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'} refreshData={this.refreshData}>Edit Listing</Link></ListGroup.Item>
-                  <ListGroup.Item onClick={this.openModal} className="delete linkColor">Remove Listing</ListGroup.Item>
+                  <ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'} refreshData={this.refreshData}>Edit</Link></ListGroup.Item>
+                  <ListGroup.Item onClick={this.openModal} className="delete linkColor">Remove</ListGroup.Item>
 
               </ListGroup>
 

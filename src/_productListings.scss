@@ -206,3 +206,16 @@
         border-bottom: solid thin $color-4; 
     }
 }
+
+//misc
+.card-title {
+    word-break: break-all;
+    overflow-wrap: break-word;
+    padding-right: 1em;
+    padding-left:1em;
+}
+
+.card-text {
+    word-break: break-all;
+    overflow-wrap: break-word;
+}

@@ -45,10 +45,8 @@ a {
     color:$link-color;
 }
 // ====for purchase products ====
-.media
-{
-    .price
-    {
+.media {
+    .price{
         font-weight:700;
     }
     .btn-primary 
@@ -64,8 +62,7 @@ a {
     }
     
 }
-.line
-    {
+.line{
         // position: relative;
         // display: block;
         padding: .75rem 1.25rem;
@@ -188,7 +185,7 @@ a {
     .navbar-default{
         background-color:transparent;
         border: none;
-        max-width: 2.3em;
+        max-width: 2em;
         padding:0;
         border-radius:50%;
     }
@@ -210,6 +207,7 @@ a {
         padding-bottom:.5em;
     }
 }
+
 .modalStyle {
     div {
         border-radius: .1em !important;
@@ -407,6 +405,28 @@ a {
         margin:0;
     }
 }
+
+.btn-primary {
+    background-color: #f2f2f2;
+    border: none;
+    color: #A68B3C;
+    border-bottom: thin solid #A68B3C;
+    border-radius: 0;
+}
+
+.productForm {
+    h3 {
+        text-align: center;
+    }
+    .btn-primary {
+        background-color: #f2f2f2;
+        border: none;
+        color: #A68B3C;
+        border-bottom: thin solid #A68B3C;
+        border-radius: 0;
+    }
+}
+
 
 
 // // Extra small devices (portrait phones, less than 576px)

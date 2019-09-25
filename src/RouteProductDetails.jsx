@@ -80,6 +80,10 @@ class RouteProductDetails extends Component {
             .then(res => navigate("/thanks"))
     }
 
+    addDefaultSrc(ev){
+        ev.target.src = '/coming-soon.png'
+      }
+
     render() {
         var {name,description,price,photos} = this.state.product;
         var {user} = this.props;
@@ -94,12 +98,13 @@ class RouteProductDetails extends Component {
                             {
                             photos ? photos.map(photo => 
                                 <Carousel.Item className="productImage">
-                                    <Card.Img variant="top" src={server+photo}/>
+                                    <Card.Img variant="top" src={server+photo} onError={this.addDefaultSrc}/> 
                                 </Carousel.Item>) : null
                             }
                         </Carousel>
-                        <Card.Text>{description}</Card.Text>
-                        <Card.Text className="productPrice">${price}
+                        <Col className="productDetailsInfo">
+                        <Card.Text className="productDesc">{description}</Card.Text>
+                        <Card.Text className="productPrice">$ {price}
                             {user? (user && user.id!=seller.id? 
                                 ( <Form className="purchaseForm" onSubmit={() => this.openCreditModal()} ref={(el) => {this.form = el}} >
                                             < Button onClick = {() => this.openCreditModal()}className = "purchaseButton" name = "purchase" variant = "outline-dark" > Purchase</Button></Form>
@@ -107,6 +112,7 @@ class RouteProductDetails extends Component {
                             ): (<Button onClick={() => this.openLoginModal()} className="purchaseButton" name="purchase" variant="outline-dark">Purchase</Button>)}
                             
                         </Card.Text>
+                        </Col>
                             <Col xs={3}>
                                 {seller.deleted_at != null ? <Link to={'/not-found'} >
                                <Image  src={server+seller.photo} roundedCircle thumbnail={true}/>
@@ -115,8 +121,8 @@ class RouteProductDetails extends Component {
                                <Image  src={server+seller.photo} roundedCircle thumbnail={true}/>
                             </Link>}
                             
-                            </Col>
-                            {seller.deleted_at != null?<Link to={'/not-found'}>{seller.name}</Link>:<Link to={'/users/' + seller.id}>{seller.name}</Link>}
+                            
+                            {seller.deleted_at != null?<Link to={'/not-found'}>{seller.name}</Link>:<Link to={'/users/' + seller.id}>{seller.name}</Link>}</Col>
                             
                     </Card.Body>
                 </Card>

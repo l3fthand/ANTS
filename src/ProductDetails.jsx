@@ -37,6 +37,12 @@ class ProductDetails extends Component{
       this.routeGetProduct(productId)
     })
   }
+
+  addDefaultSrc(ev){
+    ev.target.src = '/coming-soon.png'
+  }
+
+
   render(){
     var {product} = this.state;
 
@@ -46,7 +52,7 @@ class ProductDetails extends Component{
         <h2 className="name text">{product.name}</h2>
         <p className="description text">{product.description}</p>
         <p className="price text">{product.price}</p>
-        <img className="photo" src={server+product.photo}/>
+        <img className="photo" src={server+product.photo} onError={this.addDefaultSrc}/> 
         {
           product.reviews.map(review => {
             var reviewProps = {
