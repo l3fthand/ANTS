@@ -92,10 +92,10 @@ class RouteProductDetailsReview extends Component{
         <Card.Body>
             <Card.Title>{product.name}
             </Card.Title>
-            {/* <Card.Img variant="top" src={server+product.photo}/>
-           */}
+            <Card.Img variant="top" src={server+product.photo}/>
+          
 
-            <Card.Img variant="top" src={'/suits.jpg'}/>
+            
             <Card.Text className="first_cardText"><p className="tag_product">DESCRIPTION:</p><p>{product.description}</p></Card.Text>
             <Card.Text className="productPrice"><p className="tag_product">PRICE:</p> <p>${product.price}</p><Form className="purchaseForm" onSubmit={this.handlePurchase} ref={(el) => {this.form = el}} ></Form></Card.Text>
         </Card.Body>
