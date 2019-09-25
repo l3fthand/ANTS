@@ -20,6 +20,7 @@
     "react-scripts": "3.1.1",
     "react-scroll-up-button": "^1.6.4",
     "react-svg-buttons": "^0.4.0",
+    "reactstrap": "^8.0.1",
     "sass-google-fonts": "^1.0.1"
   },
   "scripts": {

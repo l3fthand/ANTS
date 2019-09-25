@@ -16,6 +16,8 @@ import RouteCat from './RouteCategory';
 import RouteThanks from './RouteThanks';
 import RouteFeaturedProduct from './RouteFeaturedProduct';
 import Footer from './Footer';
+import RouteProductSearch from './RouteProductSearch';
+import RouteOurStore from './RouteOurStore';
 
 import {
   Accordion,Nav,Navbar,Container,Card,Image,Row,NavDropdown
@@ -24,21 +26,20 @@ import './App.css';
 import Modal from 'react-awesome-modal';
 import {Router, Link, navigate, createMemorySource, createHistory} from '@reach/router';
 import 'react-multi-carousel/lib/styles.css';
-import { FiChevronDown,FiChevronLeft  } from "react-icons/fi";
+import { FiChevronDown,FiChevronLeft,FiSearch  } from "react-icons/fi";
 import { IoIosArrowRoundBack,IoIosClose,IoIosAdd } from "react-icons/io";
+import { Dropdown, DropdownMenu, DropdownToggle } from 'reactstrap';
 import {api,server} from './API';
-
-
-
-
 
 class App extends Component{
   constructor(props){
-  super(props)
+  super(props);
+  this.toggle = this.toggle.bind(this);
     this.state = {
       visible: false,
       currentUser:null,
       categories: [],
+      dropdownOpen: false,
     }
   }
 
@@ -53,6 +54,7 @@ closeModal = () => {
 handleLogOut=()=>{
     localStorage.removeItem('userID')
     this.setState({currentUser:null})
+    navigate("/")
 }
 updateCurrentUser=(user)=>{
     this.setState({currentUser:user})
@@ -66,6 +68,12 @@ goHome = (e) => {
 goBack = (e) => {
     e.preventDefault();
     window.history.back()
+}
+
+toggle() {
+  this.setState({
+    dropdownOpen: !this.state.dropdownOpen
+  });
 }
 
 componentDidMount=()=>
@@ -136,31 +144,30 @@ componentDidMount=()=>
                      
                       {
                           this.state.currentUser ? (
-                          <>
-                          
-                          <Navbar.Toggle className="userControl" aria-controls="responsive-navbar-nav"> 
-                          <Image className="navbar-default"src={server+this.state.currentUser.photo} thumbnail={true} />
-                          </Navbar.Toggle>
-
-                          <Navbar.Collapse id="responsive-navbar-nav" >
-                          
-                              <Nav className="mr-auto" >
-                              <Nav.Link href="/products/new"><IoIosAdd/> Sell an Item</Nav.Link>
-                              <Nav.Link href={'/users/' + this.state.currentUser.id} >User Profile</Nav.Link>
-                              
-                              <Nav.Link href="/products">My Products</Nav.Link>
-                              {/* <Nav.Link href="#watchlist">Watch List</Nav.Link> */}
-                              <Nav.Link href="/my-reviews">My Reviews</Nav.Link>
-                              <Nav.Link href="/purchases">Purchase Products</Nav.Link>
-                              <input
-                            className="loginButton"
-                            type="button"
-                            value="Logout"
-                            onClick={this.handleLogOut}/>
-                              </Nav>
-                            
-                          </Navbar.Collapse>
-                          </>
+                                <>
+                                  <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+                                    <DropdownToggle
+                                      tag="span"
+                                      onClick={this.toggle}
+                                      data-toggle="dropdown"
+                                      aria-expanded={this.state.dropdownOpen}
+                                    >
+                                    <Image className="navbar-default"src={server+this.state.currentUser.photo} thumbnail={true} />
+                                    </DropdownToggle>
+                                    <DropdownMenu>
+                                      <Link onClick={this.toggle} to="/products/new"><IoIosAdd/> Sell an Item</Link>
+                                      <Link onClick={this.toggle} to={'/users/' + this.state.currentUser.id} >User Profile</Link>
+                                      <Link onClick={this.toggle} to="/products">My Products</Link>
+                                      <Link onClick={this.toggle} to="/my-reviews">My Reviews</Link>
+                                      <Link onClick={this.toggle} to="/purchases">My Purchases</Link>
+                                          <input
+                                        className="loginButton"
+                                        type="button"
+                                        value="Logout"
+                                        onClick={this.handleLogOut}/>
+                                    </DropdownMenu>
+                                  </Dropdown>
+                                  </>
                           ) : null
                       }
               </Container>
@@ -177,7 +184,7 @@ componentDidMount=()=>
                           <Accordion.Toggle as={Card.Header} eventKey="0">
                           <h5>CATAGORIES</h5><FiChevronDown/>
                           </Accordion.Toggle>
-                          
+                          <Link to="/search" ><FiSearch className="searchIcon"/></Link>
                       </Card.Header>
                       <Accordion.Collapse eventKey="0">
                         <Nav className="browseNav" variant="pills" defaultActiveKey="/home">
@@ -191,6 +198,7 @@ componentDidMount=()=>
               </Accordion>
           </div>
           <Router>
+            <RouteProductSearch path="/search"/>
             <ProductListings path="/"/>
             <RouteCat path="/categories/:id"/>
             { this.state.currentUser ?<UserProducts path="/products" user={this.state.currentUser}/> : null}
@@ -203,7 +211,7 @@ componentDidMount=()=>
             <RouteFeaturedProduct path="/featured"/>
             <Products path="/products"/>
             <RouteProductDetailsReview currentUser={this.state.currentUser} path="/review-products/:id"/>
-       
+            <RouteOurStore path="/our-store"/>
           </Router>
  
           </div>

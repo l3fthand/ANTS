@@ -21,15 +21,11 @@ class Footer extends Component{
         }
     }
     
-
-
     componentDidMount(){
       window.addEventListener("scroll", this.handleScroll);
 
     }
 
-
- 
     componentWillUnmount() {
         window.removeEventListener("scroll", this.handleScroll);
       }
@@ -56,7 +52,7 @@ class Footer extends Component{
 
 
 render () {
-    var user = this.props;
+    // var user = this.props;
     
   
     // var user = this.state.currentUser;
