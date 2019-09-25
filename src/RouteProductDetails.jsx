@@ -325,12 +325,12 @@ class RouteProductDetails extends Component {
                                 placeholder="Card Number"
                                 onChange={this.handleInputChange}
                                 value={this.state.CardNumber}
-                                validators={['required','matchRegexp:/^(\d{4}[- ]){3}\d{4}|\d{16}$ /']}
-                                errorMessages={['Card Number is required','Card Number is not valid']}
+                                validators={['required','minStringLength:14','minStringLength:15']}
+                                errorMessages={['Card Number is required','Card Number is not valid','Card Number is not valid']}
 
                                 />
                             </div>
-
+{/* matchRegexp:/^(\d{4}[- ]){3}\d{4}|\d{16}$ / */}
                             <div className="form-group">
                                 <label htmlFor="name"></label>
                                 <TextValidator 
@@ -341,11 +341,12 @@ class RouteProductDetails extends Component {
                                 placeholder="Expiry"
                                 onChange={this.handleInputChange}
                                 value={this.state.Expiry}
-                                validators={['required','matchRegexp:/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/']}
-                                errorMessages={['Expiry date is required','Expiry date is not valid']}
+                                validators={['required','minStringLength:4','minStringLength:5']}
+                                errorMessages={['Expiry date is required','Expiry date is not valid','Expiry date is not valid']}
 
                                 />
                             </div>
+                            {/* 'matchRegexp:/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/' */}
                             <div className="form-group">
                                 <label htmlFor="name"></label>
                                 <TextValidator 
@@ -356,11 +357,12 @@ class RouteProductDetails extends Component {
                                 placeholder="cvv"
                                 onChange={this.handleInputChange}
                                 value={this.state.cvv}
-                                validators={['required','matchRegexp: /^([0-9]{3,4})$/']}
-                                errorMessages={['CVV number is required','CVV number is not validate']}
+                                validators={['required','minStringLength:3','minStringLength:3']}
+                                errorMessages={['CVV number is required','CVV number is not validate','CVV number is not validate']}
 
                                 />
                             </div>
+                            {/* 'matchRegexp: /^([0-9]{3,4})$/' */}
                         <button type="submit" type="submit"
                             className="purchaseButton"
                             name="purchase"

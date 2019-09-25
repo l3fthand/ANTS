@@ -152,7 +152,7 @@ componentDidMount(){
                 </Tab>
                 <Tab eventKey="Reviews" title="Reviews">
                     
-                    <SellerReviewProducts/>
+                    <SellerReviewProducts user={this.state.user}/>
                 </Tab>
                 <Tab eventKey="Purchases" title="Purchases" >
                     

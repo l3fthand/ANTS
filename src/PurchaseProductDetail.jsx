@@ -18,7 +18,8 @@ class PurchaseProductDetail extends Component {
 
 
   render(){
-    var {name, description, price, photo, id,currentUser} = this.props;
+    var {name, description, price, photos, id,currentUser} = this.props;
+    
 
     return(
       
@@ -60,7 +61,7 @@ class PurchaseProductDetail extends Component {
             width={64}
             height={64}
             className="mr-3"
-            src={server+photo}
+            src={server+photos}
             />
             <Col>   
               <h5><Link to={'/products/'+id}>{name}</Link></h5>

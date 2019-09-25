@@ -13,17 +13,12 @@ class SellerReviewProducts extends Component {
             }
         }
     }
-    componentDidMount=()=>{ 
-        api.getUser(1569197171706).then(res =>{
-          var currentUser = res.data
-          this.setState({currentUser})
-          
-      })
+  
       
-    }
+    
     render(){
      
-        var reviews = this.state.currentUser.receivedReviews;
+        var reviews = this.props.user.receivedReviews;
 
        
         return reviews ? (

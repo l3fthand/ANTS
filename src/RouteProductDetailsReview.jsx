@@ -92,7 +92,7 @@ class RouteProductDetailsReview extends Component{
         <Card.Body>
             <Card.Title>{product.name}
             </Card.Title>
-            <Card.Img variant="top" src={server+product.photo}/>
+            <Card.Img variant="top" src={server+product.photos}/>
           
 
             
