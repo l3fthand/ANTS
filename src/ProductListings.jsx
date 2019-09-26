@@ -176,7 +176,7 @@ class ProductListings extends Component {
                 <Container>
                     <Row className="productsListing">
                         {
-                            products.map((item) => {
+                            products.reverse().map((item) => {
                                 var itemProps = {
                                     ...item,
                                     key: item.id,

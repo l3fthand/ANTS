@@ -42,7 +42,7 @@ class RouteCat extends Component {
                 <Row className="productsListing">
                 
                     {
-                        category.products.map((item) => {
+                        category.products.reverse().map((item) => {
                             var itemProps = {
                                 ...item,
                                 key:item.id,
