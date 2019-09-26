@@ -48,7 +48,7 @@ class UserProduct extends Component{
 
 
   render(){
-    var {name, price, id, photos} = this.props;
+    var {name, price, id, photos,seller_id} = this.props;
 
     return(
       
@@ -85,9 +85,9 @@ class UserProduct extends Component{
               </ListGroup.Item>
 
                  
+                  {seller_id==localStorage.getItem('userID')?<><ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'} refreshData={this.refreshData}>Edit</Link></ListGroup.Item>
+                  <ListGroup.Item onClick={this.openModal} className="delete linkColor">Remove</ListGroup.Item></>:null}
                   
-                  <ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'} refreshData={this.refreshData}>Edit</Link></ListGroup.Item>
-                  <ListGroup.Item onClick={this.openModal} className="delete linkColor">Remove</ListGroup.Item>
 
               </ListGroup>
 

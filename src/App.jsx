@@ -220,7 +220,7 @@ refreshCurrentUser = ()=>
             <RouteProductDetails path="/products/:id" user={this.state.currentUser}/>
             <RouteThanks path="/thanks"/>
             { this.state.currentUser ? <PurchaseProductListings path="/purchases" user={this.state.currentUser} /> : null}
-            { this.state.currentUser ? <UserProfile path="/users/:id" user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}
+            { this.state.currentUser ? <UserProfile path="/users/:id" logout={this.handleLogOut} user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}
             <RouteFeaturedProduct path="/featured"/>
             {/* <Products path="/products" /> */}
             <RouteProductDetailsReview currentUser={this.state.currentUser} path="/review-products/:id"/>
