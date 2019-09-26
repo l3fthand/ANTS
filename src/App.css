@@ -1198,12 +1198,13 @@ a {
 
 .col-3 .sellerPhoto img {
   display: block;
-  max-width: 4em;
+  max-width: 3.3em;
   max-height: auto;
-  width: 4em;
+  width: 3.3em;
   height: auto;
-  margin-left: -0.1em;
-  margin-top: 0;
+  margin-left: -.2em;
+  margin-top: -.2em;
+  border: none;
 }
 
 .reviewForm {
