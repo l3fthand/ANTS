@@ -51,8 +51,9 @@ componentDidMount(){
             width={64}
             height={64}
             className="mr-3"
-            src={server+photos}
+            src={server+photos[0]}
             />
+
             <Col>   
               <h5><Link to={'/products/'+id}>{name}</Link></h5>
               <p className="price">${price}</p>

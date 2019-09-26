@@ -17,10 +17,9 @@ class UserProducts extends Component{
   render(){
     var {user} = this.props;
     
-    return user ? (
+    return user.currentListings ? (
       <div className="listings">
         <h1>My Products</h1>
-          {/* <div className="listProduct"><Link to="/products/new"><Button className="AddButton" variant="primary" type="submit">List a product</Button></Link></div> */}
         {
           user.currentListings.map((item) => {
             var props = {

@@ -187,10 +187,7 @@ componentDidUpdate(prevProps,prevState){
                     
                     <PurchaseProductListings user={this.state.user}/>
                 </Tab>:null}
-                <Tab eventKey="Sold" title="Sold">
-                   
-                    
-                </Tab>
+                
             </Tabs>
             </Container>
         ) : null
