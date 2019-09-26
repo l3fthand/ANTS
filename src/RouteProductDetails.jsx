@@ -100,10 +100,6 @@ class RouteProductDetails extends Component {
         var {name,description,price,photos} = this.state.product
         var {user} = this.props
         var seller = this.state.seller;
-        console.log('seller')
-        console.log(seller)
-        console.log('buyer')
-        console.log(user)
         return ( 
             <>
             <div className="Item">
@@ -155,77 +151,7 @@ class RouteProductDetails extends Component {
                             <i className="far fa-window-close"></i>
                         </a>
                     </Row>
-                    {/* <Form
-                        className="purchaseForm"
-                        onSubmit={this.handlePurchase}
-                        ref={(el) => {
-                            this.form = el
-                        }}>
-                        <Form.Row>
-                            <Col>
-                                <Form.Control placeholder="First name"/>
-                            </Col>
-                            <Col>
-                                <Form.Control placeholder="Last name"/>
-                            </Col>
-                        </Form.Row>
-
-                        <Form.Group controlId="formGridAddress1">
-                            <Form.Row>
-                                <Col>
-                                    <Form.Label></Form.Label>
-                                    <Form.Control placeholder="Street Address"/>
-                                </Col>
-                            </Form.Row>
-                            <Form.Row>
-                                <Col>
-                                    <Form.Label></Form.Label>
-                                    <Form.Control placeholder="Address 2"/>
-                                </Col>
-                                <Col>
-                                    <Form.Label></Form.Label>
-                                    <Form.Control placeholder="Ph Number"/>
-                                </Col>
-                            </Form.Row>
-                        </Form.Group>
-
-                        <Form.Group controlId="formGridAddress2">
-                            <Form.Row>
-                              <Col>
-                                <Form.Control placeholder="City"/>
-                                 </Col>
-                            </Form.Row>
-                        </Form.Group>
-                        <Form.Group controlId="formGridAddress1">
-                        <Form.Row>
-                                <Col>
-                                    <Form.Label></Form.Label>
-                                    <Form.Control placeholder="Name on Card"/>
-                                </Col>
-                            </Form.Row>
-                            <Form.Row>
-                                <Col>
-                                    <Form.Label></Form.Label>
-                                    <Form.Control placeholder="Card Number"/>
-                                </Col>
-                            </Form.Row>
-                            <Form.Row>
-                                <Col>
-                                    <Form.Label></Form.Label>
-                                    <Form.Control placeholder="Expiry"/>
-                                </Col>
-                                <Col>
-                                    <Form.Label></Form.Label>
-                                    <Form.Control placeholder="cvv"/>
-                                </Col>
-                            </Form.Row>
-                        </Form.Group>
-                        <Button
-                            type="submit"
-                            className="purchaseButton"
-                            name="purchase"
-                            variant="outline-dark">Purchase</Button>
-                        </Form> */}
+                 
                          <ValidatorForm className="purchaseForm" onError={this.formError} onSubmit={this.handlePurchase}
                         ref={(el) => {
                             this.form = el
@@ -292,10 +218,7 @@ class RouteProductDetails extends Component {
                                 name="PhNumber" 
                                 id="PhNumber" 
                                 placeholder="Ph Number"
-                                // onChange={this.handleInputChange}
-                                // value={this.state.username1}
-                                // validators={['required','minStringLength:2','maxStringLength:7']}
-                                // errorMessages={['User name is required','Minimum lenghth is 2 ','Max lenghth is 7']}
+                            
 
                                 />
                             </div>
@@ -325,12 +248,14 @@ class RouteProductDetails extends Component {
                                 placeholder="Card Number"
                                 onChange={this.handleInputChange}
                                 value={this.state.CardNumber}
-                                validators={['required','minStringLength:14','minStringLength:15']}
-                                errorMessages={['Card Number is required','Card Number is not valid','Card Number is not valid']}
+                                validators={['required','matchRegexp:^4[0-9]{12}(?:[0-9]{3})?$']}
+                                errorMessages={['Card Number is required','Card Number is not valid']}
+                               
 
                                 />
                             </div>
-{/* matchRegexp:/^(\d{4}[- ]){3}\d{4}|\d{16}$ / */}
+                            {/* All Visa card numbers start with a 4. New cards have 16 digits. Old cards have 13. */}
+ 
                             <div className="form-group">
                                 <label htmlFor="name"></label>
                                 <TextValidator 
@@ -341,12 +266,12 @@ class RouteProductDetails extends Component {
                                 placeholder="Expiry"
                                 onChange={this.handleInputChange}
                                 value={this.state.Expiry}
-                                validators={['required','minStringLength:4','minStringLength:5']}
-                                errorMessages={['Expiry date is required','Expiry date is not valid','Expiry date is not valid']}
+                                validators={['required','matchRegexp:^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$']}
+                                errorMessages={['Expiry date is required','Expiry date is not valid']}
 
                                 />
                             </div>
-                            {/* 'matchRegexp:/^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$/' */}
+                          
                             <div className="form-group">
                                 <label htmlFor="name"></label>
                                 <TextValidator 
@@ -357,12 +282,12 @@ class RouteProductDetails extends Component {
                                 placeholder="cvv"
                                 onChange={this.handleInputChange}
                                 value={this.state.cvv}
-                                validators={['required','minStringLength:3','minStringLength:3']}
-                                errorMessages={['CVV number is required','CVV number is not validate','CVV number is not validate']}
+                                validators={['required','matchRegexp:^([0-9]{3,4})$']}
+                                errorMessages={['CVV number is required','CVV number is not validate']}
 
                                 />
                             </div>
-                            {/* 'matchRegexp: /^([0-9]{3,4})$/' */}
+                           
                         <button type="submit" type="submit"
                             className="purchaseButton"
                             name="purchase"
