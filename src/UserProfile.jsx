@@ -68,6 +68,7 @@ class UserProfile extends Component {
     handleDeleteAccount=(e)=>{
       e.preventDefault()
       api.deleteUser(this.state.user.id)
+      this.props.logout()
     }
 getUserProfile=(id)=>{
     api.getUser(id).then(res=>{
@@ -80,6 +81,13 @@ componentDidMount(){
     this.setState({currentUser:this.props.user})
 }
 
+componentDidUpdate(prevProps,prevState){
+  var {id} =  this.props
+  if(prevProps.id != id){
+    this.getUserProfile(this.props.id)
+    this.setState({currentUser:this.props.user})
+  }
+}
 
 
     render(){
@@ -149,7 +157,7 @@ componentDidMount(){
                   <p>Please email contact@threads.com to change User Name</p>
                   <br/>
                   
-                  <Button variant="danger" type="submit" onSubmit={this.handleDeleteAccount}>
+                  <Button variant="danger" type="submit" onClick={this.handleDeleteAccount}>
                         Delete Account
                     </Button>
               </Form>
