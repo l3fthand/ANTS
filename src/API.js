@@ -1,7 +1,11 @@
 import axios from 'axios';
 
 // var url = 'http://10.2.24.48:4001/api';
+<<<<<<< HEAD
 // var server = 'http://10.2.24.48:4001/';
+=======
+// var server = 'http://10.2.48.18:4001/';
+>>>>>>> ValidationReact
 
 var url = 'http://localhost:4001/api';
 var server = 'http://localhost:4001/';

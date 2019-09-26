@@ -35,8 +35,13 @@ componentDidMount(){
 }
 
   render(){
+<<<<<<< HEAD
     var {name, description, price, photo, id,currentUser} = this.props;
     var {seller} = this.state;
+=======
+    var {name, description, price, photos, id,currentUser} = this.props;
+    
+>>>>>>> ValidationReact
 
     return seller ? (
       
@@ -78,7 +83,7 @@ componentDidMount(){
             width={64}
             height={64}
             className="mr-3"
-            src={server+photo}
+            src={server+photos}
             />
             <Col>   
               <h5><Link to={'/products/'+id}>{name}</Link></h5>

@@ -5,7 +5,20 @@ import {Form, Button, ListGroup,ToggleButton} from 'react-bootstrap';
 import {api} from './API';
 
 class SellerReviewProducts extends Component {
+<<<<<<< HEAD
     
+=======
+    constructor(props){
+        super(props)
+        {
+            this.state = {
+                currentUser:{},
+            }
+        }
+    }
+  
+      
+>>>>>>> ValidationReact
     
     render(){
      
