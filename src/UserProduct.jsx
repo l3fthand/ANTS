@@ -6,7 +6,7 @@ import {Card, Container, Carousel, Button, ListGroup} from 'react-bootstrap';
 import Modal from 'react-awesome-modal';
 import {MdClose} from "react-icons/md";
 
-class Product extends Component{
+class UserProduct extends Component{
   constructor(props){
     super(props);
     this.state = {
@@ -24,6 +24,7 @@ class Product extends Component{
 
   deleteProduct = () => {
     var {id, refreshData} = this.props;
+    this.closeModal()
     api.deleteProduct(id).then(() => refreshData())
   }
 
@@ -35,11 +36,9 @@ class Product extends Component{
       photos: photos.filter(item => item!=photo)
     }
 
-    api.updateProduct(id, data).then(()=> refreshData());
-
-    
-    
+    api.updateProduct(id, data).then(() => refreshData())
   }
+
 
   render(){
     var {name, description, price, id, photos} = this.props;
@@ -51,11 +50,11 @@ class Product extends Component{
       <Card>
           <Carousel interval={null}>
             {
-              photos.map(photo =>
+              photos ? photos.map(photo =>
               <Carousel.Item className="productImage">
                 <Card.Img variant="top" src={server+photo}/>
                 <i data-name={photo} onClick={this.deletePhoto} className="fas fa-trash deleteButton"></i>
-              </Carousel.Item>)
+              </Carousel.Item>) : null
             }
           </Carousel>
 
@@ -73,7 +72,7 @@ class Product extends Component{
                       <span className="itemPrice">{price}</span>
                   </ListGroup.Item>
                   
-                  <ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'} refreshData={this.refreshData}>Edit Listing</Link></ListGroup.Item>
+                  <ListGroup.Item className="edit"><Link to={'/products/'+id+'/edit'}>Edit Listing</Link></ListGroup.Item>
                   <ListGroup.Item onClick={this.openModal} className="delete linkColor">Remove Listing</ListGroup.Item>
 
               </ListGroup>
@@ -108,4 +107,4 @@ class Product extends Component{
   }
 }
 
-export default Product;
+export default UserProduct;

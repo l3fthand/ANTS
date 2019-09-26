@@ -7,7 +7,7 @@ import EditProduct from './EditProduct';
 import Login from './Login';
 import UserProfile from './UserProfile';
 import UserProducts from './UserProducts';
-import Product from './Product';
+import UserProduct from './UserProduct';
 import PurchaseProductDetail from './PurchaseProductDetail';
 import RouteProductDetailsReview from './RouteProductDetailsReview';
 import RouteProductDetails from './RouteProductDetails';
@@ -87,6 +87,12 @@ componentDidMount=()=>
 
     api.getCategories().then(res => this.setState({categories:res.data}))
 
+}
+
+refreshCurrentUser = ()=>
+{
+
+    api.getUser(this.state.currentUser.id).then(res=>this.setState({currentUser:res.data}))
 }
 
   render(){
@@ -201,15 +207,15 @@ componentDidMount=()=>
             <RouteProductSearch path="/search"/>
             <ProductListings path="/"/>
             <RouteCat path="/categories/:id"/>
-            { this.state.currentUser ?<UserProducts path="/products" user={this.state.currentUser}/> : null}
-            { this.state.currentUser ?<AddProduct path="/products/new"user={this.state.currentUser}/> : null}
-            { this.state.currentUser ?<EditProduct path="/products/:id/edit"/> : null}
+            { this.state.currentUser ?<UserProducts path="/products" user={this.state.currentUser} refreshCurrentUser={this.refreshCurrentUser}/> : null}
+            { this.state.currentUser ?<AddProduct path="/products/new"user={this.state.currentUser} refreshCurrentUser={this.refreshCurrentUser}/> : null}
+            { this.state.currentUser ?<EditProduct path="/products/:id/edit" refreshCurrentUser={this.refreshCurrentUser}/> : null}
             <RouteProductDetails path="/products/:id" user={this.state.currentUser}/>
             <RouteThanks path="/thanks"/>
             { this.state.currentUser ? <PurchaseProductListings path="/purchases" user={this.state.currentUser} /> : null}
             { this.state.currentUser ? <UserProfile path="/users/:id" user={this.state.currentUser} updateCurrentUser={this.updateCurrentUser}/> : null}
             <RouteFeaturedProduct path="/featured"/>
-            <Products path="/products"/>
+            {/* <Products path="/products" /> */}
             <RouteProductDetailsReview currentUser={this.state.currentUser} path="/review-products/:id"/>
             <RouteOurStore path="/our-store"/>
           </Router>

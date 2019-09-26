@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Product from './Product';
+import Product from './UserProduct';
 import RouteProductDetailsReview from './RouteProductDetailsReview';
 import {Router, Link, navigate} from '@reach/router';
 import {api} from './API';
@@ -19,15 +19,15 @@ class Products extends Component{
     }
   }
 
-  getProducts = () => {
-    api.getProducts().then(res => {
-      this.setState({products: res.data})
-    })
-  }
+  // getProducts = () => {
+  //   api.getProducts().then(res => {
+  //     this.setState({products: res.data})
+  //   })
+  // }
 
-  componentDidMount(){
-    this.getProducts()
-  }
+  // componentDidMount(){
+  //   this.getProducts()
+  // }
 
 
   
@@ -44,7 +44,8 @@ class Products extends Component{
             var props = {
               ...item,
               key: item.id,
-              refreshData: this.getProducts,
+              // refreshData: this.getProducts,
+
             }
             return <Product {...props}/>
             

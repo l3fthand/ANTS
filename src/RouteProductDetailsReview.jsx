@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 // import {Link, navigate} from '@reach/router';
 import Review from './Review';
 import {Link} from '@reach/router';
-import {Form,Button,ToggleButtonGroup,ToggleButton,Card,ListGroup} from 'react-bootstrap';
+import {Form,Button,ToggleButtonGroup,ToggleButton,Card,ListGroup, Carousel} from 'react-bootstrap';
 import {api, server} from './API';
 
 import './App.css';
@@ -73,7 +73,7 @@ class RouteProductDetailsReview extends Component{
     var {product} = this.state;
     // var{currentUser} = product.purchaser_id;
 
-
+  
 
 
 
@@ -95,7 +95,14 @@ class RouteProductDetailsReview extends Component{
             {/* <Card.Img variant="top" src={server+product.photo}/>
            */}
 
-            <Card.Img variant="top" src={'/suits.jpg'}/>
+                      <Carousel interval={null}>
+                            {
+                            product.photos ? product.photos.map(photo => 
+                                <Carousel.Item className="productImage">
+                                    <Card.Img variant="top" src={server+photo}/>
+                                </Carousel.Item>) : null
+                            }
+                        </Carousel>
             <Card.Text className="first_cardText"><p className="tag_product">DESCRIPTION:</p><p>{product.description}</p></Card.Text>
             <Card.Text className="productPrice"><p className="tag_product">PRICE:</p> <p>${product.price}</p><Form className="purchaseForm" onSubmit={this.handlePurchase} ref={(el) => {this.form = el}} ></Form></Card.Text>
         </Card.Body>

@@ -19,16 +19,12 @@ class EditProduct extends Component{
 		}
 	}
 
-	
-
 	componentDidMount(){
 		var {id} = this.props;  
 
 		api.getProduct(id).then(res => {
 			this.setState({product: res.data})
 		})
-
-		console.log(id)
 	}
 	
 	
@@ -42,7 +38,6 @@ class EditProduct extends Component{
 
 		api.uploadPhotos(form).then(res => {
 			var files = res.data;
-			console.log(files);
 
 			var data = {
 				name: form.get('name-input'),
@@ -52,9 +47,12 @@ class EditProduct extends Component{
 			}
 
 			var {id} = this.props;
-			api.updateProduct(id, data).then(() => navigate('/products'));
-
-		});
+			api.updateProduct(id, data)
+			.then(() =>{
+				this.props.refreshCurrentUser()
+				navigate('/products')
+			})
+		})
 	}
 
 
