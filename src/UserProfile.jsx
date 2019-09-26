@@ -107,13 +107,14 @@ componentDidUpdate(prevProps,prevState){
               <Form className="editForm" onSubmit={this.handleEditSubmit} ref={(el) => {this.form = el}}>
 
                 <Col xs={8}>
-              <Image src={server+this.state.fileName} roundedCircle thumbnail={true}/>
-              <Form className = "userProfile" onChange={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
+              <Image src={server+this.state.fileName}  thumbnail={true}/>
+              </Col>
+              <Form className="userProfile" onChange={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
                     <Form.Group controlId="formPhoto">
-					<input type="file" className="photo-input" name="Userphoto-input" id="Userphoto-input" placeholder="Change your photo"/>
+				              	<input type="file" className="photo-input" name="Userphoto-input" id="Userphoto-input" placeholder="Change your photo"/>
                     </Form.Group>
                     </Form>
-                </Col>
+               
               <Form.Group  controlId="formGridName">
               <Col>
                 <Form.Control type="text" defaultValue={this.state.user.name} name="name-input"/>
@@ -153,16 +154,18 @@ componentDidUpdate(prevProps,prevState){
               </Form>
               </Modal>
                 <Row className="userAdminDetails">
+                    <Row className="userImageUpdate">
                     <Col xs={5} md={10} className="user-photo">
                     <Image src={server+this.state.fileName} thumbnail={true}/>
+                    
+                
+                    </Col>
                     {user.id == currentUser.id?(<input
-                        className="loginButton"
+                        className="editImgButton"
                         type="button"
                         value="Edit"
                         onClick={() => this.openModal()}
-                    />) : null}
-                
-                    </Col>
+                    />) : null}</Row>
                     <Col className="userInfo">
                     <p>{this.state.user.username}({soldListing})</p>
                     <p>Memeber since {this.state.user.date}</p>
@@ -173,7 +176,7 @@ componentDidUpdate(prevProps,prevState){
                 
                
             <Tabs defaultActiveKey="Products" id="uncontrolled-tab-example">
-                <Tab eventKey="Products" title="My Listings">
+                <Tab eventKey="Products" title="Listings">
                     <UserProducts user={this.state.user}/>
                     
                 </Tab>

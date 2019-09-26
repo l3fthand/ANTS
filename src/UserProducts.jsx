@@ -8,7 +8,7 @@ class UserProducts extends Component{
     
     return user.currentListings ? (
       <div className="listings">
-        <h1>My Products</h1>
+        <h1>Products</h1>
         {
           user.currentListings.map((item) => {
             var props = {

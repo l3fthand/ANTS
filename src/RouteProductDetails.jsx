@@ -130,14 +130,14 @@ class RouteProductDetails extends Component {
                         </Col>
                             <Col xs={3}>
                                 {seller.deleted_at != null ? <Link to={'/not-found'} >
-                               <Image  src={server+seller.photo} roundedCircle thumbnail={true}/>
+                               <Image  src={server+seller.photo}  thumbnail={true}/>
                             </Link>
-                            : <Link to={'/users/' + seller.id} >
-                               <Image  src={server+seller.photo} roundedCircle thumbnail={true}/>
+                            : <Link className="sellerPhoto" to={'/users/' + seller.id} >
+                               <Image  src={server+seller.photo}  thumbnail={true}/>
                             </Link>}
                             
                             
-                            {seller.deleted_at != null?<Link to={'/not-found'}>{seller.name}</Link>:<Link to={'/users/' + seller.id}>{seller.name}</Link>}</Col>
+                            {seller.deleted_at != null?<Link to={'/not-found'}>{seller.name}</Link>:<Link className="sellerId" to={'/users/' + seller.id}>{seller.name}</Link>}</Col>
                             
                     </Card.Body>
                 </Card>
