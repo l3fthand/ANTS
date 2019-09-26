@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Item from './Item';
-import RouteProductDetailsReview from './RouteProductDetailsReview';
-import {Router, Link, navigate} from '@reach/router';
+import {Link} from '@reach/router';
 import {api} from './API';
 import Carousel from 'react-multi-carousel';
 import {

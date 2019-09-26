@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import Item from './Item';
-import {api, server} from './API';
+import {api} from './API';
 import {
     Container,
     Row,
-    Col,
   } from 'react-bootstrap';
 
 class RouteCat extends Component {

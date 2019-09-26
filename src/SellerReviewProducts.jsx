@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 // import {Link, navigate} from '@reach/router'
 import SoldProductDetail from './SoldProductDetail';
-import {Form, Button, ListGroup,ToggleButton} from 'react-bootstrap';
-import {api} from './API';
 
 class SellerReviewProducts extends Component {
     

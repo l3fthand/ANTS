@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
     Form,
     FormControl,
-    Button
 } from 'react-bootstrap';
 
 function SearchBox(props) {

@@ -1,22 +1,17 @@
 import React, {Component} from 'react';
-import {Router, Link, navigate} from '@reach/router';
+import {navigate} from '@reach/router';
 import {api} from './API';
 
 
 import {
-	Col,
 	Button,
-	Form,
-	ToggleButton,
-	ToggleButtonGroup,
+	Form
   } from 'react-bootstrap';
 
 import './App.css';
 
 class AddProduct extends Component{
-  constructor(props){
-		super(props)
-	}
+
 
 	
 	

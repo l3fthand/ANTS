@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Products from './Products';
 import UserProducts from './UserProducts';
 import PurchaseProductListings from './PurchaseProductListings';
 import {api, server} from './API';

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 // import {Link, navigate} from '@reach/router';
 import Review from './Review';
-import {Link} from '@reach/router';
-import {Form,Button,ToggleButtonGroup,ToggleButton,Card,ListGroup, Carousel} from 'react-bootstrap';
+import {Form,Button,ToggleButtonGroup,ToggleButton,Card, Carousel} from 'react-bootstrap';
 import {api, server} from './API';
 
 import './App.css';

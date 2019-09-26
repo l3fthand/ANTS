@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import {Router, Link, navigate} from '@reach/router';
-import {api, server} from './API';
+import {navigate} from '@reach/router';
+import {api} from './API';
 
 import {
 	Col,
-	Card,
 	Button,
 	Form,
-	ToggleButton,
-	ToggleButtonGroup,
   } from 'react-bootstrap';
 
 class EditProduct extends Component{
@@ -58,8 +55,7 @@ class EditProduct extends Component{
 
   render(){
 
-	var {name,description,price, photos} = this.state.product;
-	// var {photos} = this.props;
+	var {name,description,price} = this.state.product;
 
     return(
 		

@@ -1,14 +1,5 @@
 import React, {Component} from 'react';
 import PurchaseProductDetail from './PurchaseProductDetail';
-import {Router, Link, navigate} from '@reach/router';
-import {api} from './API';
-import {
-  Card,
-  Button,
-} from 'react-bootstrap';
-
-
-
 
 class PurchaseProductListings extends Component{
   constructor(props){

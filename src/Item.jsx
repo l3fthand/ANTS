@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import RouteProductDetails from './RouteProductDetails';
-import {Link, navigate} from '@reach/router';
+import {Link} from '@reach/router';
 import {api, server} from './API';
-import {Card, Button,Col, ListGroup} from 'react-bootstrap';
+import {Card,Col} from 'react-bootstrap';
 
 class Item extends Component{
   constructor(props){

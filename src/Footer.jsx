@@ -4,7 +4,6 @@ import { MdHome } from "react-icons/md";
 import ScrollUpButton from "react-scroll-up-button"; //Add this line Here
 
 import {
-    Nav,
     Navbar,
     Col,
     Container

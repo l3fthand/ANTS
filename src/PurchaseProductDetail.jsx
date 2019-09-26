@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
-import RouteProductDetailsReview from './RouteProductDetailsReview';
-import {Link, navigate} from '@reach/router';
+import {Link} from '@reach/router';
 import {api, server} from './API';
-import {Card, Button, ListGroup,Media,Col} from 'react-bootstrap';
+import {Button,Media,Col} from 'react-bootstrap';
 
 class PurchaseProductDetail extends Component {
   constructor(props){
@@ -35,7 +34,7 @@ componentDidMount(){
 }
 
   render(){
-    var {name, description, price, photos, id,currentUser} = this.props;
+    var {name, price, photos, id} = this.props;
     var {seller} = this.state;
 
     return seller ? (
@@ -52,6 +51,7 @@ componentDidMount(){
             height={64}
             className="mr-3"
             src={server+photos[0]}
+            alt="product photos"
             />
 
             <Col>   

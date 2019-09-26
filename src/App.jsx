@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
-import axios from 'axios';
 import ProductListings from './ProductListings';
-import Products from './Products';
 import AddProduct from './AddProduct';
 import EditProduct from './EditProduct';
 import Login from './Login';
 import UserProfile from './UserProfile';
 import UserProducts from './UserProducts';
-import UserProduct from './UserProduct';
-import PurchaseProductDetail from './PurchaseProductDetail';
 import RouteProductDetailsReview from './RouteProductDetailsReview';
 import RouteProductDetails from './RouteProductDetails';
 import PurchaseProductListings from './PurchaseProductListings';
@@ -21,14 +17,14 @@ import RouteOurStore from './RouteOurStore';
 import RouteErrorPage from './RouteErrorPage';
 
 import {
-  Accordion,Nav,Navbar,Container,Card,Image,Row,NavDropdown
+  Accordion,Nav,Navbar,Container,Card,Image
 } from 'react-bootstrap';
 import './App.css';
 import Modal from 'react-awesome-modal';
-import {Router, Link, navigate, createMemorySource, createHistory} from '@reach/router';
+import {Router, Link, navigate} from '@reach/router';
 import 'react-multi-carousel/lib/styles.css';
 import { FiChevronDown,FiChevronLeft,FiSearch  } from "react-icons/fi";
-import { IoIosArrowRoundBack,IoIosClose,IoIosAdd } from "react-icons/io";
+import { IoIosClose,IoIosAdd } from "react-icons/io";
 import { Dropdown, DropdownMenu, DropdownToggle } from 'reactstrap';
 import {api,server} from './API';
 
@@ -84,15 +80,11 @@ addDefaultSrc(ev){
 
 componentDidMount=()=>
 {
-
     var userLocal = localStorage.getItem('userID')
-    
     if(userLocal){
         api.getUser(userLocal).then(res=>this.setState({currentUser:res.data}))
     }
-
     api.getCategories().then(res => this.setState({categories:res.data}))
-
 }
 
 refreshCurrentUser = ()=>
@@ -120,7 +112,7 @@ refreshCurrentUser = ()=>
 
                 <span>
                     <h6>Login/Register to Buy & Sell</h6>
-                    <a href="javascript:void(0);" onClick={() => this.closeModal()}>
+                    <a onClick={() => this.closeModal()}>
                     <IoIosClose/>
                     </a>
                 </span>

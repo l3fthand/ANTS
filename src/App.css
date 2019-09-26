@@ -1614,7 +1614,7 @@ a {
 }
 
 .purchaseForm {
-  padding: 1em;
+  padding: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1639,10 +1639,24 @@ a {
   color: #A68B3C;
   border-bottom: thin solid #A68B3C;
   border-radius: 0;
+  margin-top: .5em;
+  padding: .5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 
 .purchaseForm .form-group {
   margin-bottom: 0;
+  margin-top: 0;
+  padding: 0;
+  height: 2.8em;
 }
 
 .section {

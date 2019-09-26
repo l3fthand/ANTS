@@ -4,7 +4,6 @@ import SearchResults from './SearchResults';
 import SearchBox from './SearchBox';
 
 import {
-    Col,
     Row,
     Container
 } from 'react-bootstrap';

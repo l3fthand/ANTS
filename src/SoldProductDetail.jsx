@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import SellerReviewProducts from './SellerReviewProducts';
 // import Review from './Review';
-import {Link, navigate} from '@reach/router';
-import {api, server} from './API';
-import {Form, Button, ListGroup,ToggleButton,Media} from 'react-bootstrap';
+import {Link} from '@reach/router';
+import {api} from './API';
+import {Media} from 'react-bootstrap';
 
 import './App.css';
 

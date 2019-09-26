@@ -3,9 +3,6 @@ import {Container} from 'react-bootstrap';
 
 
 class RouteErrorPage extends Component{
-  constructor(props){
-    super(props);
-  }
 
 
 

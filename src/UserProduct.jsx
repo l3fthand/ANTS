@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import RouteProductDetails from './RouteProductDetails';
-import {Link, navigate} from '@reach/router';
+import {Link} from '@reach/router';
 import {api, server} from './API';
 import {Card, Container, Carousel, Button, ListGroup} from 'react-bootstrap';
 import Modal from 'react-awesome-modal';

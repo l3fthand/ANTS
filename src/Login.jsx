@@ -1,14 +1,11 @@
 import React, {Component} from 'react';
-import {navigate} from '@reach/router'
 import {api} from './API';
 import TextValidator from './TextValidator';
 import { ValidatorForm } from 'react-form-validator-core';
 import {
-  Col,
   Accordion,
   Card,
   Button,
-  Form,
 
 } from 'react-bootstrap';
 
@@ -129,37 +126,11 @@ class Login extends Component {
               </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="0">
-              {/* <Form className="loginForm" onSubmit={this.handleSubmitLogin} ref={(el) => {this.loginForm = el}} >
 
-                  <Form.Group controlId="formBasicEmail">
-                      <Form.Control type="text" className="form-control" name="username1" id="username-input" placeholder="Username" 
-                      onChange={this.handleInputChange}
-                      value={this.state.username1}
-                      placeholder="Enter name"
-                      validators={['required', 'isEmail']}
-                      errorMessages={['this field is required', 'email is not valid']}/>
-                      <Form.Text className="text-muted"></Form.Text>
-                  </Form.Group>
-
-                  <Form.Group controlId="formBasicPassword">
-                      <Form.Control type="password" className="form-control" name="password1" id="password-input" placeholder="Password"
-                      placeholder="Enter username"
-                      onChange={this.handleInputChange}
-                      value={this.state.password1}
-                      validators={['required', 'isEmail']}
-                      errorMessages={['this field is required', 'email is not valid']}
-        />
-                  </Form.Group>
-                  <p>{this.state.text}</p>
-                  <Button variant="primary" type="submit">
-                      Login
-                  </Button>
-                  <p></p>
-              </Form> */}
               <ValidatorForm className="loginForm" onError={this.formError} onSubmit={this.handleSubmitLogin} ref={(el) => {this.loginForm = el}}>
          
                 <div className="form-group">
-                    <label htmlFor="name">Username</label>
+                    <label htmlFor="name"></label>
                     <TextValidator 
                     type="text" 
                     className="form-control" 
@@ -175,7 +146,7 @@ class Login extends Component {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="name">Password</label>
+                    <label htmlFor="name"></label>
                     <TextValidator 
                     type="text" 
                     className="form-control" 
@@ -204,44 +175,16 @@ class Login extends Component {
               </Accordion.Toggle>
           </Card.Header>
           <Accordion.Collapse eventKey="1">
-              {/* <Form className="loginForm" onSubmit={this.handleSubmitForm} ref={(el) => {this.form = el}} >
-
-              <Form.Group  controlId="formGridName">
-
-                <Form.Control type="text" placeholder="Name" name="name"/>
-                </Form.Group>
-                  <Form.Row>
-                    
-                      <Form.Group as={Col} controlId="formGridUsername">
-
-                          <Form.Control type="text" placeholder="Username" name="userName2"/>
-                      </Form.Group>
-
-                      <Form.Group as={Col} controlId="formGridPassword">
-
-                          <Form.Control type="password" placeholder="Password" name="password2"/>
-                      </Form.Group>
-                  </Form.Row>
-
-                  <Form.Group controlId="formGridEmail">
-
-                      <Form.Control type="email" placeholder="Email" name="email"/>
-                  </Form.Group>
-
-
-                  <Button variant="primary" type="submit">
-                      Register
-                  </Button>
-              </Form> */}
+             
               <ValidatorForm className="loginForm" onError={this.formError} onSubmit={this.handleSubmitForm} ref={(el) => {this.form = el}}>
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="name"></label>
                         <TextValidator 
                         type="text" 
                         className="form-control" 
                         name="name" 
                         id="name" 
-                        placeholder="Enter username"
+                        placeholder="Enter Name"
                         onChange={this.handleInputChange}
                         value={this.state.name}
                         validators={['required', 'isString','minStringLength:2','maxStringLength:7']}
@@ -250,13 +193,13 @@ class Login extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Username</label>
+                        <label htmlFor="name"></label>
                         <TextValidator 
                         type="text" 
                         className="form-control" 
                         name="username2" 
                         id="username2" 
-                        placeholder="Enter username"
+                        placeholder="Enter Username"
                         onChange={this.handleInputChange}
                         value={this.state.username2}
                         validators={['required', 'isString','minStringLength:2','maxStringLength:7']}
@@ -266,7 +209,7 @@ class Login extends Component {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="name">Password</label>
+                        <label htmlFor="name"></label>
                         <TextValidator 
                         type="text" 
                         className="form-control" 
@@ -281,7 +224,7 @@ class Login extends Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="name">Email</label>
+                        <label htmlFor="name"></label>
                         <TextValidator 
                         type="text" 
                         className="form-control" 
