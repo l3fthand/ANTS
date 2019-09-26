@@ -479,8 +479,9 @@ a {
 
 .deleteButton {
   position: absolute;
+  z-index: 10;
   color: black;
-  right: 1.8em;
+  right: 2em;
   top: 1.5em;
   font-size: 1.3em;
 }
@@ -1036,6 +1037,7 @@ a {
   height: auto;
   -o-object-fit: contain;
      object-fit: contain;
+  max-width: 100%;
 }
 
 .userItem .card .card-body {

@@ -16,11 +16,6 @@ import './App.css';
 class AddProduct extends Component{
   constructor(props){
 		super(props)
-		{
-			this.state={
-				
-			}
-		}
 	}
 
 	
@@ -30,10 +25,8 @@ class AddProduct extends Component{
 
 		var form = new FormData(this.form);
 
-		console.log(form)
 		api.uploadPhotos(form).then(res => {
 			var files = res.data
-			console.log(files);
 
 			var data = {
 				name: form.get('name-input'),
@@ -45,8 +38,10 @@ class AddProduct extends Component{
 				// photo: file,
 			}
 			api.addProduct(data)
-			.then(navigate('/products'))
-			console.log(data);
+			.then(()=>{
+				this.props.refreshCurrentUser()
+				navigate('/products')
+			})
 		})
 	}
 

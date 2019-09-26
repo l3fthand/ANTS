@@ -6,7 +6,7 @@ import {Card, Container, Carousel, Button, ListGroup} from 'react-bootstrap';
 import Modal from 'react-awesome-modal';
 import {MdClose} from "react-icons/md";
 
-class Product extends Component{
+class UserProduct extends Component{
   constructor(props){
     super(props);
     this.state = {
@@ -24,16 +24,18 @@ class Product extends Component{
 
   deleteProduct = () => {
     var {id, refreshData} = this.props;
+    this.closeModal()
     api.deleteProduct(id).then(() => refreshData())
   }
   
 
   deletePhoto = (e) => {
     var photo = e.target.dataset.name;
-    var {id,photos,refreshData} = this.state;
+    var {id,photos,refreshData} = this.props;
 
     var data = {
       photos: photos.filter(item => item!=photo)
+      // console.log()
     }
 
     api.updateProduct(id, data).then(()=> refreshData());
@@ -53,16 +55,24 @@ class Product extends Component{
       <>
       <div className="Item userItem">
       <Card>
-
+          {/* <Carousel interval={null}>
+            {
+              photos ? photos.map(photo =>
+              <Carousel.Item className="productImage">
+                <Card.Img variant="top" src={server+photo}/>
+                <i data-name={photo} onClick={this.deletePhoto} className="fas fa-trash deleteButton"></i>
+              </Carousel.Item>) : null
+            }
+          </Carousel> */}
 
           <Card.Body>
               <Carousel interval={null}>
                   {
-                    photos.map(photo =>
+                    photos ? photos.map(photo =>
                     <Carousel.Item className="productImage">
                       <Card.Img variant="top" src={server+photo} onError={this.addDefaultSrc}/> 
                       <i data-name={photo} onClick={this.deletePhoto} className="fas fa-trash deleteButton"></i>
-                    </Carousel.Item>)
+                    </Carousel.Item>) : null
                   }
                 </Carousel>
               <ListGroup variant="flush">
@@ -111,4 +121,4 @@ class Product extends Component{
   }
 }
 
-export default Product;
+export default UserProduct;
