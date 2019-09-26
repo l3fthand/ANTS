@@ -116,6 +116,8 @@
     }
 }
 
+
+
 .productsListing {
     display: flex;
     background-color: #fff;
@@ -130,6 +132,7 @@
         max-width: 50%;
         padding: .5em 1em;
         min-height: 5em;
+        
         .card {
             display: flex;
             flex-direction: column;
