@@ -2,10 +2,7 @@ import React, {Component} from 'react';
 import {navigate} from '@reach/router'
 import {api} from './API';
 import TextValidator from './TextValidator';
-<<<<<<< HEAD
-=======
 import { ValidatorForm } from 'react-form-validator-core';
->>>>>>> ValidationReact
 import {
   Col,
   Accordion,

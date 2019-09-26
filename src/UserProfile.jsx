@@ -92,16 +92,7 @@ componentDidMount(){
         
         return user ? (
             <Container>
-                <Row className="userAdminDetails">
-                    <Col xs={5} md={10} className="user-photo">
-                    <Image src={server+this.state.fileName} thumbnail={true}/>
-                    {user.id == currentUser.id?(<input
-                        className="loginButton"
-                        type="button"
-                        value="Edit"
-                        onClick={() => this.openModal()}
-                    />) : null}
-                <Modal visible={this.state.visible}
+              <Modal visible={this.state.visible}
                     width="95%"
                     height="90%"
                 effect="fadeInUp"
@@ -154,6 +145,16 @@ componentDidMount(){
                     </Button>
               </Form>
               </Modal>
+                <Row className="userAdminDetails">
+                    <Col xs={5} md={10} className="user-photo">
+                    <Image src={server+this.state.fileName} thumbnail={true}/>
+                    {user.id == currentUser.id?(<input
+                        className="loginButton"
+                        type="button"
+                        value="Edit"
+                        onClick={() => this.openModal()}
+                    />) : null}
+                
                     </Col>
                     <Col className="userInfo">
                     <p>{this.state.user.username}({soldListing})</p>

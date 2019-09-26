@@ -12,10 +12,6 @@ class TextValidator extends ValidatorComponent {
                     {...rest}
                     ref={(r) => { this.input = r; }}
                 />
-<<<<<<< HEAD
-=======
-
->>>>>>> ValidationReact
                 {this.errorText()}
             </div>
         );

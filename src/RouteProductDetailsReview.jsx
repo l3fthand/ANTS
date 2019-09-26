@@ -92,16 +92,7 @@ class RouteProductDetailsReview extends Component{
         <Card.Body>
             <Card.Title>{product.name}
             </Card.Title>
-<<<<<<< HEAD
-            
-
             <Card.Img variant="top" src={server+product.photos}/>
-=======
-            <Card.Img variant="top" src={server+product.photos}/>
-          
-
-            
->>>>>>> ValidationReact
             <Card.Text className="first_cardText"><p className="tag_product">DESCRIPTION:</p><p>{product.description}</p></Card.Text>
             <Card.Text className="productPrice"><p className="tag_product">PRICE:</p> <p>${product.price}</p><Form className="purchaseForm" onSubmit={this.handlePurchase} ref={(el) => {this.form = el}} ></Form></Card.Text>
         </Card.Body>
