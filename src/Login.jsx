@@ -36,14 +36,11 @@ class Login extends Component {
 
     this.setState(stateData)
   }
-    // at least one number, one lowercase and one uppercase letter
-    // at least six characters
-    //var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+
   handleSubmitForm=(e)=>{
     e.preventDefault()
     var today = new Date();
     var date = today.getDate()+'/'+(today.getMonth()+1)+'/'+today.getFullYear();
-    // var form = new FormData(this.form);
     var {username2,password2,name,email} = this.state
     var data = {
         name: name,
@@ -74,17 +71,13 @@ class Login extends Component {
   
   handleSubmitLogin=(e)=>{
     e.preventDefault()
-    // // var form = new FormData(this.loginForm);
 
-    // console.log(this.loginForm)
     var {username1,password1} = this.state
     var data = {
         username: username1,
         password: password1,
     }
     
-
-    // this.loginForm.reset()
     this.setState({
         username: '',
         password: '',

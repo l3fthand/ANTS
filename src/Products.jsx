@@ -19,17 +19,6 @@ class Products extends Component{
     }
   }
 
-  // getProducts = () => {
-  //   api.getProducts().then(res => {
-  //     this.setState({products: res.data})
-  //   })
-  // }
-
-  // componentDidMount(){
-  //   this.getProducts()
-  // }
-
-
   
 
   render(){
@@ -44,7 +33,6 @@ class Products extends Component{
             var props = {
               ...item,
               key: item.id,
-              // refreshData: this.getProducts,
 
             }
             return <Product {...props}/>

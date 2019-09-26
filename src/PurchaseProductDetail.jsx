@@ -69,10 +69,7 @@ componentDidMount(){
                 </Button>}
               
             </Col>
-         
-            {/* 
-            <p><Link to={'/products/'+id}>View</Link></p>
-            */}
+        
         </Media>
        
     </div>

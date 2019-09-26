@@ -85,36 +85,6 @@ class EditProduct extends Component{
             Update Product
         </Button>
     </Form>
-
-
-
-    //   <div className="add-product">
-    //     <h2 className="name text">New Product</h2>
-    //     <form onSubmit={this.submitForm} ref={(el) => {this.form = el}}>
-
-	//         <div className="form-group">
-	//           <label htmlFor="name-input">Name</label>
-	//           <input type="text" className="form-control" name="name-input" id="name-input" defaultValue={name}/>
-	//         </div>
-
-	//         <div className="form-group">
-	//           <label htmlFor="name-input">Description</label>
-	//           <input type="text" className="form-control" name="description-input" id="description-input" defaultValue={description}/>
-	//         </div>
-
-    //       <div className="form-group">
-	//           <label htmlFor="name-input">Price</label>
-	//           <input type="text" className="form-control" name="price-input" id="price-input" defaultValue={price}/>
-	//         </div>
-
-	//         <div className="form-group">
-	//           <label htmlFor="name-input">Photo</label>
-	//           <input type="file" className="form-control" name="photo-input" id="photo-input" placeholder="Add photo"/>
-	//         </div>
-
-	//         <button type="submit" className="btn btn-primary">Update</button>
-	//     </form>
-    //   </div>
     );
   }
 }

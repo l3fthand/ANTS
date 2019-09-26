@@ -176,7 +176,7 @@ class RouteProductDetails extends Component {
                         }}>
          
                             <div className="form-group">
-                                <label htmlFor="name"></label>
+                                
                                 <TextValidator 
                                 type="text" 
                                 className="form-control" 
@@ -192,7 +192,7 @@ class RouteProductDetails extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="name"></label>
+                                
                                 <TextValidator 
                                 type="text" 
                                 className="form-control" 
@@ -207,7 +207,7 @@ class RouteProductDetails extends Component {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="name"></label>
+                                
                                 <TextValidator 
                                 type="text" 
                                 className="form-control" 
@@ -218,7 +218,7 @@ class RouteProductDetails extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="name"></label>
+                                
                                 <TextValidator 
                                 type="text" 
                                 className="form-control" 
@@ -229,7 +229,7 @@ class RouteProductDetails extends Component {
                             </div>
                     
                             <div className="form-group">
-                                <label htmlFor="name"></label>
+                                
                                 <TextValidator 
                                 type="text" 
                                 className="form-control" 
@@ -242,7 +242,7 @@ class RouteProductDetails extends Component {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="name"></label>
+                            <label htmlFor="name"></label>
                                 <TextValidator 
                                 type="text" 
                                 className="form-control" 
@@ -257,7 +257,7 @@ class RouteProductDetails extends Component {
                                 />
                             </div>
                             <div className="form-group">
-                                <label htmlFor="name"></label>
+                            
                                 <TextValidator 
                                 type="text" 
                                 className="form-control" 
@@ -275,7 +275,7 @@ class RouteProductDetails extends Component {
                             {/* All Visa card numbers start with a 4. New cards have 16 digits. Old cards have 13. */}
  
                             <div className="form-group">
-                                <label htmlFor="name"></label>
+                                
                                 <TextValidator 
                                 type="text" 
                                 className="form-control" 
@@ -291,7 +291,7 @@ class RouteProductDetails extends Component {
                             </div>
                           
                             <div className="form-group">
-                                <label htmlFor="name"></label>
+                                
                                 <TextValidator 
                                 type="text" 
                                 className="form-control" 

@@ -164,7 +164,6 @@ refreshCurrentUser = ()=>
                                       <Link onClick={this.toggle} to={'/users/' + this.state.currentUser.id} >User Profile</Link>
                                       <Link onClick={this.toggle} to="/products">My Products</Link>
                                       <Link onClick={this.toggle} to="/my-reviews">My Reviews</Link>
-                                      <Link onClick={this.toggle} to="/purchases">My Purchases</Link>
                                           <input
                                         className="loginButton"
                                         type="button"

@@ -20,7 +20,6 @@ class Item extends Component{
     var {purchaser_id} = this.props;
     this.setState({purchaser_id:purchaser_id})
     var {id} = this.props
-    //console.log(id);
     this.routeGetProduct(id)
   }
 

@@ -30,7 +30,6 @@ class AddProduct extends Component{
 				cat_name: form.get('cat-input'),
 				seller_id: this.props.user.id,
 				photos: files,
-				// photo: file,
 			}
 			api.addProduct(data)
 			.then(()=>{
