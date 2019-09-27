@@ -51,7 +51,7 @@ class AddProduct extends Component{
 				  <Form.Group className="catSelect" controlId="exampleForm.ControlSelect1">
 					<Form.Label>Select Category:</Form.Label>
 					<Form.Control id="cat-input" name="cat-input" as="select">
-					<option value="suits">Suits</option>
+					<option value="pants">Pants</option>
 					<option value="footwear">Footwear</option>
 					<option value="clothing">Clothing</option>
 					<option value="accessories">Accessories</option>

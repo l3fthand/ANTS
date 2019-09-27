@@ -106,7 +106,7 @@ componentDidUpdate(prevProps,prevState){
                 onClickAway={() => this.closeModal()}>
               <Form className="editForm" onSubmit={this.handleEditSubmit} ref={(el) => {this.form = el}}>
 
-                <Col xs={8}>
+                <Col xs={5}>
               <Image src={server+this.state.fileName}  thumbnail={true}/>
               </Col>
               <Form className="userProfile" onChange={this.handlePhotoSubmit} ref={(el) => {this.userForm = el}}>
@@ -153,19 +153,19 @@ componentDidUpdate(prevProps,prevState){
                     </Button>
               </Form>
               </Modal>
-                <Row className="userAdminDetails">
-                    <Row className="userImageUpdate">
-                    <Col xs={5} md={10} className="user-photo">
-                    <Image src={server+this.state.fileName} thumbnail={true}/>
-                    
                 
-                    </Col>
+                    <Row className="userImageUpdate" className="userAdminDetails">
+                    <Col xs={5} md={1}>
+                    <Image src={server+this.state.fileName} thumbnail={true}/>
                     {user.id == currentUser.id?(<input
                         className="editImgButton"
                         type="button"
                         value="Edit"
                         onClick={() => this.openModal()}
-                    />) : null}</Row>
+                    />) : null}
+                
+                    </Col>
+                    
                     <Col className="userInfo">
                     <p>{this.state.user.username}({soldListing})</p>
                     <p>Memeber since {this.state.user.date}</p>
